@@ -118,3 +118,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 3. Jalankan localhost
    ![alt text](image-15.png)
+
+<b>Langkah 8 – Setup ext pada VSCode (opsional)</b>
+
+![alt text](image-16.png)
