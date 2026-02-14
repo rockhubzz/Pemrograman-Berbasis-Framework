@@ -29,3 +29,21 @@
 
 3. Buka browser dan akses: http://localhost:3000
    ![alt text](image-6.png)
+
+<b>Langkah 4 – Mengenal Struktur Folder</b>
+
+Amati folder utama:<br>
+• pages/ → tempat routing halaman
+![alt text](image-7.png)
+
+• public/ → aset statis
+![alt text](image-8.png)
+
+• styles/ → file CSS<br>
+![alt text](image-9.png)
+
+• package.json → konfigurasi project
+![alt text](image-10.png)
+
+• gitIgnore -> file konfigurasi di Git yang berfungsi untuk memberitahu Git file atau folder apa saja yang TIDAK perlu di-track / di-commit ke repository.
+![alt text](image-11.png)
