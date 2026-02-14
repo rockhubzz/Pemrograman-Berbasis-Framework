@@ -72,3 +72,32 @@ export default function Home() {
 
 2. Simpan dan lihat perubahan di browser.
    ![alt text](image-12.png)
+
+<b>Langkah 6 – Modifikasi API</b>
+
+1. Buka folder api
+   ![alt text](image-13.png)
+
+2. Modifikasi hello.ts
+
+```ts
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiRequest, NextApiResponse } from "next";
+
+type Data = {
+  name: string;
+  alamat: string;
+};
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+) {
+  res.status(200).json({ name: "John Doe", alamat: "jl.suka suka no 1" });
+}
+```
+
+3. Jalankan browser dengan Alamat http://localhost:3000/api/hello
+   ![alt text](image-14.png)
+
+Catatan: Pada saat screenshot di atas dilakukan, extension "JSON Formatter" sudah terinstall
