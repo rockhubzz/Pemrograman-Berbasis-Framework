@@ -182,3 +182,17 @@ Output:
 ![alt text](image-18.png)
 Ketika hyperlink "About raki" diklik akan diarahkan ke page about
 <video controls src="2026-02-14 22-22-28.mp4" title="Title"></video>
+
+<b>Pertanyaan Refleksi</b><br>
+
+1. Mengapa Pages Router disebut sebagai routing berbasis file?<br>
+   Jawab: Karena routing pages mengikuti struktur file code tanpa perlu setting router secara manual
+
+2. Apa perbedaan Next.js dengan React standar (CRA)?<br>
+   Jawab: React standar (CRA) adalah library UI yang default-nya menggunakan Client Side Rendering, sehingga routing dan fitur backend harus ditambahkan manual. Sedangkan Next.js adalah framework berbasis React yang menyediakan routing otomatis, SSR/SSG untuk SEO dan performa lebih baik, serta API routes bawaan.
+
+3. Apa fungsi perintah npm run dev?<br>
+   Jawab: untuk memulai web server untuk project Next.js
+
+4. Apa perbedaan npm run dev dan run build ?<br>
+   Jawab: npm run dev digunakan untuk menjalankan aplikasi dalam mode pengembangan (development), sehingga perubahan kode langsung ter-update (hot reload) dan lebih mudah untuk debugging.Sedangkan npm run build digunakan untuk membuat versi produksi (production) yang sudah dioptimasi agar lebih cepat dan siap untuk di-deploy.
