@@ -122,3 +122,34 @@ export default function App({ Component, pageProps }: AppProps) {
 <b>Langkah 8 – Setup ext pada VSCode (opsional)</b>
 
 ![alt text](image-16.png)
+
+<b>Tugas 1 (Wajib)</b><br>
+• Buat halaman baru about.js di folder pages.<br>
+• Tampilkan:<br>
+o Nama Mahasiswa<br>
+o NIM<br>
+o Program Studi<br>
+
+Code about.tsx:
+
+```tsx
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home() {
+  return (
+    <div>
+      <p>Nama: Rocky Alessandro Kristanto</p>
+      <p>NIM: 2341720197</p>
+      <p>Program Studi: Teknik Informatika</p>
+    </div>
+  );
+}
+```
+
+Output:
+![alt text](image-17.png)
