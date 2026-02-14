@@ -101,3 +101,20 @@ export default function handler(
    ![alt text](image-14.png)
 
 Catatan: Pada saat screenshot di atas dilakukan, extension "JSON Formatter" sudah terinstall
+
+<b>Langkah 7 – Modifikasi Background</b>
+
+1. Buka file \_app.tsx
+2. Modifikasi menjadi berikut
+
+```tsx
+// import '@/styles/globals.css'
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+3. Jalankan localhost
+   ![alt text](image-15.png)
