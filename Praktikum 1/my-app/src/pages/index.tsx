@@ -10,6 +10,7 @@ export default function Home() {
     <div>
       <h1>Praktikum Next.js Pages Router</h1> <br />
       <p>Mahasiswa D4 Pengembangan Web</p>
+      <a href="/about">About raki</a>
     </div>
   )
 }

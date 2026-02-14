@@ -153,3 +153,32 @@ export default function Home() {
 
 Output:
 ![alt text](image-17.png)
+
+<b>Tugas 2 (Pengayaan)</b><br>
+• Tambahkan minimal 1 link navigasi dari halaman utama ke halaman about.
+
+Code index.tsx:
+
+```tsx
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home() {
+  return (
+    <div>
+      <h1>Praktikum Next.js Pages Router</h1> <br />
+      <p>Mahasiswa D4 Pengembangan Web</p>
+      <a href="/about">About raki</a>
+    </div>
+  );
+}
+```
+
+Output:
+![alt text](image-18.png)
+Ketika hyperlink "About raki" diklik akan diarahkan ke page about
+<video controls src="2026-02-14 22-22-28.mp4" title="Title"></video>
