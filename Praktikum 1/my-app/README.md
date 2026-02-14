@@ -10,42 +10,42 @@
 
 <b>Langkah 2 – Membuat Project Next.js</b>
 
-1. Buat direktori baru dan masuk ke direktori kerja
+1. Buat direktori baru dan masuk ke direktori kerja<br>
    ![alt text](image-1.png)
 
-2. Jalankan perintah:
+2. Jalankan perintah:<br>
    ![alt text](image-2.png)
 
-3. Masuk ke folder projectnya
+3. Masuk ke folder projectnya<br>
    ![alt text](image-3.png)
 
 <b>Langkah 3 – Menjalankan Server Development</b>
 
-1. Masuk ke folder project:
+1. Masuk ke folder project:<br>
    ![alt text](image-4.png)
 
-2. Jalankan aplikasi:
+2. Jalankan aplikasi:<br>
    ![alt text](image-5.png)
 
-3. Buka browser dan akses: http://localhost:3000
+3. Buka browser dan akses: http://localhost:3000<br>
    ![alt text](image-6.png)
 
 <b>Langkah 4 – Mengenal Struktur Folder</b>
 
 Amati folder utama:<br>
-• pages/ → tempat routing halaman
+• pages/ → tempat routing halaman<br>
 ![alt text](image-7.png)
 
-• public/ → aset statis
+• public/ → aset statis<br>
 ![alt text](image-8.png)
 
 • styles/ → file CSS<br>
 ![alt text](image-9.png)
 
-• package.json → konfigurasi project
+• package.json → konfigurasi project<br>
 ![alt text](image-10.png)
 
-• gitIgnore -> file konfigurasi di Git yang berfungsi untuk memberitahu Git file atau folder apa saja yang TIDAK perlu di-track / di-commit ke repository.
+• gitIgnore -> file konfigurasi di Git yang berfungsi untuk memberitahu Git file atau folder apa saja yang TIDAK perlu di-track / di-commit ke repository.<br>
 ![alt text](image-11.png)
 
 <b>Langkah 5 – Modifikasi Halaman Utama</b></br>
@@ -70,12 +70,12 @@ export default function Home() {
 }
 ```
 
-2. Simpan dan lihat perubahan di browser.
+2. Simpan dan lihat perubahan di browser.<br>
    ![alt text](image-12.png)
 
 <b>Langkah 6 – Modifikasi API</b>
 
-1. Buka folder api
+1. Buka folder api<br>
    ![alt text](image-13.png)
 
 2. Modifikasi hello.ts
@@ -97,7 +97,7 @@ export default function handler(
 }
 ```
 
-3. Jalankan browser dengan Alamat http://localhost:3000/api/hello
+3. Jalankan browser dengan Alamat http://localhost:3000/api/hello<br>
    ![alt text](image-14.png)
 
 Catatan: Pada saat screenshot di atas dilakukan, extension "JSON Formatter" sudah terinstall
@@ -116,10 +116,10 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-3. Jalankan localhost
+3. Jalankan localhost<br>
    ![alt text](image-15.png)
 
-<b>Langkah 8 – Setup ext pada VSCode (opsional)</b>
+<b>Langkah 8 – Setup ext pada VSCode (opsional)</b><br>
 
 ![alt text](image-16.png)
 
@@ -151,7 +151,7 @@ export default function Home() {
 }
 ```
 
-Output:
+Output:<br>
 ![alt text](image-17.png)
 
 <b>Tugas 2 (Pengayaan)</b><br>
@@ -178,9 +178,9 @@ export default function Home() {
 }
 ```
 
-Output:
-![alt text](image-18.png)
-Ketika hyperlink "About raki" diklik akan diarahkan ke page about
+Output:<br>
+![alt text](image-18.png)<br>
+Ketika hyperlink "About raki" diklik akan diarahkan ke page about<br>
 <video controls src="2026-02-14 22-22-28.mp4" title="Title"></video>
 
 <b>Pertanyaan Refleksi</b><br>
@@ -192,7 +192,7 @@ Ketika hyperlink "About raki" diklik akan diarahkan ke page about
    Jawab: React standar (CRA) adalah library UI yang default-nya menggunakan Client Side Rendering, sehingga routing dan fitur backend harus ditambahkan manual. Sedangkan Next.js adalah framework berbasis React yang menyediakan routing otomatis, SSR/SSG untuk SEO dan performa lebih baik, serta API routes bawaan.
 
 3. Apa fungsi perintah npm run dev?<br>
-   Jawab: untuk memulai web server untuk project Next.js
+   Jawab: Perintah npm run dev berfungsi untuk menjalankan web server dalam mode development sehingga halaman akan selalu hot reload dengan perubahan kode secara otomatis.
 
 4. Apa perbedaan npm run dev dan run build ?<br>
    Jawab: npm run dev digunakan untuk menjalankan aplikasi dalam mode pengembangan (development), sehingga perubahan kode langsung ter-update (hot reload) dan lebih mudah untuk debugging.Sedangkan npm run build digunakan untuk membuat versi produksi (production) yang sudah dioptimasi agar lebih cepat dan siap untuk di-deploy.
