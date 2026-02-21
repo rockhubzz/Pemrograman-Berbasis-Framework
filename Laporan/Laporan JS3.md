@@ -26,3 +26,64 @@ Insight: index.tsx di dalam folder mewakili root folder tersebut.
 <b>b. Akses dari halaman browser ( tetap sama tetapi lebih rapi )</b>
 
 ![alt text](image-3.png)
+
+<b>3. Nested Routing<br>
+a. Buat Folder Setting</b></br>
+
+![alt text](image-4.png)
+
+Modifikasi kodenya<br>
+
+<li>user.tsx
+
+```tsx
+const UserSettingPage = () => {
+  return (
+    <div>
+        User Setting Page
+    </div>;
+  )
+};
+
+export default UserSettingPage;
+```
+
+<li>app.tsx
+
+```tsx
+const AppSetting = () => {
+    return  (
+        <div>
+            App Setting Page
+        </div>;
+)
+};
+
+export default AppSetting;
+```
+
+Akses:
+
+<li>/setting/user
+
+![alt text](image-5.png)
+
+<li>/setting/app
+
+![alt text](image-6.png)
+
+Modifikasi struktur folder pages dengan menambahkan folder user dan user.tsx pada setting dipindah ke folder user dan rubah file user.tsx menjadi index.tsx
+
+![alt text](image-7.png)
+
+Jalankan pada browser
+
+![alt text](image-8.png)
+
+<b>b. Nested Lebih Dalam</b>
+
+![alt text](image-9.png)
+
+Akses /user/password
+
+![alt text](image-10.png)
