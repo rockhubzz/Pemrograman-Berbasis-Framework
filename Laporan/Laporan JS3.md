@@ -150,3 +150,159 @@ export default HalamanProduk;
 <li> /produk/baju
 
 ![alt text](image-16.png)
+
+<b>5. Membuat Komponen Navbar <br>
+a. Struktur Komponen</b>
+
+![alt text](image-17.png)
+
+Modifikasi index.tsx
+
+```tsx
+const Navbar = () => {
+  return (
+    <div className="">
+      <div>navbar Component </div>
+    </div>
+  );
+};
+
+export default Navbar;
+```
+
+Buka globals.css untuk nantinya digunakan pada style navbar
+
+Modifikasi global.css
+
+```css
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+```
+
+Modifikasi index.tsx dengan menambahkan classname untuk style navbar
+
+```tsx
+const Navbar = () => {
+  return (
+    <div className="navbar">
+      <div>navbar Component </div>
+    </div>
+  );
+};
+
+export default Navbar;
+```
+
+Modifikasi globals.css
+
+```css
+.navbar {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+```
+
+Modifikasi index.tsx pada folder pages
+
+```tsx
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import Navbar from "@/components/layouts/navbar";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home() {
+  return (
+    <div>
+      <Navbar />
+      <h1>Praktikum Next.js Pages Router</h1> <br />
+      <p>Mahasiswa D4 Pengembangan Web</p>
+    </div>
+  );
+}
+```
+
+Modifikasi \_app.tsx ( pastikan import styles dalam keadaan aktif)
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+Jalankan di browser ( Navbar akan tampil )
+
+![alt text](image-18.png)
+
+<b>Modifikasi navbar agar tampil di semua page</b><br>
+Modifikasi index.tsx pada folder page ( hapus navbar )
+
+```tsx
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import Navbar from "@/components/layouts/navbar";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home() {
+  return (
+    <div>
+      <h1>Praktikum Next.js Pages Router</h1> <br />
+      <p>Mahasiswa D4 Pengembangan Web</p>
+    </div>
+  );
+}
+```
+
+Modifikasi \_app.tsx ( Menambahkan navbar )
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import Navbar from "@/components/layouts/navbar";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <div>
+      <Navbar />
+      <Component {...pageProps} />
+    </div>
+  );
+}
+```
+
+Jalankan browser
+
+![alt text](image-19.png)
+
+![alt text](image-20.png)
+
+![alt text](image-21.png)
+
+![alt text](image-22.png)
