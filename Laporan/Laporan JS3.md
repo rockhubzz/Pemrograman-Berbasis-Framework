@@ -5,8 +5,24 @@
 pages/<br>
 └── index.tsx<br>
 
-<b>b. Tambahkan Halaman About</b>
-![alt text](image.png)
+<b>b. Tambahkan Halaman About</b><br>
+![alt text](image.png)<br>
 
-<b>c. Uji di Browser</b>
-![alt text](image-1.png)
+<b>c. Uji di Browser</b><br>
+![alt text](image-1.png)<br>
+
+<b>2. Routing Menggunakan Folder<br>
+a. Rapikan Struktur Pages</br></b>
+Ubah struktur menjadi:<br>
+pages/<br>
+└── about/<br>
+└── index.tsx ( yang sebelumnya about.tsx menjadi index.tsx )
+
+![alt text](image-2.png)
+
+Akses /about<br>
+Insight: index.tsx di dalam folder mewakili root folder tersebut.
+
+<b>b. Akses dari halaman browser ( tetap sama tetapi lebih rapi )</b>
+
+![alt text](image-3.png)
