@@ -334,3 +334,42 @@ const AppShell = (props: AppShellProps) => {
 
 export default AppShell;
 ```
+
+<b>7. Implementasi Layout di \_app.tsx</b>
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import AppShell from "@/components/layouts/Appshell";
+import Navbar from "@/components/layouts/navbar";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <AppShell>
+      <Component {...pageProps} />
+    </AppShell>
+  );
+}
+```
+
+Modifikasi pada \_app.tsx tambahkan footer seperti pada gambar dan amati hasilnya
+
+```tsx
+const { children } = props;
+
+return (
+  <main>
+    <Navbar />
+    {children}
+    <div>footer</div>
+  </main>
+);
+```
+
+/about
+
+![alt text](image-24.png)
+
+/ (index pages)
+
+![alt text](image-25.png)
