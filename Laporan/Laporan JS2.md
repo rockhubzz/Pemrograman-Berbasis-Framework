@@ -1,3 +1,5 @@
+# Laporan Jobsheet 2 - Setup Project Next.js menggunakan Pages Router
+
 <b>Langkah 1 – Pengecekan Lingkungan</b>
 
 1. Buka terminal / command prompt.
@@ -6,47 +8,47 @@
 4. npm -v
 5. git -v
 
-![alt text](image.png)
+![alt text](imgs/JS2/image.png)
 
 <b>Langkah 2 – Membuat Project Next.js</b>
 
 1. Buat direktori baru dan masuk ke direktori kerja<br>
-   ![alt text](image-1.png)
+   ![alt text](imgs/JS2/image-1.png)
 
 2. Jalankan perintah:<br>
-   ![alt text](image-2.png)
+   ![alt text](imgs/JS2/image-2.png)
 
 3. Masuk ke folder projectnya<br>
-   ![alt text](image-3.png)
+   ![alt text](imgs/JS2/image-3.png)
 
 <b>Langkah 3 – Menjalankan Server Development</b>
 
 1. Masuk ke folder project:<br>
-   ![alt text](image-4.png)
+   ![alt text](imgs/JS2/image-4.png)
 
 2. Jalankan aplikasi:<br>
-   ![alt text](image-5.png)
+   ![alt text](imgs/JS2/image-5.png)
 
 3. Buka browser dan akses: http://localhost:3000<br>
-   ![alt text](image-6.png)
+   ![alt text](imgs/JS2/image-6.png)
 
 <b>Langkah 4 – Mengenal Struktur Folder</b>
 
 Amati folder utama:<br>
 • pages/ → tempat routing halaman<br>
-![alt text](image-7.png)
+![alt text](imgs/JS2/image-7.png)
 
 • public/ → aset statis<br>
-![alt text](image-8.png)
+![alt text](imgs/JS2/image-8.png)
 
 • styles/ → file CSS<br>
-![alt text](image-9.png)
+![alt text](imgs/JS2/image-9.png)
 
 • package.json → konfigurasi project<br>
-![alt text](image-10.png)
+![alt text](imgs/JS2/image-10.png)
 
 • gitIgnore -> file konfigurasi di Git yang berfungsi untuk memberitahu Git file atau folder apa saja yang TIDAK perlu di-track / di-commit ke repository.<br>
-![alt text](image-11.png)
+![alt text](imgs/JS2/image-11.png)
 
 <b>Langkah 5 – Modifikasi Halaman Utama</b></br>
 
@@ -71,12 +73,12 @@ export default function Home() {
 ```
 
 2. Simpan dan lihat perubahan di browser.<br>
-   ![alt text](image-12.png)
+   ![alt text](imgs/JS2/image-12.png)
 
 <b>Langkah 6 – Modifikasi API</b>
 
 1. Buka folder api<br>
-   ![alt text](image-13.png)
+   ![alt text](imgs/JS2/image-13.png)
 
 2. Modifikasi hello.ts
 
@@ -98,7 +100,7 @@ export default function handler(
 ```
 
 3. Jalankan browser dengan Alamat http://localhost:3000/api/hello<br>
-   ![alt text](image-14.png)
+   ![alt text](imgs/JS2/image-14.png)
 
 Catatan: Pada saat screenshot di atas dilakukan, extension "JSON Formatter" sudah terinstall
 
@@ -117,11 +119,11 @@ export default function App({ Component, pageProps }: AppProps) {
 ```
 
 3. Jalankan localhost<br>
-   ![alt text](image-15.png)
+   ![alt text](imgs/JS2/image-15.png)
 
 <b>Langkah 8 – Setup ext pada VSCode (opsional)</b><br>
 
-![alt text](image-16.png)
+![alt text](imgs/JS2/image-16.png)
 
 <b>Tugas 1 (Wajib)</b><br>
 • Buat halaman baru about.js di folder pages.<br>
@@ -152,7 +154,7 @@ export default function Home() {
 ```
 
 Output:<br>
-![alt text](image-17.png)
+![alt text](imgs/JS2/image-17.png)
 
 <b>Tugas 2 (Pengayaan)</b><br>
 • Tambahkan minimal 1 link navigasi dari halaman utama ke halaman about.
@@ -179,9 +181,9 @@ export default function Home() {
 ```
 
 Output:<br>
-![alt text](image-18.png)<br>
+![alt text](imgs/JS2/image-18.png)<br>
 Ketika hyperlink "About raki" diklik akan diarahkan ke page about<br>
-<video controls src="2026-02-14 22-22-28.mp4" title="Title"></video>
+<video controls src="imgs/JS2/2026-02-14 22-22-28.mp4" title="Title"></video>
 
 <b>Pertanyaan Refleksi</b><br>
 
