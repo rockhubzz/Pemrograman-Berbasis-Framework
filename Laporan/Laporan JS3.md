@@ -87,3 +87,66 @@ Jalankan pada browser
 Akses /user/password
 
 ![alt text](image-10.png)
+
+<b>4. Dynamic Routing<br>
+a. Buat Halaman Produk</b>
+
+![alt text](image-11.png)
+
+<li>Modifikasi index.tsx
+
+```tsx
+const produk = () => {
+  return ()
+    <div>
+        Produk User Page
+    </div>;
+};
+
+export default produk;
+```
+
+<li> Modifikasi [id].tsx
+
+Buka browser http://localhost:3000/produk/sepatu tambahkan segment sepatu
+
+![alt text](image-12.png)
+
+<li> Cek menggunakan console.log
+
+![alt text](image-13.png)
+
+<li>Modifikasi [id].tsx agar dapat mengambil nilai dari id
+
+```tsx
+import { useRouter } from "next/router";
+
+const HalamanProduk = () => {
+  // const Router = useRouter();
+  // console.log(Router);
+  const { query } = useRouter();
+
+  return (
+    <div>
+      <h1>Halaman Produk</h1>
+      <p>Produk: {query.id}</p>
+    </div>
+  );
+};
+
+export default HalamanProduk;
+```
+
+<li>Buka browser
+
+![alt text](image-14.png)
+
+<b>c. Uji di Browser</b>
+
+<li> /produk/sepatu-baru
+
+![alt text](image-15.png)
+
+<li> /produk/baju
+
+![alt text](image-16.png)
