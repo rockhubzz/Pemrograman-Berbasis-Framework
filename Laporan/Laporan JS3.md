@@ -306,3 +306,31 @@ Jalankan browser
 ![alt text](image-21.png)
 
 ![alt text](image-22.png)
+
+<b>6. Membuat Layout Global (App Shell)<br>
+a. Buat AppShell</b>
+
+![alt text](image-23.png)
+
+Modifikasi index.tsx pada AppShell
+
+```tsx
+import Navbar from "../navbar";
+
+type AppShellProps = {
+  children: React.ReactNode;
+};
+
+const AppShell = (props: AppShellProps) => {
+  const { children } = props;
+
+  return (
+    <main>
+      <Navbar />
+      {children}
+    </main>
+  );
+};
+
+export default AppShell;
+```
