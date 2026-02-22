@@ -392,3 +392,14 @@ return (
 3. Tampilkan nilai slug di halaman
 
 ![alt text](image-28.png)
+
+<b>Tugas 3 – Layout</b>
+
+1. Tambahkan Footer pada AppShell
+2. Footer tampil di semua halaman
+
+![alt text](image-29.png)
+
+![alt text](image-30.png)
+
+![alt text](image-31.png)
