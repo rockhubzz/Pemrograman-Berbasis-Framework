@@ -6,10 +6,12 @@ pages/<br>
 └── index.tsx<br>
 
 <b>b. Tambahkan Halaman About</b><br>
-![alt text](image.png)<br>
+
+![alt text](imgs/JS3/image.png)<br>
 
 <b>c. Uji di Browser</b><br>
-![alt text](image-1.png)<br>
+
+![alt text](imgs/JS3/image-1.png)<br>
 
 <b>2. Routing Menggunakan Folder<br>
 a. Rapikan Struktur Pages</br></b>
@@ -18,19 +20,19 @@ pages/<br>
 └── about/<br>
 └── index.tsx ( yang sebelumnya about.tsx menjadi index.tsx )
 
-![alt text](image-2.png)
+![alt text](imgs/JS3/image-2.png)
 
 Akses /about<br>
 Insight: index.tsx di dalam folder mewakili root folder tersebut.
 
 <b>b. Akses dari halaman browser ( tetap sama tetapi lebih rapi )</b>
 
-![alt text](image-3.png)
+![alt text](imgs/JS3/image-3.png)
 
 <b>3. Nested Routing<br>
 a. Buat Folder Setting</b></br>
 
-![alt text](image-4.png)
+![alt text](imgs/JS3/image-4.png)
 
 Modifikasi kodenya<br>
 
@@ -66,32 +68,32 @@ Akses:
 
 <li>/setting/user
 
-![alt text](image-5.png)
+![alt text](imgs/JS3/image-5.png)
 
 <li>/setting/app
 
-![alt text](image-6.png)
+![alt text](imgs/JS3/image-6.png)
 
 Modifikasi struktur folder pages dengan menambahkan folder user dan user.tsx pada setting dipindah ke folder user dan rubah file user.tsx menjadi index.tsx
 
-![alt text](image-7.png)
+![alt text](imgs/JS3/image-7.png)
 
 Jalankan pada browser
 
-![alt text](image-8.png)
+![alt text](imgs/JS3/image-8.png)
 
 <b>b. Nested Lebih Dalam</b>
 
-![alt text](image-9.png)
+![alt text](imgs/JS3/image-9.png)
 
 Akses /user/password
 
-![alt text](image-10.png)
+![alt text](imgs/JS3/image-10.png)
 
 <b>4. Dynamic Routing<br>
 a. Buat Halaman Produk</b>
 
-![alt text](image-11.png)
+![alt text](imgs/JS3/image-11.png)
 
 <li>Modifikasi index.tsx
 
@@ -110,11 +112,11 @@ export default produk;
 
 Buka browser http://localhost:3000/produk/sepatu tambahkan segment sepatu
 
-![alt text](image-12.png)
+![alt text](imgs/JS3/image-12.png)
 
 <li> Cek menggunakan console.log
 
-![alt text](image-13.png)
+![alt text](imgs/JS3/image-13.png)
 
 <li>Modifikasi [id].tsx agar dapat mengambil nilai dari id
 
@@ -139,22 +141,22 @@ export default HalamanProduk;
 
 <li>Buka browser
 
-![alt text](image-14.png)
+![alt text](imgs/JS3/image-14.png)
 
 <b>c. Uji di Browser</b>
 
 <li> /produk/sepatu-baru
 
-![alt text](image-15.png)
+![alt text](imgs/JS3/image-15.png)
 
 <li> /produk/baju
 
-![alt text](image-16.png)
+![alt text](imgs/JS3/image-16.png)
 
 <b>5. Membuat Komponen Navbar <br>
 a. Struktur Komponen</b>
 
-![alt text](image-17.png)
+![alt text](imgs/JS3/image-17.png)
 
 Modifikasi index.tsx
 
@@ -256,7 +258,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 Jalankan di browser ( Navbar akan tampil )
 
-![alt text](image-18.png)
+![alt text](imgs/JS3/image-18.png)
 
 <b>Modifikasi navbar agar tampil di semua page</b><br>
 Modifikasi index.tsx pada folder page ( hapus navbar )
@@ -299,18 +301,18 @@ export default function App({ Component, pageProps }: AppProps) {
 
 Jalankan browser
 
-![alt text](image-19.png)
+![alt text](imgs/JS3/image-19.png)
 
-![alt text](image-20.png)
+![alt text](imgs/JS3/image-20.png)
 
-![alt text](image-21.png)
+![alt text](imgs/JS3/image-21.png)
 
-![alt text](image-22.png)
+![alt text](imgs/JS3/image-22.png)
 
 <b>6. Membuat Layout Global (App Shell)<br>
 a. Buat AppShell</b>
 
-![alt text](image-23.png)
+![alt text](imgs/JS3/image-23.png)
 
 Modifikasi index.tsx pada AppShell
 
@@ -368,22 +370,22 @@ return (
 
 /about
 
-![alt text](image-24.png)
+![alt text](imgs/JS3/image-24.png)
 
 / (index pages)
 
-![alt text](image-25.png)
+![alt text](imgs/JS3/image-25.png)
 
 <b>Tugas 1 - Routing</b>
 
 1.  Buat halaman:
 <li>/profile
 
-![alt text](image-26.png)
+![alt text](imgs/JS3/image-26.png)
 
 <li>/profile/edit
 
-![alt text](image-27.png)
+![alt text](imgs/JS3/image-27.png)
 
 <b>Tugas 2 – Dynamic Routing</b>
 
@@ -391,15 +393,26 @@ return (
 2. /blog/[slug]
 3. Tampilkan nilai slug di halaman
 
-![alt text](image-28.png)
+![alt text](imgs/JS3/image-28.png)
 
 <b>Tugas 3 – Layout</b>
 
 1. Tambahkan Footer pada AppShell
 2. Footer tampil di semua halaman
 
-![alt text](image-29.png)
+![alt text](imgs/JS3/image-29.png)
 
-![alt text](image-30.png)
+![alt text](imgs/JS3/image-30.png)
 
-![alt text](image-31.png)
+![alt text](imgs/JS3/image-31.png)
+
+<b>Pertanyaan Refleksi</b>
+
+1. Apa perbedaan routing berbasis file dan routing manual?<br>
+   Jawab: File based routing membuat route berdasarkan struktur file kode, tidak perlu konfigurasi secara manual, serta lebih sederhana dan cepat untuk dikembangkan. Sedangkan routing manual harus mendefinisikan route secara eksplisit dalam kode, lebih fleksibel namun butuh konfigurasi tambahan
+
+2. Mengapa dynamic routing penting dalam aplikasi web?<br>
+   Jawab: Dynamic routing memungkinkan satu halaman digunakan untuk banyak data berbeda berdasarkan parameter URL. Tanpa dynamic routing, kita harus membuat file terpisah untuk setiap data yang berbeda.
+
+3. Apa keuntungan menggunakan layout global dibanding memanggil komponen satu per satu?<br>
+   Jawab: Layout global (seperti AppShell atau \_app.tsx) memungkinkan kita membungkus seluruh halaman dengan struktur yang sama. Jika memakai layout global, navbar dan footer cukup dipanggil sekali di AppShell dan komponen tersebut akan muncul di semua halaman. Jika tidak memakai layout global, navbar dan footer harus dipanggil di setiap halaman.
