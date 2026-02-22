@@ -373,3 +373,14 @@ return (
 / (index pages)
 
 ![alt text](image-25.png)
+
+<b>Tugas 1 - Routing</b>
+
+1.  Buat halaman:
+<li>/profile
+
+![alt text](image-26.png)
+
+<li>/profile/edit
+
+![alt text](image-27.png)
