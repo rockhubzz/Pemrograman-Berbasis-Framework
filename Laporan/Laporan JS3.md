@@ -384,3 +384,11 @@ return (
 <li>/profile/edit
 
 ![alt text](image-27.png)
+
+<b>Tugas 2 – Dynamic Routing</b>
+
+1. Buat routing:
+2. /blog/[slug]
+3. Tampilkan nilai slug di halaman
+
+![alt text](image-28.png)
