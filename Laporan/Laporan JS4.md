@@ -299,3 +299,11 @@ export default produk;
 2. Jika Akses /product → otomatis diarahkan ke login.
 
 <video controls src="2026-02-24 18-56-29.mp4" title="Title"></video>
+
+<b>Tugas 1 (Wajib)</b>
+
+<li>Buat catch-all route:
+<li> /category/[...slug].js
+<li> Tampilkan seluruh parameter URL dalam bentuk list.
+
+![alt text](image-17.png)
