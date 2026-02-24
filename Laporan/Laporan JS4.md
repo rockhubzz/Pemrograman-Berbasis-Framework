@@ -316,3 +316,9 @@ Buat navigasi:
 <li> Login ↔ Register (Link)
 
 <video controls src="2026-02-24 19-43-22.mp4" title="Title"></video>
+
+<b>Tugas 3 (Pengayaan)</b>
+
+<li> Terapkan redirect otomatis ke login jika user belum login.
+
+<video controls src="2026-02-24 19-45-07.mp4" title="Title"></video>
