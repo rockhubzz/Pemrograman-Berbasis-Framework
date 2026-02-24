@@ -236,3 +236,38 @@ export default HalamanRegister;
 Output:
 
 <video controls src="2026-02-24 18-40-49.mp4" title="Title"></video>
+
+<b>Langkah 7 – Navigasi Imperatif (router.push)</b>
+
+1. Tambahkan button login:
+
+```tsx
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+const halamanLogin = () => {
+  const { push } = useRouter();
+
+  const handlerLogin = () => {
+    // logic login disini
+    push("/produk");
+  };
+
+  return (
+    <div>
+      <h1>Halaman Login</h1>
+      <button onClick={handlerLogin}>Login</button> <br />
+      <button onClick={() => push("/produk")}>Login</button> <br />
+      <button onClick={() => handlerLogin()}>Login</button> <br />
+      <Link href="/auth/register">Ke Halaman Register</Link>
+    </div>
+  );
+};
+
+export default halamanLogin;
+```
+
+2. Klik tombol dan perhatikan perpindahan halaman tanpa reload.
+3. Jika di klik button login maka akan menuju /produk
+
+<video controls src="2026-02-24 18-46-26.mp4" title="Title"></video>
