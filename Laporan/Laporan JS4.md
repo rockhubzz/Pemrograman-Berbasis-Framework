@@ -76,3 +76,79 @@ export default halamanToko;
 Output:
 
 ![alt text](image-5.png)
+
+<b>Langkah 3 – Pengujian Catch-All Route</b>
+
+Akses URL berikut di browser:
+/shop/clothes
+
+![alt text](image-6.png)
+
+/shop/clothes/tops
+
+![alt text](image-7.png)
+
+/shop/clothes/tops/t-shirt
+
+![alt text](image-8.png)
+
+Jika dilihat ada yang terbaca undifined dan ada yang tidak terbaca ini dikarena segmennya dibatasi Cuma array[0] dan array[1]. Solusinya bagaimana ?
+
+Modifikasi […slug].tsx menjadi berikut
+
+```tsx
+import { useRouter } from "next/router";
+
+const halamanToko = () => {
+  // const Router = useRouter();
+  // console.log(Router);
+
+  const { query } = useRouter();
+
+  return (
+    <div>
+      <h1>Halaman Toko</h1>
+      {/* <p>Toko: {`${query.slug && query.slug[0]}-${query.slug[1]}`}</p> menggunakan backtick bukan petik satu */}
+      <p>
+        Toko: {Array.isArray(query.slug) ? query.slug.join("-") : query.slug}
+      </p>
+    </div>
+  );
+};
+
+export default halamanToko;
+```
+
+Jalankan browser : Berapapun banyaknya seqment tetap terbaca
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+Untuk saat ini gunakan:
+
+```tsx
+import { useRouter } from "next/router";
+
+const halamanToko = () => {
+  // const Router = useRouter();
+  // console.log(Router);
+
+  const { query } = useRouter();
+
+  return (
+    <div>
+      <h1>Halaman Toko</h1>
+      <p>Toko: {`${query.slug && query.slug[0]}-` + query.slug[1]}</p>{" "}
+      {/* menggunakan backtick bukan petik satu*/}
+    </div>
+  );
+};
+
+export default halamanToko;
+```
+
+Perhatikan bahwa:
+
+<li> slug berbentuk array
+<li> Isi halaman berubah sesuai URL
