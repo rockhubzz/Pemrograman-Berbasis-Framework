@@ -152,3 +152,23 @@ Perhatikan bahwa:
 
 <li> slug berbentuk array
 <li> Isi halaman berubah sesuai URL
+
+<br>
+<b>Langkah 4 – Optional Catch-All Route</b>
+
+<br>
+
+1. Jika menggunakan [...slug].js maka ketika mengakses shop akan terjadi error
+
+![alt text](image-11.png)
+
+2. Solusinya dengan Rename file: [...slug].js → [[...slug]].js
+
+![alt text](image-12.png)
+
+3. Sekarang akses:
+   /shop
+
+![alt text](image-13.png)
+
+4. Halaman dapat diakses meskipun tanpa parameter.
