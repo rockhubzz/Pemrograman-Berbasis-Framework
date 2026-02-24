@@ -188,3 +188,51 @@ Tambahkan validasi agar tidak error saat slug kosong:
 /shop/baju/tshirt/pria
 
 ![alt text](image-15.png)
+
+<b>Langkah 6 – Membuat Halaman Login & Register</b>
+
+1. Buat folder:
+2. pages/auth
+3. Buat file:
+<li> login.jsx
+<li> register.jsx
+
+![alt text](image-16.png)
+
+Modifikasi login.jsx:
+
+```tsx
+import Link from "next/link";
+
+const HalamanLogin = () => {
+  return (
+    <div>
+      <h1>Halaman Login</h1>
+      <Link href="/auth/register">Ke halaman register</Link>
+    </div>
+  );
+};
+
+export default HalamanLogin;
+```
+
+Modifikasi register.jsx:
+
+```tsx
+import Link from "next/link";
+
+const HalamanRegister = () => {
+  return (
+    <div>
+      <h1>Halaman Register</h1>
+      <Link href="/auth/login">Ke halaman login</Link>
+    </div>
+  );
+};
+
+export default HalamanRegister;
+```
+
+Output:
+
+<video controls src="2026-02-24 18-40-49.mp4" title="Title"></video>
