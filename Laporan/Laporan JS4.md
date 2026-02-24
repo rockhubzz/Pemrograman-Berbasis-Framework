@@ -307,3 +307,12 @@ export default produk;
 <li> Tampilkan seluruh parameter URL dalam bentuk list.
 
 ![alt text](image-17.png)
+
+<b> Tugas 2 (Wajib)</b>
+
+Buat navigasi:
+
+<li> Login → Product (imperatif)
+<li> Login ↔ Register (Link)
+
+<video controls src="2026-02-24 19-43-22.mp4" title="Title"></video>

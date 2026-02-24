@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { auth } from "../../lib/auth";
 
 const produk = () => {
-    const [isLogin, setIsLogin] = useState(false);
+    // const [isLogin, setIsLogin] = useState(false);
     const { push } = useRouter();
 
     useEffect(() => {
-        if (!isLogin) {
+        if (!auth.isLogin) {
             push("/auth/login");
         }
     }, []);
