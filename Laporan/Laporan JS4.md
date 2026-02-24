@@ -172,3 +172,19 @@ Perhatikan bahwa:
 ![alt text](image-13.png)
 
 4. Halaman dapat diakses meskipun tanpa parameter.
+
+<b>Langkah 5 – Validasi Parameter</b>
+
+Tambahkan validasi agar tidak error saat slug kosong:
+
+```html
+<p>Kategori: {slug ? slug[0] : "Semua Kategori"}</p>
+```
+
+/shop
+
+![alt text](image-14.png)
+
+/shop/baju/tshirt/pria
+
+![alt text](image-15.png)
