@@ -271,3 +271,31 @@ export default halamanLogin;
 3. Jika di klik button login maka akan menuju /produk
 
 <video controls src="2026-02-24 18-46-26.mp4" title="Title"></video>
+
+<b>Langkah 8 – Simulasi Redirect (Belum Login)</b>
+
+1. Di halaman product, pada index.tsx tambahkan beberapa code berikut:
+
+```tsx
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+const produk = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  const { push } = useRouter();
+
+  useEffect(() => {
+    if (!isLogin) {
+      push("/auth/login");
+    }
+  }, []);
+
+  return <div>Produk User Page</div>;
+};
+
+export default produk;
+```
+
+2. Jika Akses /product → otomatis diarahkan ke login.
+
+<video controls src="2026-02-24 18-56-29.mp4" title="Title"></video>
