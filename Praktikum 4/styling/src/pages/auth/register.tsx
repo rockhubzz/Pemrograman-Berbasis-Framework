@@ -1,12 +1,11 @@
-import Link from "next/link";
+import HalamanRegister from "@/views/auth/register";
 
-const HalamanRegister = () => {
+const Register = () => {
     return (
-        <div>
-            <h1>Halaman Register</h1>
-            <Link href="/auth/login">Ke halaman login</Link>
-        </div>
-    );
-};
+        <>
+            <HalamanRegister />
+        </>
+     );
+}
 
-export default HalamanRegister;
+export default Register;

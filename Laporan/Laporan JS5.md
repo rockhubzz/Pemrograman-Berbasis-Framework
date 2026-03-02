@@ -515,3 +515,10 @@ postcss.config.js already exists.
 <li>Jalankan browser
 
 ![alt text](image-14.png)
+
+<b> Tugas 1</b>
+
+<li> Buat halaman Register
+<li> Gunakan CSS Module
+
+![alt text](image-15.png)
