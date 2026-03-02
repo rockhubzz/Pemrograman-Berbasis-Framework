@@ -457,3 +457,61 @@ import styles from "./login.module.scss";
 <li> Jalankan browser
 
 ![alt text](image-13.png)
+
+<b>9. Tailwind CSS</b>
+
+<b>a. Install</b>
+
+```shell
+PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 4\styling> npm install -D tailwindcss@3.4.4 postcss autoprefixer
+
+added 36 packages, changed 1 package, and audited 407 packages in 16s
+
+156 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+```
+
+```shell
+PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 4\styling> npx tailwindcss init -p
+
+Created Tailwind CSS config file: tailwind.config.js
+postcss.config.js already exists.
+```
+
+<b>b. Konfigurasi tailwind.config.js</b>
+
+```js
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+```
+
+<b>c. Import di Global CSS</b>
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+<b>d. Contoh Penggunaan</b>
+
+<li>Modifikasi index.tsx pada folder auth/login/
+
+```tsx
+<h1 className="text-3xl font-bold text-blue-600">Halaman Login</h1>
+```
+
+<li>Jalankan browser
+
+![alt text](image-14.png)
