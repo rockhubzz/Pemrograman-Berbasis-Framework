@@ -351,3 +351,31 @@ export default HalamanLogin;
 <li> Jalankan browser
 
 ![alt text](image-9.png)
+
+<b>7. Kombinasi Global CSS + CSS Module</b>
+
+<li>Modifikasi global.css
+
+```css
+.big {
+  font-size: 1.5rem;
+}
+```
+
+<li>Modifikasi index.tsx pada folder components/layouts/navbar
+
+```tsx
+import styles from "./navbar.module.css";
+
+const Navbar = () => {
+  return (
+    <div className={styles.navbar}>
+      <div className="big">navbar Component </div>
+    </div>
+  );
+};
+
+export default Navbar;
+```
+
+![alt text](image-10.png)
