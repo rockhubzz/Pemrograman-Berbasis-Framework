@@ -8,12 +8,12 @@ const sampleProducts = [
 
 const MainSection: React.FC = () => {
   return (
-    <main style={{padding: '1rem'}}>
-      <div style={{display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))'}}>
+    <main className="px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {sampleProducts.map(p => (
-          <article key={p.id} style={{border: '1px solid rgba(15,23,42,0.06)', borderRadius: 8, padding: 12}}>
-            <h3 style={{margin: '0 0 0.5rem 0'}}>{p.name}</h3>
-            <p style={{color: '#6b7280', margin: 0}}>{p.price}</p>
+          <article key={p.id} className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+            <h3 className="font-semibold text-gray-900 mb-2">{p.name}</h3>
+            <p className="text-gray-600 text-sm">{p.price}</p>
           </article>
         ))}
       </div>

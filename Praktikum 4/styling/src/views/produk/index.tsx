@@ -4,7 +4,7 @@ import MainSection from "./MainSection";
 
 const ProdukView: React.FC = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-white">
       <HeroSection />
       <MainSection />
     </div>

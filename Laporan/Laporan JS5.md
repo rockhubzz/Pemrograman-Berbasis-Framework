@@ -529,3 +529,29 @@ postcss.config.js already exists.
 <li> Pisahkan Hero Section dan Main Section
 
 ![alt text](image-16.png)
+
+<b>Tugas 3</b>
+
+<li> Terapkan Tailwind CSS
+<li> Gunakan minimal 5 utility class
+<br>
+<br>
+
+HeroSection Produk page:
+
+```tsx
+import React from "react";
+
+const HeroSection: React.FC = () => {
+  return (
+    <section className="py-12 px-4 text-center bg-gradient-to-b from-blue-50 to-indigo-50">
+      <h1 className="text-4xl font-bold text-slate-900 mb-2">Produk Kami</h1>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        Temukan produk terbaik untuk kebutuhanmu.
+      </p>
+    </section>
+  );
+};
+
+export default HeroSection;
+```

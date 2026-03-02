@@ -2,9 +2,9 @@ import React from "react";
 
 const HeroSection: React.FC = () => {
   return (
-    <section style={{padding: '3rem 1rem', textAlign: 'center'}}>
-      <h1 style={{fontSize: '2rem', margin: 0}}>Produk Kami</h1>
-      <p style={{color: '#6b7280', marginTop: '0.5rem'}}>Temukan produk terbaik untuk kebutuhanmu.</p>
+    <section className="py-12 px-4 text-center bg-gradient-to-b from-blue-50 to-indigo-50">
+      <h1 className="text-4xl font-bold text-slate-900 mb-2">Produk Kami</h1>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">Temukan produk terbaik untuk kebutuhanmu.</p>
     </section>
   );
 };
