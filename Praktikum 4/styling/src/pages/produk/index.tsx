@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { auth } from "../../lib/auth";
+import ProdukView from "../../views/produk";
 
-const produk = () => {
-    // const [isLogin, setIsLogin] = useState(false);
+const ProdukPage = () => {
     const { push } = useRouter();
 
     useEffect(() => {
@@ -12,9 +12,7 @@ const produk = () => {
         }
     }, []);
 
-    return (
-        <div>Produk User Page</div>
-    );
+    return <ProdukView />;
 };
 
-export default produk;
+export default ProdukPage;

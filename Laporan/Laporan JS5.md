@@ -522,3 +522,10 @@ postcss.config.js already exists.
 <li> Gunakan CSS Module
 
 ![alt text](image-15.png)
+
+<b>Tugas 2</b>
+
+<li> Refactor halaman Produk ke folder views
+<li> Pisahkan Hero Section dan Main Section
+
+![alt text](image-16.png)
