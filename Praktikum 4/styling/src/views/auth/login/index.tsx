@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { setLogin } from "../../../lib/auth";
-import styles from './login.module.css';
+// import styles from './login.module.css';
+import styles from './login.module.scss';
 
 const HalamanLogin = () => {
     const { push } = useRouter();

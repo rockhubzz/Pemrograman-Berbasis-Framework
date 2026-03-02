@@ -379,3 +379,81 @@ export default Navbar;
 ```
 
 ![alt text](image-10.png)
+
+<b>8. SCSS (SASS)</b>
+
+<b>a. Install SASS</b>
+
+```shell
+PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 4\styling> npm i --save-dev sass
+
+added 8 packages, and audited 350 packages in 14s
+
+142 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+```
+
+<li>Cek pada package.json jika berhasil maka akan muncul seperti pada gambar
+
+```json
+  "devDependencies": {
+    "sass": "^1.97.3"
+  }
+```
+
+<b>b. Global Variable</b>
+
+<li>Tambahkan colors.scss pada folder styles
+
+![alt text](image-11.png)
+
+<li>Modifikasi colors.scss
+
+```scss
+$schema: (
+  color-primary: #3498db,
+  color-secondary: #2ecc71,
+  color-accent: #e74c3c,
+  color-background: #ecf0f1,
+  color-text: #2c3e50,
+);
+```
+
+<b>c. Gunakan di Module</b>
+
+<li>Tambahkan file login.module.scss pada folder views/auth/login/
+
+![alt text](image-12.png)
+
+<li> Modifikasi index.tsx
+
+```tsx
+// import styles from './login.module.css';
+import styles from "./login.module.scss";
+```
+
+<li>Modifikasi login.module.scss
+
+```scss
+@import "@/styles/colors.scss";
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: map-get($map: $schema, $key: color-secondary);
+}
+```
+
+<li> Jalankan browser
+
+![alt text](image-13.png)
