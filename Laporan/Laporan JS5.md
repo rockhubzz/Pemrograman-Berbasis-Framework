@@ -339,3 +339,15 @@ export default HalamanLogin;
 <li> Jalankan browser
 
 ![alt text](image-8.png)
+
+<b>6. Inline Styling (CSS-in-JS)</b>
+
+<li>Modifikasi index.tsx pada folder views/auth/login
+
+```css
+             <h1 style={{color:"red",border:"1px solid red",borderRadius:"5px",padding:"5px"}}> belum punya akun</h1>
+```
+
+<li> Jalankan browser
+
+![alt text](image-9.png)

@@ -32,6 +32,7 @@ const HalamanLogin = () => {
             </div>
             {error && <div style={{ color: 'red' }}>{error}</div>}
             <button onClick={handlerLogin}>Login</button> <br />
+             <h1 style={{color:"red",border:"1px solid red",borderRadius:"5px",padding:"5px"}}> belum punya akun</h1>
             <Link href="/auth/register">Ke Halaman Register</Link>
         </div>
     );
