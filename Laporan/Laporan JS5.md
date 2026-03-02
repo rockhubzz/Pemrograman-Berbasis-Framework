@@ -65,7 +65,7 @@ src/components/layout/Navbar/
 └── Navbar.module.css
 ```
 
-![alt text](image.png)
+![alt text](imgs/JS5/image.png)
 
 <b>b. File CSS Module</b>
 
@@ -124,7 +124,7 @@ export default Navbar;
 
 <li> Jalankan browser
 
-![alt text](image-1.png)
+![alt text](imgs/JS5/image-1.png)
 
 <b>3. Styling untuk Pages (CSS Module)</b>
 
@@ -132,7 +132,7 @@ export default Navbar;
 
 <li>Tambahkan login.module.css pada folder auth
 
-![alt text](image-2.png)
+![alt text](imgs/JS5/image-2.png)
 
 <li>Modifikasi login.module.css
 
@@ -197,7 +197,7 @@ export default halamanLogin;
 
 <li>Jalankan browser
 
-![alt text](image-3.png)
+![alt text](imgs/JS5/image-3.png)
 
 <b>4. Conditional Rendering Navbar (Tanpa Navbar di Login)</b>
 
@@ -231,7 +231,7 @@ export default AppShell;
 
 <li> Jalankan browser
 
-![alt text](image-4.png)
+![alt text](imgs/JS5/image-4.png)
 
 <b>5. Refactoring Struktur Project (Best Practice)</b>
 
@@ -242,7 +242,7 @@ pages/login.tsx
 styles/login.module.css
 ```
 
-![alt text](image-5.png)
+![alt text](imgs/JS5/image-5.png)
 
 <b>b. Struktur Refactor (Disarankan)</b>
 
@@ -253,7 +253,7 @@ src/views/auth/Login/
 └── Login.module.css
 ```
 
-![alt text](image-6.png)
+![alt text](imgs/JS5/image-6.png)
 
 <li> Modifikasi login.module.css pada folder view/auth/login/
 
@@ -269,7 +269,7 @@ src/views/auth/Login/
 
 <li> Login.module.css pada folder pages/auth dihapus
 
-![alt text](image-7.png)
+![alt text](imgs/JS5/image-7.png)
 
 <li>Modifikasi login.tsx pada folder pages/auth
 
@@ -338,7 +338,7 @@ export default HalamanLogin;
 
 <li> Jalankan browser
 
-![alt text](image-8.png)
+![alt text](imgs/JS5/image-8.png)
 
 <b>6. Inline Styling (CSS-in-JS)</b>
 
@@ -350,7 +350,7 @@ export default HalamanLogin;
 
 <li> Jalankan browser
 
-![alt text](image-9.png)
+![alt text](imgs/JS5/image-9.png)
 
 <b>7. Kombinasi Global CSS + CSS Module</b>
 
@@ -378,7 +378,7 @@ const Navbar = () => {
 export default Navbar;
 ```
 
-![alt text](image-10.png)
+![alt text](imgs/JS5/image-10.png)
 
 <b>8. SCSS (SASS)</b>
 
@@ -412,7 +412,7 @@ Run `npm audit` for details.
 
 <li>Tambahkan colors.scss pada folder styles
 
-![alt text](image-11.png)
+![alt text](imgs/JS5/image-11.png)
 
 <li>Modifikasi colors.scss
 
@@ -430,7 +430,7 @@ $schema: (
 
 <li>Tambahkan file login.module.scss pada folder views/auth/login/
 
-![alt text](image-12.png)
+![alt text](imgs/JS5/image-12.png)
 
 <li> Modifikasi index.tsx
 
@@ -456,7 +456,7 @@ import styles from "./login.module.scss";
 
 <li> Jalankan browser
 
-![alt text](image-13.png)
+![alt text](imgs/JS5/image-13.png)
 
 <b>9. Tailwind CSS</b>
 
@@ -514,21 +514,21 @@ postcss.config.js already exists.
 
 <li>Jalankan browser
 
-![alt text](image-14.png)
+![alt text](imgs/JS5/image-14.png)
 
 <b> Tugas 1</b>
 
 <li> Buat halaman Register
 <li> Gunakan CSS Module
 
-![alt text](image-15.png)
+![alt text](imgs/JS5/image-15.png)
 
 <b>Tugas 2</b>
 
 <li> Refactor halaman Produk ke folder views
 <li> Pisahkan Hero Section dan Main Section
 
-![alt text](image-16.png)
+![alt text](imgs/JS5/image-16.png)
 
 <b>Tugas 3</b>
 
