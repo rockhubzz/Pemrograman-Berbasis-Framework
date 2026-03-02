@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { setLogin } from "../../lib/auth";
+import styles from './login.module.css';
 
 const halamanLogin = () => {
     const { push } = useRouter();
@@ -19,7 +20,7 @@ const halamanLogin = () => {
     };
 
     return (
-        <div>
+        <div className={styles.login}>
             <h1>Halaman Login</h1>
             <div>
                 <label>Username: </label>
