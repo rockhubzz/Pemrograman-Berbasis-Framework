@@ -198,3 +198,37 @@ export default halamanLogin;
 <li>Jalankan browser
 
 ![alt text](image-3.png)
+
+<b>4. Conditional Rendering Navbar (Tanpa Navbar di Login)</b>
+
+<li> Modifikasi index.tsx pada folder Appshell
+
+```tsx
+import { useRouter } from "next/router";
+import Footer from "../footer";
+import Navbar from "../navbar";
+
+const disableNavbar = ["/auth/login", "/auth/register"];
+
+type AppShellProps = {
+  children: React.ReactNode;
+};
+
+const AppShell = (props: AppShellProps) => {
+  const { children } = props;
+  const { pathname } = useRouter();
+
+  return (
+    <main>
+      {!disableNavbar.includes(pathname) && <Navbar />}
+      {children}
+    </main>
+  );
+};
+
+export default AppShell;
+```
+
+<li> Jalankan browser
+
+![alt text](image-4.png)
