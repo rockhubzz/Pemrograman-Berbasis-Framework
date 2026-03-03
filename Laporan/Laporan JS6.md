@@ -41,3 +41,17 @@ export default function Document() {
 Periksa di Inspect Element bahwa atribut lang="id" sudah berubah.
 
 ![alt text](image-1.png)
+
+<b>Langkah 3 – Pengaturan Title per Halaman</b>
+
+1. Buka pages/index.js.
+2. Tambahkan:
+
+```tsx
+<head>
+  <title>Praktikum Next.js Pages Router</title>
+</head>
+```
+
+Refresh halaman dan perhatikan judul tab browser.
+![alt text](image-2.png)
