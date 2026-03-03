@@ -1,67 +1,33 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
-type ProductType = {
-  id: string;
-  name: string;
-  price: number;
-  size: string;
-  category: string;
-};
+import TampilanProduk from "@/views/produk";
 
 const kategori = () => {
   // const [isLogin, setIsLogin] = useState(false);
   // const { push } = useRouter();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
+  // console.log("products:", products);
   // useEffect(() => {
   //   if (!isLogin) {
   //     push("/auth/login");
   //   }
   // }, []);
 
-  const fetchProducts = () => {
-    setLoading(true);
-    setError(null);
+  useEffect(() => {
     fetch("/api/produk")
       .then((response) => response.json())
       .then((responsedata) => {
         setProducts(responsedata.data);
+        // console.log("Data produk:", responsedata.data);
       })
       .catch((error) => {
         console.error("Error fetching produk:", error);
-        setError("Failed to fetch products");
-      })
-      .finally(() => {
-        setLoading(false);
       });
-  };
-
-  useEffect(() => {
-    fetchProducts();
   }, []);
 
   return (
     <div>
-      <h1>Daftar Produk</h1>
-      <button 
-        onClick={fetchProducts} 
-        disabled={loading}
-        style={{ marginBottom: "20px", padding: "8px 16px", cursor: loading ? "not-allowed" : "pointer" }}
-      >
-        {loading ? "Loading..." : "Refresh Data"}
-      </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {products.map((product: ProductType) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>Harga: {product.price}</p>
-          <p>Ukuran: {product.size}</p>
-          <p>Kategori: {product.category}</p>
-        </div>
-      ))}
+      <TampilanProduk products={products} />
     </div>
   );
 };

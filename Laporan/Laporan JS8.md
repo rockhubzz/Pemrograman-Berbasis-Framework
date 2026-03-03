@@ -32,3 +32,153 @@ Run `npm audit` for details.
 4. jalankan browser http://localhost:3000/api/produk
 
 ![alt text](image.png)
+
+<b>Bagian 2 – Implementasi CSR dengan useEffect</b>
+
+1. Membuat file index.tsx pada folder views/products
+
+![alt text](image-1.png)
+
+2. Modifikasi index.tsx
+
+```tsx
+type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  category: string;
+};
+
+const TampilanProduk = ({ products }: { products: ProductType[] }) => {
+  return (
+    <div>
+      <h1>Daftar Produk</h1>
+      {products.map((products: ProductType) => (
+        <div key={products.id}>
+          <h2>nama : {products.name}</h2>
+          <p>Harga: {products.price}</p>
+          <img src={products.image} alt={products.name} width={200} />
+          <p>kategori: {products.category}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default TampilanProduk;
+```
+
+3. Buka file index.tsx pada pages/produk/
+
+![alt text](image-2.png)
+
+4. Modifikasi index.tsx pada pages/produk/
+
+```tsx
+useEffect(() => {
+  fetch("/api/produk")
+    .then((response) => response.json())
+    .then((responsedata) => {
+      setProducts(responsedata.data);
+      // console.log("Data produk:", responsedata.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching produk:", error);
+    });
+}, []);
+```
+
+5. Jalankan browser http://localhost:3000/produk
+
+![alt text](image-3.png)
+
+6. Pada folder produk buat file produk.modules.scss
+
+```scss
+.produk {
+  width: 100%;
+  padding: 0 5%;
+  &__title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    &__item {
+      &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      &__name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      &__price {
+        font-size: 16px;
+        color: #ff5722;
+        font-weight: bold;
+      }
+      &__category {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+```
+
+7. Modifikasi Pada file index.tsx pada folder pages/views/product
+
+```tsx
+import styles from "@/pages/produk/product.module.scss";
+
+type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  category: string;
+};
+
+const TampilanProduk = ({ products }: { products: ProductType[] }) => {
+  return (
+    <div className={styles.produk}>
+      <h1 className={styles.produk__title}>Daftar Produk</h1>
+      <div className={styles.produk__content}>
+        {products.map((products: ProductType) => (
+          <div key={products.id} className={styles.produk__content__item}>
+            <div className={styles.produk__content__item__image}>
+              <img src={products.image} alt={products.name} width={200} />
+            </div>
+            <h4 className={styles.produk__content__item__name}>
+              {products.name}
+            </h4>
+            <p className={styles.produk__content__item__category}>
+              {products.category}
+            </p>
+            <p className={styles.produk__content__item__price}>
+              Rp {products.price.toLocaleString()}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default TampilanProduk;
+```
+
+9. Jalankan Browser
+
+![alt text](image-4.png)
