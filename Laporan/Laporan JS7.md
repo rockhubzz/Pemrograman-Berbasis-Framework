@@ -97,3 +97,40 @@ Gunakan auto-id
 ![alt text](image-14.png)
 
 ![alt text](image-15.png)
+
+<b>Langkah 6 – Install Firebase</b>
+
+1. npm install firebase
+
+```shell
+PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 6\api-routes> npm install firebase
+
+added 79 packages, and audited 486 packages in 3m
+
+158 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+```
+
+2. Buat folder dan file ts pada pages utlis/db/firebase.ts
+
+![alt text](image-16.png)
+
+3. Copy paste yang ada pada kotak merah ke file firebase.ts
+
+```tsx
+const firebaseConfig = {
+  apiKey: "***************",
+  authDomain: "***************",
+  projectId: "***************",
+  storageBucket: "***************",
+  messagingSenderId: "***************",
+  appId: "***************",
+};
+```
