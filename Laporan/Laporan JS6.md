@@ -15,3 +15,29 @@ b. postcss.config.js
 
 ![alt text](image.png)
 Catatan: Tidak ada error terkait tailwindcss
+
+<b>Langkah 2 – Membuat Custom Document</b>
+
+<li>Masuk ke folder: /src/pages/
+<li> Modifikasi _document.js
+<li> Isi dengan kode berikut:
+
+```tsx
+import { Html, Head, Main, NextScript } from "next/document";
+
+export default function Document() {
+  return (
+    <Html lang="id">
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+Periksa di Inspect Element bahwa atribut lang="id" sudah berubah.
+
+![alt text](image-1.png)
