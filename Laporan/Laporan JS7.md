@@ -250,3 +250,10 @@ Jalankan browser
 <li> Tampilkan category di frontend
 
 ![alt text](image-23.png)
+
+<b>Tugas 3 (Pengayaan)</b>
+
+<li> Tambahkan tombol Refresh Data
+<li> Gunakan fetch ulang tanpa reload halaman
+
+![alt text](image-24.png)
