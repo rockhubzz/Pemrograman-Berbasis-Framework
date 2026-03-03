@@ -134,3 +134,17 @@ const firebaseConfig = {
   appId: "***************",
 };
 ```
+
+<b>Langkah 7 – Konfigurasi Environment Variable agar credensial firebase tidak dapat dilihat saat dipush di repository</b>
+
+1. Buat file: .env.local
+2. Modifikasi file env
+
+```env
+FIREBASE_API_KEY: ***************
+FIREBASE_AUTH_DOMAIN:***************
+FIREBASE_PROJECT_ID:***************
+FIREBASE_STORAGE_BUCKET:***************
+FIREBASE_MESSAGING_SENDER_ID:***************
+FIREBASE_APP_ID: ***************
+```
