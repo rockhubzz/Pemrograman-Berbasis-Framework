@@ -257,3 +257,17 @@ Jalankan browser
 <li> Gunakan fetch ulang tanpa reload halaman
 
 ![alt text](imgs/JS7/image-24.png)
+
+<b>Pertanyaan Evaluasi</b>
+
+1. **Apa fungsi API Routes pada Next.js?**  
+   API Routes digunakan untuk membuat endpoint backend langsung di dalam project Next.js. Fitur ini memungkinkan kita menangani request seperti GET atau POST tanpa perlu membuat server terpisah. Biasanya digunakan untuk autentikasi, koneksi database, atau proses data lainnya.
+
+2. **Mengapa .env.local tidak boleh di-push ke repository?**  
+   File .env.local biasanya berisi informasi sensitif seperti API key, password database, atau secret token. Jika di-push ke repository publik, data tersebut bisa diakses oleh orang lain dan membahayakan keamanan aplikasi. Karena itu, file ini biasanya dimasukkan ke dalam .gitignore.
+
+3. **Apa perbedaan data statis dan data dinamis?**  
+   Data statis adalah data yang tidak berubah kecuali diperbarui secara manual atau saat build ulang aplikasi. Sedangkan data dinamis dapat berubah sewaktu-waktu berdasarkan input pengguna, database, atau request API. Data dinamis biasanya diambil saat runtime.
+
+4. **Mengapa Next.js disebut framework fullstack?**  
+   Next.js disebut framework fullstack karena dapat menangani frontend dan backend dalam satu project. Selain membuat tampilan antarmuka, Next.js juga menyediakan API Routes untuk logika server. Dengan demikian, developer bisa membangun aplikasi lengkap tanpa perlu framework backend terpisah.
