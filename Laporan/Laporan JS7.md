@@ -37,3 +37,24 @@ const data = [
 3. Akses: http://localhost:3000/api/produk
 
 ![alt text](image-2.png)
+
+<b>Langkah 3 – Fetch Data API di Frontend</b>
+
+1. Modifikasi pages/product/index.tsx
+
+```tsx
+useEffect(() => {
+  fetch("/api/produk")
+    .then((response) => response.json())
+    .then((responsedata) => {
+      setProducts(responsedata.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching produk:", error);
+    });
+}, []);
+```
+
+2. Jalankan browser http://localhost:3000/produk
+
+![alt text](image-3.png)
