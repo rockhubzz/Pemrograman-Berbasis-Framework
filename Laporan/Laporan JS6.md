@@ -155,3 +155,13 @@ const disableNavbar = ["/auth/login", "/auth/register", "/404"];
 <li>Jalankan browser
 
 ![alt text](image-9.png)
+
+<b>Tugas 1 (Wajib)</b>
+
+Tambahkan:
+
+<li> Judul halaman
+<li> Deskripsi singkat
+<li> Gambar ilustrasi
+
+![alt text](image-10.png)
