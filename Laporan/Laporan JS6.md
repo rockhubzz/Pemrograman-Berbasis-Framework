@@ -78,3 +78,59 @@ export default Custom404;
 /dashboard
 
 ![alt text](image-3.png)
+
+<b>Langkah 5 – Styling Halaman 404</b>
+
+<li>Buat file: styles/404.module.scss
+
+![alt text](image-4.png)
+
+<li>Tambahkan style:
+
+```scss
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__image {
+    width: 300px;
+  }
+}
+```
+
+<li>Modifikasi kode pada pages/404.tsx:
+
+```tsx
+import styles from "@/styles/404.module.scss";
+
+const Custom404 = () => {
+  return (
+    <div className={styles.error}>
+      <h1>404 - Halaman Tidak Ditemukan</h1>
+      <p>Maaf, halaman yang Anda cari tidak ada.</p>
+    </div>
+  );
+};
+
+export default Custom404;
+```
+
+<li>Jalankan browser
+
+![alt text](image-5.png)
+
+<li>Jika dijalankan masih ada navbarnya , untuk itu lakukan Handling Navbar di Halaman 404
+
+Tambahkan ’/404’ pada disable navbar
+
+```tsx
+const disableNavbar = ["/auth/login", "/auth/register", "/404"];
+```
+
+<li>Jalankan browser
+
+![alt text](image-6.png)
