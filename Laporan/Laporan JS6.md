@@ -55,3 +55,26 @@ Periksa di Inspect Element bahwa atribut lang="id" sudah berubah.
 
 Refresh halaman dan perhatikan judul tab browser.
 ![alt text](image-2.png)
+
+<b>Langkah 4 – Membuat Custom Error Page (404)</b>
+
+<li>Di folder pages, buat file 404.tsx dengan isi kode:
+
+```tsx
+const Custom404 = () => {
+  return (
+    <div>
+      <h1>404 - Halaman Tidak Ditemukan</h1>
+      <p>Maaf, halaman yang Anda cari tidak ada.</p>
+    </div>
+  );
+};
+
+export default Custom404;
+```
+
+<li>Akses URL yang tidak ada, misalnya:
+
+/dashboard
+
+![alt text](image-3.png)
