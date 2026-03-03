@@ -13,7 +13,7 @@
 a. tailwind.config.js<br>
 b. postcss.config.js
 
-![alt text](image.png)
+![alt text](imgs/JS6/image.png)
 Catatan: Tidak ada error terkait tailwindcss
 
 <b>Langkah 2 – Membuat Custom Document</b>
@@ -40,7 +40,7 @@ export default function Document() {
 
 Periksa di Inspect Element bahwa atribut lang="id" sudah berubah.
 
-![alt text](image-1.png)
+![alt text](imgs/JS6/image-1.png)
 
 <b>Langkah 3 – Pengaturan Title per Halaman</b>
 
@@ -54,7 +54,7 @@ Periksa di Inspect Element bahwa atribut lang="id" sudah berubah.
 ```
 
 Refresh halaman dan perhatikan judul tab browser.
-![alt text](image-2.png)
+![alt text](imgs/JS6/image-2.png)
 
 <b>Langkah 4 – Membuat Custom Error Page (404)</b>
 
@@ -77,13 +77,13 @@ export default Custom404;
 
 /dashboard
 
-![alt text](image-3.png)
+![alt text](imgs/JS6/image-3.png)
 
 <b>Langkah 5 – Styling Halaman 404</b>
 
 <li>Buat file: styles/404.module.scss
 
-![alt text](image-4.png)
+![alt text](imgs/JS6/image-4.png)
 
 <li>Tambahkan style:
 
@@ -121,7 +121,7 @@ export default Custom404;
 
 <li>Jalankan browser
 
-![alt text](image-5.png)
+![alt text](imgs/JS6/image-5.png)
 
 <li>Jika dijalankan masih ada navbarnya , untuk itu lakukan Handling Navbar di Halaman 404
 
@@ -133,18 +133,18 @@ const disableNavbar = ["/auth/login", "/auth/register", "/404"];
 
 <li>Jalankan browser
 
-![alt text](image-6.png)
+![alt text](imgs/JS6/image-6.png)
 
 <b>Langkah 6 – Menampilkan Gambar dari Folder Public</b>
 
 <li>Buka website https://undraw.co/ download png 404
 <li>Cari 404 dan download png
 
-![alt text](image-7.png)
+![alt text](imgs/JS6/image-7.png)
 
 <li>Simpan gambar not-found.png ke folder public/ dan rename agar memudahkan
 
-![alt text](image-8.png)
+![alt text](imgs/JS6/image-8.png)
 
 <li>Modifikasi kode pada 404.tsx:
 
@@ -154,7 +154,7 @@ const disableNavbar = ["/auth/login", "/auth/register", "/404"];
 
 <li>Jalankan browser
 
-![alt text](image-9.png)
+![alt text](imgs/JS6/image-9.png)
 
 <b>Tugas 1 (Wajib)</b>
 
@@ -164,14 +164,14 @@ Tambahkan:
 <li> Deskripsi singkat
 <li> Gambar ilustrasi
 
-![alt text](image-10.png)
+![alt text](imgs/JS6/image-10.png)
 
 <b>Tugas 2 (Wajib)</b>
 
 <li> Custom warna, font, dan layout halaman 404
 <li> Navbar tidak tampil di halaman 404
 
-![alt text](image-11.png)
+![alt text](imgs/JS6/image-11.png)
 
 <b>Tugas 3 (Pengayaan)</b>
 
