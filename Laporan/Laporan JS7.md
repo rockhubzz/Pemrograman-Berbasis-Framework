@@ -5,13 +5,13 @@
 <li> npm run dev
 <li> Akses: http://localhost:3000
 
-![alt text](image.png)
+![alt text](imgs/JS7/image.png)
 
 <b>Langkah 2 – Membuat API Produk</b>
 
 1. Buat file pada pages/api/produk.js
 
-![alt text](image-1.png)
+![alt text](imgs/JS7/image-1.png)
 
 2. Tambahkan data statis:
 
@@ -36,7 +36,7 @@ const data = [
 
 3. Akses: http://localhost:3000/api/produk
 
-![alt text](image-2.png)
+![alt text](imgs/JS7/image-2.png)
 
 <b>Langkah 3 – Fetch Data API di Frontend</b>
 
@@ -57,46 +57,46 @@ useEffect(() => {
 
 2. Jalankan browser http://localhost:3000/produk
 
-![alt text](image-3.png)
+![alt text](imgs/JS7/image-3.png)
 
 <b>Langkah 5 – Setup Firebase</b>
 
 1.  Buka Firebase Go To Console ( login dengan login google)
 2.  Buat project baru
 
-![alt text](image-4.png)
+![alt text](imgs/JS7/image-4.png)
 
-![alt text](image-5.png)
+![alt text](imgs/JS7/image-5.png)
 
-![alt text](image-6.png)
+![alt text](imgs/JS7/image-6.png)
 
-![alt text](image-7.png)
+![alt text](imgs/JS7/image-7.png)
 
-![alt text](image-8.png)
+![alt text](imgs/JS7/image-8.png)
 
 3. Aktifkan Firestore Database
 
-![alt text](image-9.png)
+![alt text](imgs/JS7/image-9.png)
 
-![alt text](image-10.png)
+![alt text](imgs/JS7/image-10.png)
 
 4. Buat collection:
 
-![alt text](image-11.png)
+![alt text](imgs/JS7/image-11.png)
 
 5. products
 
-![alt text](image-12.png)
+![alt text](imgs/JS7/image-12.png)
 
 Gunakan auto-id
 
-![alt text](image-13.png)
+![alt text](imgs/JS7/image-13.png)
 
 6. Tambahkan field:
 
-![alt text](image-14.png)
+![alt text](imgs/JS7/image-14.png)
 
-![alt text](image-15.png)
+![alt text](imgs/JS7/image-15.png)
 
 <b>Langkah 6 – Install Firebase</b>
 
@@ -120,7 +120,7 @@ Run `npm audit` for details.
 
 2. Buat folder dan file ts pada pages utlis/db/firebase.ts
 
-![alt text](image-16.png)
+![alt text](imgs/JS7/image-16.png)
 
 3. Copy paste yang ada pada kotak merah ke file firebase.ts
 
@@ -168,7 +168,7 @@ const firebaseConfig = {
 
 1. Buat file utils/db/servicefirebase.ts
 
-![alt text](image-17.png)
+![alt text](imgs/JS7/image-17.png)
 
 2. modifikasi file servicefirebase.ts
 
@@ -214,7 +214,7 @@ export default async function handler(
 
 2. Jalankan browser http://localhost:3000/api/produk
 
-![alt text](image-18.png)
+![alt text](imgs/JS7/image-18.png)
 
 3. Modifikasi index.ts pada produk sesuaikan nama typenya dan db nya
 
@@ -229,31 +229,31 @@ type ProductType = {
 
 Jalankan browser
 
-![alt text](image-19.png)
+![alt text](imgs/JS7/image-19.png)
 
 <b>Tugas 1 (Wajib)</b>
 
 <li> Tambahkan minimal 3 data produk di Firestore
 
-![alt text](image-20.png)
+![alt text](imgs/JS7/image-20.png)
 
 <li> Pastikan data tampil di halaman produk
 
-![alt text](image-21.png)
+![alt text](imgs/JS7/image-21.png)
 
 <b>Tugas 2 (Wajib)</b>
 
 <li> Tambahkan field baru: category
 
-![alt text](image-22.png)
+![alt text](imgs/JS7/image-22.png)
 
 <li> Tampilkan category di frontend
 
-![alt text](image-23.png)
+![alt text](imgs/JS7/image-23.png)
 
 <b>Tugas 3 (Pengayaan)</b>
 
 <li> Tambahkan tombol Refresh Data
 <li> Gunakan fetch ulang tanpa reload halaman
 
-![alt text](image-24.png)
+![alt text](imgs/JS7/image-24.png)
