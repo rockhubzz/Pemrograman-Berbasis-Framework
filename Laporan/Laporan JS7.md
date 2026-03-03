@@ -230,3 +230,13 @@ type ProductType = {
 Jalankan browser
 
 ![alt text](image-19.png)
+
+<b>Tugas 1 (Wajib)</b>
+
+<li> Tambahkan minimal 3 data produk di Firestore
+
+![alt text](image-20.png)
+
+<li> Pastikan data tampil di halaman produk
+
+![alt text](image-21.png)
