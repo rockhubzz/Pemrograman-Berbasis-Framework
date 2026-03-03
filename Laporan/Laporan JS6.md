@@ -134,3 +134,24 @@ const disableNavbar = ["/auth/login", "/auth/register", "/404"];
 <li>Jalankan browser
 
 ![alt text](image-6.png)
+
+<b>Langkah 6 – Menampilkan Gambar dari Folder Public</b>
+
+<li>Buka website https://undraw.co/ download png 404
+<li>Cari 404 dan download png
+
+![alt text](image-7.png)
+
+<li>Simpan gambar not-found.png ke folder public/ dan rename agar memudahkan
+
+![alt text](image-8.png)
+
+<li>Modifikasi kode pada 404.tsx:
+
+```tsx
+<img src="/page-not-found.png" alt="404" className={styles.error__image} />
+```
+
+<li>Jalankan browser
+
+![alt text](image-9.png)
