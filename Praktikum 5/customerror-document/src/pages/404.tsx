@@ -1,4 +1,5 @@
 import styles from "@/styles/404.module.scss";
+import Link from "next/link";
 
 const Custom404 = () => {
   return (
@@ -15,9 +16,9 @@ const Custom404 = () => {
           Maaf, halaman yang Anda cari tidak tersedia atau sudah dimakan.
         </p>
 
-        <a href="/" className={styles.button}>
+        <Link href="/" className={styles.button}>
           Kembali ke Beranda
-        </a>
+        </Link>
       </div>
     </div>
   );

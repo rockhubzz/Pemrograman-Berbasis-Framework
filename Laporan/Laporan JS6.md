@@ -172,3 +172,16 @@ Tambahkan:
 <li> Navbar tidak tampil di halaman 404
 
 ![alt text](image-11.png)
+
+<b>Tugas 3 (Pengayaan)</b>
+
+<li> Tambahkan tombol “Kembali ke Home”
+<li> Gunakan navigasi Next.js (Link)
+
+```tsx
+import Link from "next/link";
+
+<Link href="/" className={styles.button}>
+  Kembali ke Beranda
+</Link>;
+```
