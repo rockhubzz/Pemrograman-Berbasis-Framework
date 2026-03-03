@@ -187,3 +187,46 @@ export async function retrieveProducts(collectionName: string) {
   return data;
 }
 ```
+
+<b>Langkah 10 – API Mengambil Data Firebase</b>
+
+1. Edit pages/api/product.ts:
+
+```ts
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiRequest, NextApiResponse } from "next";
+import { retrieveProducts } from "../utils/db/servicefirebase";
+
+type Data = {
+  status: boolean;
+  status_code: number;
+  data: any;
+};
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+) {
+  const data = await retrieveProducts("products");
+  res.status(200).json({ status: true, status_code: 200, data });
+}
+```
+
+2. Jalankan browser http://localhost:3000/api/produk
+
+![alt text](image-18.png)
+
+3. Modifikasi index.ts pada produk sesuaikan nama typenya dan db nya
+
+```tsx
+type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  size: string;
+};
+```
+
+Jalankan browser
+
+![alt text](image-19.png)
