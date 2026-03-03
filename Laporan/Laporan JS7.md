@@ -240,3 +240,13 @@ Jalankan browser
 <li> Pastikan data tampil di halaman produk
 
 ![alt text](image-21.png)
+
+<b>Tugas 2 (Wajib)</b>
+
+<li> Tambahkan field baru: category
+
+![alt text](image-22.png)
+
+<li> Tampilkan category di frontend
+
+![alt text](image-23.png)
