@@ -165,3 +165,10 @@ Tambahkan:
 <li> Gambar ilustrasi
 
 ![alt text](image-10.png)
+
+<b>Tugas 2 (Wajib)</b>
+
+<li> Custom warna, font, dan layout halaman 404
+<li> Navbar tidak tampil di halaman 404
+
+![alt text](image-11.png)
