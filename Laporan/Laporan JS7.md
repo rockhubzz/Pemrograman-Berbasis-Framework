@@ -163,3 +163,27 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
 };
 ```
+
+<b>Langkah 9 – Ambil Data dari Firestore</b>
+
+1. Buat file utils/db/servicefirebase.ts
+
+![alt text](image-17.png)
+
+2. modifikasi file servicefirebase.ts
+
+```ts
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import app from "./firebase";
+
+const db = getFirestore(app);
+
+export async function retrieveProducts(collectionName: string) {
+  const snapshot = await getDocs(collection(db, collectionName));
+  const data = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return data;
+}
+```
