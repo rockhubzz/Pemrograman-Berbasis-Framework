@@ -58,3 +58,42 @@ useEffect(() => {
 2. Jalankan browser http://localhost:3000/produk
 
 ![alt text](image-3.png)
+
+<b>Langkah 5 – Setup Firebase</b>
+
+1.  Buka Firebase Go To Console ( login dengan login google)
+2.  Buat project baru
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+3. Aktifkan Firestore Database
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+4. Buat collection:
+
+![alt text](image-11.png)
+
+5. products
+
+![alt text](image-12.png)
+
+Gunakan auto-id
+
+![alt text](image-13.png)
+
+6. Tambahkan field:
+
+![alt text](image-14.png)
+
+![alt text](image-15.png)
