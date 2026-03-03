@@ -185,3 +185,17 @@ import Link from "next/link";
   Kembali ke Beranda
 </Link>;
 ```
+
+<b>Pertanyaan Evaluasi</b>
+
+1. **Apa fungsi utama \_document.js?**  
+   File \_document.js digunakan untuk mengatur struktur dasar HTML pada aplikasi Next.js, seperti <html>, <head>, dan <body>. File ini hanya dirender di server dan digunakan untuk kebutuhan seperti custom font, meta dasar, atau atribut pada tag HTML. \_document.js tidak digunakan untuk logika interaktif atau state.
+
+2. **Mengapa `<title>` tidak disarankan di \_document.js?**  
+   Karena \_document.js hanya dirender sekali di server dan tidak berubah saat navigasi antar halaman. Jika `<title>` diletakkan di sana, judul halaman tidak akan dinamis. Untuk mengatur title per halaman, sebaiknya gunakan komponen Head dari Next.js.
+
+3. **Apa perbedaan halaman biasa dan halaman 404.js?**  
+   Halaman biasa dirender ketika route sesuai dengan file di folder pages atau app. Sedangkan 404.js adalah halaman khusus yang otomatis ditampilkan ketika route tidak ditemukan. File ini berfungsi sebagai custom error page untuk meningkatkan pengalaman pengguna.
+
+4. **Mengapa folder public tidak perlu di-import?**  
+   Folder public bersifat static assets dan dapat diakses langsung melalui root URL tanpa perlu di-import. File di dalamnya otomatis diserve oleh Next.js. Misalnya, file public/image.png dapat diakses melalui /image.png.
