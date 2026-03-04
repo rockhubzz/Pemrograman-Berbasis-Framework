@@ -1,23 +1,5 @@
 # Client Side Rendering & Data Fetching
 
-<b> Instalasi SWR</b>
-
-```shell
-PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 7\clientside-rendering> npm install swr
-
-added 3 packages, and audited 489 packages in 40s
-
-158 packages are looking for funding
-  run `npm fund` for details
-
-1 high severity vulnerability
-
-To address all issues, run:
-  npm audit fix
-
-Run `npm audit` for details.
-```
-
 <b>Bagian 1 – Setup Data Produk</b>
 
 1. Siapkan project Next.js.
@@ -305,3 +287,122 @@ export default TampilanProduk;
 Jika dijalankan akan muncul skeletonnya terlebih dahulu setelah itu muncul gambar dan informasinya
 
 ![alt text](image-6.png)
+
+<b>Bagian 5 – Implementasi SWR</b>
+
+1. Install SWR
+
+```shell
+PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 7\clientside-rendering> npm install swr
+
+added 3 packages, and audited 489 packages in 40s
+
+158 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+```
+
+2. Buka dan modifkasi file index.tsx pada folder pages/product/
+
+```tsx
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import TampilanProduk from "@/views/produk";
+import useSWR from "swr";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const kategori = () => {
+  const [products, setProducts] = useState([]);
+
+  const { data, error, isLoading } = useSWR("/api/produk", fetcher);
+
+  return (
+    <div>
+      <TampilanProduk products={isLoading ? [] : data.data} />
+    </div>
+  );
+};
+
+export default kategori;
+```
+
+3. Agar terlihat lebih rapi
+
+<li>Buat folder swr pada utils dan tambahkan file dengan nama fetcher.js
+
+![alt text](image-7.png)
+
+ <li>Modifikasi file fetcher.ts
+
+```ts
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export default fetcher;
+```
+
+<li>Modifikasi file index.tsx pada folder pages/produk
+
+```tsx
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import TampilanProduk from "@/views/produk";
+import useSWR from "swr";
+import fetcher from "../utils/swr/fetcher";
+
+const kategori = () => {
+  // const [isLogin, setIsLogin] = useState(false);
+  // const { push } = useRouter();
+  const [products, setProducts] = useState([]);
+  // console.log("products:", products);
+
+  const { data, error, isLoading } = useSWR("/api/produk", fetcher);
+  //cek apakah data, error, dan isLoading sudah benar
+
+  return (
+    <div>
+      <TampilanProduk products={isLoading ? [] : data.data} />
+    </div>
+  );
+};
+
+export default kategori;
+```
+
+![alt text](image-8.png)
+
+Bandingkan:
+
+1. **useEffect**  
+   useEffect digunakan untuk mengambil data secara manual di dalam komponen React. Developer harus mengatur sendiri proses fetch, loading state, error handling, dan re-fetching jika diperlukan. Pendekatan ini lebih fleksibel tetapi membutuhkan lebih banyak kode dan pengelolaan state tambahan.
+
+   Kelebihan:
+   - Kontrol penuh terhadap proses pengambilan data
+   - Tidak membutuhkan library tambahan
+   - Cocok untuk kebutuhan sederhana
+
+   Kekurangan:
+   - Perlu mengatur loading dan error secara manual
+   - Tidak ada caching otomatis
+   - Tidak ada fitur revalidation bawaan
+
+---
+
+2. **SWR**  
+   SWR adalah library data fetching untuk React yang menyediakan caching, revalidation otomatis, dan sinkronisasi data. SWR menggunakan konsep stale-while-revalidate, yaitu menampilkan data cache terlebih dahulu lalu memperbaruinya di background.
+
+   Kelebihan:
+   - Caching otomatis
+   - Revalidation otomatis saat fokus window atau reconnect
+   - Kode lebih ringkas
+   - Performa lebih optimal untuk aplikasi dengan banyak request
+
+   Kekurangan:
+   - Membutuhkan library tambahan
+   - Kurang fleksibel dibanding fetch manual untuk kasus sangat spesifik
