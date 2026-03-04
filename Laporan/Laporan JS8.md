@@ -13,13 +13,13 @@
 
 4. jalankan browser http://localhost:3000/api/produk
 
-![alt text](image.png)
+![alt text](imgs/JS8/image.png)
 
 <b>Bagian 2 – Implementasi CSR dengan useEffect</b>
 
 1. Membuat file index.tsx pada folder views/products
 
-![alt text](image-1.png)
+![alt text](imgs/JS8/image-1.png)
 
 2. Modifikasi index.tsx
 
@@ -53,7 +53,7 @@ export default TampilanProduk;
 
 3. Buka file index.tsx pada pages/produk/
 
-![alt text](image-2.png)
+![alt text](imgs/JS8/image-2.png)
 
 4. Modifikasi index.tsx pada pages/produk/
 
@@ -73,7 +73,7 @@ useEffect(() => {
 
 5. Jalankan browser http://localhost:3000/produk
 
-![alt text](image-3.png)
+![alt text](imgs/JS8/image-3.png)
 
 6. Pada folder produk buat file produk.modules.scss
 
@@ -163,7 +163,7 @@ export default TampilanProduk;
 
 9. Jalankan Browser
 
-![alt text](image-4.png)
+![alt text](imgs/JS8/image-4.png)
 
 <b>Bagian 3 – Implementasi Skeleton Loading</b>
 
@@ -227,7 +227,7 @@ export default TampilanProduk;
 
 <li>Jalankan browser maka akan muncul skeleton yang terdapat animasi berkedip
 
-![alt text](image-5.png)
+![alt text](imgs/JS8/image-5.png)
 
 <li> Modifikasi pada index.tsx pada folder views/product/index.tsx
 
@@ -286,7 +286,7 @@ export default TampilanProduk;
 <br>
 Jika dijalankan akan muncul skeletonnya terlebih dahulu setelah itu muncul gambar dan informasinya
 
-![alt text](image-6.png)
+![alt text](imgs/JS8/image-6.png)
 
 <b>Bagian 5 – Implementasi SWR</b>
 
@@ -337,7 +337,7 @@ export default kategori;
 
 <li>Buat folder swr pada utils dan tambahkan file dengan nama fetcher.js
 
-![alt text](image-7.png)
+![alt text](imgs/JS8/image-7.png)
 
  <li>Modifikasi file fetcher.ts
 
@@ -375,7 +375,7 @@ const kategori = () => {
 export default kategori;
 ```
 
-![alt text](image-8.png)
+![alt text](imgs/JS8/image-8.png)
 
 Bandingkan:
 
@@ -406,3 +406,61 @@ Bandingkan:
    Kekurangan:
    - Membutuhkan library tambahan
    - Kurang fleksibel dibanding fetch manual untuk kasus sangat spesifik
+
+**Tugas Individu**
+
+1. Jelaskan perbedaan:
+
+- Client Side Rendering (CSR)  
+  Client Side Rendering adalah metode rendering di mana halaman dirender sepenuhnya di browser pengguna. Server hanya mengirimkan file HTML kosong beserta JavaScript, lalu JavaScript tersebut mengambil data dan membangun tampilan di sisi client.
+
+  Kelebihan:
+  - Interaktif dan responsif setelah halaman dimuat
+  - Cocok untuk aplikasi seperti dashboard atau SPA
+
+  Kekurangan:
+  - Loading awal bisa lebih lambat
+  - Kurang optimal untuk SEO jika tidak dikonfigurasi dengan baik
+
+- Server Side Rendering (SSR)  
+  Server Side Rendering adalah metode di mana halaman dirender di server setiap kali ada request dari pengguna. HTML sudah berisi data lengkap saat dikirim ke browser.
+
+  Kelebihan:
+  - SEO lebih baik
+  - Konten langsung terlihat tanpa menunggu JavaScript selesai
+
+  Kekurangan:
+  - Beban server lebih besar
+  - Waktu respon bisa lebih lambat dibanding SSG
+
+- Static Site Generation (SSG)
+  Static Site Generation adalah metode di mana halaman dibuat saat proses build dan disimpan sebagai file statis. Saat pengguna mengaksesnya, server hanya mengirim file yang sudah jadi tanpa proses rendering ulang.
+
+  Kelebihan:
+  - Performa sangat cepat
+  - Beban server ringan
+  - SEO sangat baik
+
+  Kekurangan:
+  - Data tidak real-time (perlu build ulang untuk update data)
+  - Kurang cocok untuk konten yang sering berubah
+
+2. Buat halaman produk dengan:
+
+- Skeleton loading
+- Animasi
+
+![alt text](imgs/JS8/2026-03-04%2009-21-13.gif)
+
+3. Refactor kode dari useEffect menjadi SWR.
+
+Pada pages/produk/index.tsx, import useEffect dihilangkan dan diganti dengan useSWR
+
+```tsx
+// import { useRouter } from "next/router";
+// import { useEffect, useState } from "react";
+import useSWR from "swr";
+```
+
+Note: mengakses /produk/server tidak mengalami error
+![alt text](imgs/JS8/image-9.png)
