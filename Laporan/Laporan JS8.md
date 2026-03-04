@@ -182,3 +182,126 @@ export default TampilanProduk;
 9. Jalankan Browser
 
 ![alt text](image-4.png)
+
+<b>Bagian 3 – Implementasi Skeleton Loading</b>
+
+<li>Modfikasi file index.tsx pada folder views/product/index.tsx
+
+```tsx
+<div className={styles.produk__content__skeleton}>
+  <div className={styles.produk__content__skeleton__image}></div>
+  <div className={styles.produk__content__skeleton__name}></div>
+  <div className={styles.produk__content__skeleton__category}></div>
+  <div className={styles.produk__content__skeleton__price}></div>
+</div>
+```
+
+<li>Modifikasi file product.module.scss
+
+```scss
+&__skeleton {
+  width: 200px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: identifier 1.5s infinite ease-in-out;
+
+  &__image {
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  &__name {
+    width: 80%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  &__category {
+    width: 60%;
+    height: 16px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    width: 40%;
+    height: 18px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
+}
+```
+
+<li>Jalankan browser maka akan muncul skeleton yang terdapat animasi berkedip
+
+![alt text](image-5.png)
+
+<li> Modifikasi pada index.tsx pada folder views/product/index.tsx
+
+```tsx
+import styles from "@/pages/produk/produk.module.scss";
+
+type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  category: string;
+};
+
+const TampilanProduk = ({ products }: { products: ProductType[] }) => {
+  return (
+    <div className={styles.produk}>
+      <h1 className={styles.produk__title}>Daftar Produk</h1>
+      <div className={styles.produk__content}>
+        {products.length > 0 ? (
+          <>
+            {products.map((products: ProductType) => (
+              <div key={products.id} className={styles.produk__content__item}>
+                <div className={styles.produk__content__item__image}>
+                  <img src={products.image} alt={products.name} width={200} />
+                </div>
+                <h4 className={styles.produk__content__item__name}>
+                  {products.name}
+                </h4>
+                <p className={styles.produk__content__item__category}>
+                  {products.category}
+                </p>
+                <p className={styles.produk__content__item__price}>
+                  Rp {products.price.toLocaleString()}
+                </p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className={styles.produk__content__skeleton}>
+            <div className={styles.produk__content__skeleton__image}></div>
+            <div className={styles.produk__content__skeleton__name}></div>
+            <div className={styles.produk__content__skeleton__category}></div>
+            <div className={styles.produk__content__skeleton__price}></div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default TampilanProduk;
+```
+
+<li> Jalankan browser
+<br>
+Jika dijalankan akan muncul skeletonnya terlebih dahulu setelah itu muncul gambar dan informasinya
+
+![alt text](image-6.png)
