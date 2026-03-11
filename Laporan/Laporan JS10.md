@@ -63,3 +63,47 @@ export async function getStaticProps() {
 3. Akses: http://localhost:3000/products/static
 
 ![alt text](image-6.png)
+
+**Bagian 4 – Pengujian Perubahan Data**
+
+Uji 1 – Tambah Data di Database
+
+1. Buka database firebasenya
+
+- Tambahkan produk baru di database.
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+2. Buka halaman:
+
+- /products (CSR) → Data bertambah
+
+![alt text](image-9.png)
+
+- /products/server (SSR) → Data bertambah
+
+![alt text](image-10.png)
+
+- /products/static (SSG) → Data tidak berubah
+
+![alt text](image-11.png)
+
+Uji 2 – Build Ulang
+
+1. Jalankan kembali:
+
+- npm run build
+  - lakukan secara bersamaan dengan npm run dev saat melakukan npm run build
+
+    ![alt text](image-12.png)
+
+- npm run start
+  - npm run dev stop terlebih dahulu setelah itu npm run start
+
+    ![alt text](image-13.png)
+
+2. Refresh halaman static → Data baru muncul
+
+![alt text](image-14.png)
