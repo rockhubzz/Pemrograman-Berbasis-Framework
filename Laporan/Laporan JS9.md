@@ -4,7 +4,7 @@
 
 1. Buat file baru pada pages/products/server.tsx
 
-![alt text](image.png)
+![alt text](imgs/JS9/image.png)
 
 2. Modifikasi file server.tsx :
 
@@ -25,7 +25,7 @@ export default halamanProdukServer;
 
 3. Jalankan browser : http://localhost:3000/produk/server
 
-![alt text](image-1.png)
+![alt text](imgs/JS9/image-1.png)
 
 **Bagian 2 – Implementasi getServerSideProps pada server.tsx**
 
@@ -68,13 +68,13 @@ export async function getServerSideProps() {
 
 Jalankan browser http://localhost:3000/produk/server
 
-![alt text](image-2.png)
+![alt text](imgs/JS9/image-2.png)
 
 **Bagian 3 – Refactor Type ( produk type )**
 
 1. Buat folder types pada folder pages dan buat file Product.type.ts
 
-![alt text](image-3.png)
+![alt text](imgs/JS9/image-3.png)
 
 2. Modifikasi Product.type.ts
 
@@ -102,7 +102,7 @@ const halamanProdukServer = (props: { products: ProductType[] }) => {
 };
 ```
 
-![alt text](image-4.png)
+![alt text](imgs/JS9/image-4.png)
 
 **Bagian 4 – Uji Perbedaan SSR vs CSR**
 
@@ -110,11 +110,11 @@ Uji 1 – Skeleton
 
 /produk
 
-![alt text](image-5.png)
+![alt text](imgs/JS9/image-5.png)
 
 /produk/server
 
-![alt text](image-6.png)
+![alt text](imgs/JS9/image-6.png)
 
 Catatan: Jika menggunakan SSR, skeleton tidak muncul saat loading data, namun hanya melakukan loading page
 
@@ -123,21 +123,21 @@ Uji 2 – Network Tab
 1. Buka DevTools → Network → XHR
 2. Refresh halaman CSR → Request API terlihat
 
-![alt text](image-7.png)
+![alt text](imgs/JS9/image-7.png)
 
 3. Refresh halaman SSR → Request API tidak terlihat
 
-![alt text](image-8.png)
+![alt text](imgs/JS9/image-8.png)
 
 Uji 3 – Response HTML
 
 1. CSR: HTML awal kosong (berisi skeleton)
 
-![alt text](image-9.png)
+![alt text](imgs/JS9/image-9.png)
 
 2. SSR: HTML sudah berisi data produk lengkap
 
-![alt text](image-10.png)
+![alt text](imgs/JS9/image-10.png)
 
 Catatan: Kedua pengujian dilakukan tanpa koneksi internet
 
@@ -153,30 +153,30 @@ Catatan: Kedua pengujian dilakukan tanpa koneksi internet
 
 - Screenshot CSR
 
-![alt text](image-11.png)
+![alt text](imgs/JS9/image-11.png)
 
 - Screenshot SSR
 
-![alt text](image-12.png)
+![alt text](imgs/JS9/image-12.png)
 
 - Perbedaan Network tab
   - CSR:
 
-![alt text](image-13.png)
+![alt text](imgs/JS9/image-13.png)
 
 - SSR:
 
-![alt text](image-14.png)
+![alt text](imgs/JS9/image-14.png)
 
 - Perbedaan View Source
 
 CSR:
 
-![alt text](image-16.png)
+![alt text](imgs/JS9/image-16.png)
 
 SSR:
 
-![alt text](image-15.png)
+![alt text](imgs/JS9/image-15.png)
 
 3. Buat laporan analisis minimal 2 halaman.
 
