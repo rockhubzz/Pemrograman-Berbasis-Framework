@@ -103,3 +103,40 @@ const halamanProdukServer = (props: { products: ProductType[] }) => {
 ```
 
 ![alt text](image-4.png)
+
+**Bagian 4 – Uji Perbedaan SSR vs CSR**
+
+Uji 1 – Skeleton
+
+/produk
+
+![alt text](image-5.png)
+
+/produk/server
+
+![alt text](image-6.png)
+
+Catatan: Jika menggunakan SSR, skeleton tidak muncul saat loading data, namun hanya melakukan loading page
+
+Uji 2 – Network Tab
+
+1. Buka DevTools → Network → XHR
+2. Refresh halaman CSR → Request API terlihat
+
+![alt text](image-7.png)
+
+3. Refresh halaman SSR → Request API tidak terlihat
+
+![alt text](image-8.png)
+
+Uji 3 – Response HTML
+
+1. CSR: HTML awal kosong (berisi skeleton)
+
+![alt text](image-9.png)
+
+2. SSR: HTML sudah berisi data produk lengkap
+
+![alt text](image-10.png)
+
+Catatan: Kedua pengujian dilakukan tanpa koneksi internet
