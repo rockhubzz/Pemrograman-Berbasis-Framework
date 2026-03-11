@@ -40,13 +40,18 @@ const TampilanProduk = ({
                 className={styles.produk__content__item}
               >
                 <div className={styles.produk__content__item__image}>
-                  <img src={product.image} alt={product.name} width={200} />
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    width={"250"}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
                 </div>
                 <h4 className={styles.produk__content__item__name}>
                   {product.name}
                 </h4>
                 <p className={styles.produk__content__item__category}>
-                  {product.category}
+                  #{product.category}
                 </p>
                 <p className={styles.produk__content__item__price}>
                   Rp {product.price.toLocaleString("id-ID")}
@@ -55,7 +60,10 @@ const TampilanProduk = ({
             ))}
           </>
         ) : (
-          <p className={styles.produk__content__empty}>Tidak ada produk</p>
+          <p className={styles.produk__content__empty}>
+            <span style={{ fontSize: "48px", marginBottom: "16px", display: "block" }}>📦</span>
+            Tidak ada produk yang tersedia saat ini
+          </p>
         )}
       </div>
     </div>
