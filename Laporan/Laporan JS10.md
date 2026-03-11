@@ -39,3 +39,27 @@ export async function getStaticProps() {
 ```
 
 ![alt text](image-1.png)
+
+**Bagian 3 – Build Production Mode**
+
+1. Pindah beberapa folder diluar pages antara lain views, utils, styles, types
+
+![alt text](image-2.png)
+
+2. Jalankan: npm run build
+
+- Jalankan npm run dev dan pastikan ini jalan ( jangan distop saat ngebuild ), jadi buka dua terminal
+  - Terminal 1 : jalankan aplikasi npm run dev
+
+  ![alt text](image-3.png)
+  - Terminal 2 : build aplikasi
+
+  ![alt text](image-4.png)
+
+2. Jika berhasil: npm run start
+
+![alt text](image-5.png)
+
+3. Akses: http://localhost:3000/products/static
+
+![alt text](image-6.png)
