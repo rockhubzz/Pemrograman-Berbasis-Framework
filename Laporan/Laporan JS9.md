@@ -69,3 +69,37 @@ export async function getServerSideProps() {
 Jalankan browser http://localhost:3000/produk/server
 
 ![alt text](image-2.png)
+
+**Bagian 3 – Refactor Type ( produk type )**
+
+1. Buat folder types pada folder pages dan buat file Product.type.ts
+
+![alt text](image-3.png)
+
+2. Modifikasi Product.type.ts
+
+```ts
+export type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  category: string;
+};
+```
+
+3. Setelah membuat file Product.type.ts maka modifikasi pada file server.tsx menjadi
+
+```tsx
+const halamanProdukServer = (props: { products: ProductType[] }) => {
+  const { products } = props;
+  return (
+    <div>
+      <h1>Halaman Produk Server</h1>
+      <TampilanProduk products={products} />
+    </div>
+  );
+};
+```
+
+![alt text](image-4.png)
