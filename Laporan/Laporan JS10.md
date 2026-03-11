@@ -829,3 +829,20 @@ Diukur menggunakan browser DevTools:
 Dengan strategi ini, aplikasi Stores dapat memberikan best of both worlds: lightning-fast performance dan reasonably fresh data.
 
 ---
+
+**Studi Analisis**
+
+1. **Mengapa SSG tidak menampilkan data terbaru?**  
+   Karena halaman pada Static Site Generation dibuat saat proses build. Setelah website di-build, konten menjadi file statis sehingga tidak akan berubah sampai proses build dilakukan kembali.
+
+2. **Mengapa SSG lebih cepat?**  
+   SSG lebih cepat karena halaman sudah dibuat sebelumnya saat build dan disimpan sebagai file statis. Ketika pengguna mengakses halaman, server hanya perlu mengirimkan file tersebut tanpa melakukan proses rendering atau pengambilan data ulang.
+
+3. **Kapan SSG tidak cocok digunakan?**  
+   SSG tidak cocok digunakan ketika data pada halaman sering berubah atau membutuhkan informasi real-time. Contohnya seperti dashboard, aplikasi chat, atau sistem yang menampilkan data transaksi terbaru.
+
+4. **Mengapa e-commerce tidak cocok menggunakan SSG murni?**  
+   Karena produk, stok, harga, dan informasi lainnya pada e-commerce sering berubah. Jika menggunakan SSG murni, perubahan tersebut tidak akan langsung terlihat oleh pengguna sampai website di-build ulang.
+
+5. **Apa perbedaan build mode dan development mode?**  
+   Development mode digunakan saat proses pengembangan aplikasi, di mana perubahan kode dapat langsung terlihat tanpa perlu build ulang. Sedangkan build mode digunakan untuk produksi, di mana aplikasi sudah dioptimasi dan dijadikan file siap deploy.
