@@ -348,3 +348,48 @@ export async function getStaticProps({
 Saat diklik salah satu produk
 
 ![alt text](image-11.png)
+
+**Pengujian**
+
+Uji 1 – CSR
+
+- Refresh halaman detail
+- Perhatikan loading
+- Periksa Network → XHR → API request terlihat
+
+![alt text](image-12.png)
+
+Uji 2 – SSR
+
+- Refresh halaman detail
+- Tidak ada loading
+- Periksa Network → tidak terlihat fetch detail
+
+![alt text](image-13.png)
+
+Hanya terlihat fetch HTML dan resource seperti images yang digunakan pada page
+
+Uji 3 – SSG ( Lakukan seperti langkah sebelumya pada Jobsheet 10)
+
+1. Jalankan:
+   - npm run build
+   - npm run start
+
+   ![alt text](image-15.png)
+
+2. Tambahkan produk baru di database.
+
+![alt text](image-14.png)
+
+3. Buka halaman detail produk baru:
+
+![alt text](image-16.png)
+
+4. Build ulang:
+
+- npm run build
+- npm run start
+
+  ![alt text](image-17.png)
+
+  ![alt text](image-18.png)
