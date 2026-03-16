@@ -28,7 +28,7 @@
 
 - Jika kita klik salah satu gambar maka akan menuju halaman lain
 
-![alt text](image.png)
+![alt text](imgs/JS11/image.png)
 
 **Bagian 2 – Implementasi CSR (Client Rendering)**
 
@@ -44,7 +44,7 @@ const { data, error, isLoading } = useSWR(
 
 2. Pada file produk.ts pada folder pages/api di rename menjadi [[...product]].ts
 
-![alt text](image-1.png)
+![alt text](imgs/JS11/image-1.png)
 
 3. Modifikasi file servicefirebase.ts
 
@@ -89,15 +89,15 @@ export default async function handler(
 
 5. Jalankan browser http://localhost:3000/api/produk/HjnApBuIHCqGRs4tohUE
 
-![alt text](image-2.png)
+![alt text](imgs/JS11/image-2.png)
 
 6. Jalankan alamat url http://localhost:3000/api/produk/123
 
-![alt text](image-3.png)
+![alt text](imgs/JS11/image-3.png)
 
 7. Buat file dengan nama index.tsx pada folder views/DetailProduct selain itu buat juga file dengan nama detailProduct.module.scss
 
-![alt text](image-4.png)
+![alt text](imgs/JS11/image-4.png)
 
 8. Modifikasi detailProduct.module.scss
 
@@ -241,9 +241,9 @@ export default HalamanProduk;
 
 12. Jalankan browser http://localhost:3000/produk/ saat produk diklik maka akan muncul detailProduk http://localhost:3000/produk/pAWIT99SWmVbVrNm49ml
 
-![alt text](image-5.png)
+![alt text](imgs/JS11/image-5.png)
 
-![alt text](image-6.png)
+![alt text](imgs/JS11/image-6.png)
 
 13. Agar tulisan detail produk ditengah maka modifikasi file detailProduct.module.scss line 103-108
 
@@ -265,7 +265,7 @@ dan file index.tsx tambahkan code pada line 7,8 dan 22 menjadi
 
 14. Sehingga hasilnya seperti berikut
 
-![alt text](image-7.png)
+![alt text](imgs/JS11/image-7.png)
 
 **Bagian 3 – Implementasi SSR**
 
@@ -291,9 +291,9 @@ export async function getServerSideProps({
 2. Jalankan browser http://localhost:3000/produk/server
    Tidak perlu loading state karena data sudah tersedia sebelum render.
 
-![alt text](image-8.png)
+![alt text](imgs/JS11/image-8.png)
 
-![alt text](image-9.png)
+![alt text](imgs/JS11/image-9.png)
 
 **Bagian 4 – Implementasi Static Site Generation (Dynamic SSG)**
 
@@ -343,11 +343,11 @@ export async function getStaticProps({
 
 3. Jalankan browser http://localhost:3000/produk
 
-![alt text](image-10.png)
+![alt text](imgs/JS11/image-10.png)
 
 Saat diklik salah satu produk
 
-![alt text](image-11.png)
+![alt text](imgs/JS11/image-11.png)
 
 **Pengujian**
 
@@ -357,7 +357,7 @@ Uji 1 – CSR
 - Perhatikan loading
 - Periksa Network → XHR → API request terlihat
 
-![alt text](image-12.png)
+![alt text](imgs/JS11/image-12.png)
 
 Uji 2 – SSR
 
@@ -365,7 +365,7 @@ Uji 2 – SSR
 - Tidak ada loading
 - Periksa Network → tidak terlihat fetch detail
 
-![alt text](image-13.png)
+![alt text](imgs/JS11/image-13.png)
 
 Hanya terlihat fetch HTML dan resource seperti images yang digunakan pada page
 
@@ -375,24 +375,24 @@ Uji 3 – SSG ( Lakukan seperti langkah sebelumya pada Jobsheet 10)
    - npm run build
    - npm run start
 
-   ![alt text](image-15.png)
+   ![alt text](imgs/JS11/image-15.png)
 
 2. Tambahkan produk baru di database.
 
-![alt text](image-14.png)
+![alt text](imgs/JS11/image-14.png)
 
 3. Buka halaman detail produk baru:
 
-![alt text](image-16.png)
+![alt text](imgs/JS11/image-16.png)
 
 4. Build ulang:
 
 - npm run build
 - npm run start
 
-  ![alt text](image-17.png)
+  ![alt text](imgs/JS11/image-17.png)
 
-  ![alt text](image-18.png)
+  ![alt text](imgs/JS11/image-18.png)
 
 **Tugas Individu**
 
@@ -609,30 +609,30 @@ export async function getStaticProps({
 
   http://localhost:3000/produk/csr/pmfhHbqHj8e5BAmBFQdb
 
-  ![alt text](image-20.png)
+  ![alt text](imgs/JS11/image-20.png)
   - SSR
 
   http://localhost:3000/produk/ssr/pmfhHbqHj8e5BAmBFQdb
 
-  ![alt text](image-21.png)
+  ![alt text](imgs/JS11/image-21.png)
   - SSG
 
   http://localhost:3000/produk/ssg/pmfhHbqHj8e5BAmBFQdb
 
-  ![alt text](image-19.png)
+  ![alt text](imgs/JS11/image-19.png)
 
 - Network tab
   - CSR
 
-    ![alt text](image-22.png)
+    ![alt text](imgs/JS11/image-22.png)
 
   - SSR
 
-    ![alt text](image-23.png)
+    ![alt text](imgs/JS11/image-23.png)
 
   - SSG
 
-    ![alt text](image-24.png)
+    ![alt text](imgs/JS11/image-24.png)
 
 - Build result
 
@@ -682,3 +682,20 @@ export async function getStaticProps({
   ●  (SSG)      prerendered as static HTML (uses getStaticProps)
   ƒ  (Dynamic)  server-rendered on demand
   ```
+
+**Pertanyaan Analisis**
+
+1. **Mengapa getStaticPaths wajib pada dynamic SSG?**  
+   Karena pada Static Site Generation dengan route dinamis, Next.js perlu mengetahui halaman mana saja yang harus dibuat saat proses build. Fungsi getStaticPaths digunakan untuk menentukan daftar path yang akan digenerate menjadi file statis.
+
+2. **Mengapa CSR membutuhkan loading state?**  
+   Karena pada Client Side Rendering data diambil setelah halaman dimuat di browser. Selama proses pengambilan data berlangsung, aplikasi perlu menampilkan loading state agar pengguna mengetahui bahwa data sedang diproses.
+
+3. **Mengapa SSG tidak menampilkan produk baru tanpa build ulang?**  
+   Karena halaman pada SSG dibuat saat proses build. Jika ada produk baru setelah website di-deploy, halaman tersebut tidak akan otomatis muncul sampai proses build dilakukan kembali.
+
+4. **Mana metode terbaik untuk halaman detail e-commerce?**  
+   Biasanya menggunakan kombinasi SSG dengan revalidation (ISR) atau SSR. SSG cocok untuk performa dan SEO, sedangkan ISR atau SSR membantu memastikan data seperti harga atau stok tetap diperbarui.
+
+5. **Apa risiko menggunakan SSG untuk produk yang sering berubah?**  
+   Informasi seperti harga, stok, atau ketersediaan produk bisa menjadi tidak akurat karena halaman tidak diperbarui secara real-time. Hal ini dapat menyebabkan pengguna melihat data lama yang sudah tidak sesuai dengan kondisi sebenarnya.
