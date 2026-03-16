@@ -266,3 +266,31 @@ dan file index.tsx tambahkan code pada line 7,8 dan 22 menjadi
 14. Sehingga hasilnya seperti berikut
 
 ![alt text](image-7.png)
+
+**Bagian 3 – Implementasi SSR**
+
+1. Modifikasi [produk].tsx pada folder src/pages/produk dan comment line 9 sampai 20 dikarena kita akan menggunakan metode SSR. Tambahkan beberapa kode untuk SSR
+
+```tsx
+export async function getServerSideProps({
+  params,
+}: {
+  params: { produk: string };
+}) {
+  const res = await fetch(`http://localhost:3000/api/produk/${params?.produk}`);
+  const respone = await res.json();
+  // console.log("Data produk yang diambil dari API:", respone);
+  return {
+    props: {
+      product: respone.data, // Pastikan untuk memberikan nilai default jika data tidak tersedia
+    },
+  };
+}
+```
+
+2. Jalankan browser http://localhost:3000/produk/server
+   Tidak perlu loading state karena data sudah tersedia sebelum render.
+
+![alt text](image-8.png)
+
+![alt text](image-9.png)
