@@ -393,3 +393,292 @@ Uji 3 – SSG ( Lakukan seperti langkah sebelumya pada Jobsheet 10)
   ![alt text](image-17.png)
 
   ![alt text](image-18.png)
+
+**Tugas Individu**
+
+1. Implementasikan halaman detail dengan:
+
+- CSR
+
+```tsx
+import { useRouter } from "next/router";
+import useSWR from "swr";
+import DetailProduk from "@/views/DetailProduct";
+import { ProductType } from "@/types/Produk.type";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const HalamanProdukCSR = () => {
+  const router = useRouter();
+  const { produk } = router.query;
+
+  const { data, error, isLoading } = useSWR(
+    produk ? `/api/produk/${produk}` : null,
+    fetcher,
+  );
+
+  if (isLoading) {
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2>Error loading product</h2>
+      </div>
+    );
+  }
+
+  if (!data || !data.data) {
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2>Product not found</h2>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ padding: "2rem" }}>
+      <div style={{ marginBottom: "1.5rem" }}>
+        <p style={{ fontSize: "0.9rem", color: "#666" }}>
+          <strong>Rendering Mode:</strong> Client-Side Rendering (CSR)
+        </p>
+      </div>
+      <DetailProduk products={data.data} />
+    </div>
+  );
+};
+
+export default HalamanProdukCSR;
+```
+
+- SSR
+
+```tsx
+import DetailProduk from "@/views/DetailProduct";
+import { ProductType } from "@/types/Produk.type";
+
+interface HalamanProdukSSRProps {
+  product: ProductType;
+}
+
+const HalamanProdukSSR = ({ product }: HalamanProdukSSRProps) => {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <div style={{ marginBottom: "1.5rem" }}>
+        <p style={{ fontSize: "0.9rem", color: "#666" }}>
+          <strong>Rendering Mode:</strong> Server-Side Rendering (SSR)
+        </p>
+      </div>
+      <DetailProduk products={product} />
+    </div>
+  );
+};
+
+export default HalamanProdukSSR;
+
+// Fungsi getServerSideProps akan dipanggil setiap kali halaman ini diakses,
+// dan akan mengambil data produk dari API sebelum merender halaman.
+export async function getServerSideProps({
+  params,
+}: {
+  params: { produk: string };
+}) {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/produk/${params.produk}`,
+    );
+    const response = await res.json();
+
+    if (!response.data) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        product: response.data,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+}
+```
+
+- SSG
+
+```tsx
+import DetailProduk from "@/views/DetailProduct";
+import { ProductType } from "@/types/Produk.type";
+
+interface HalamanProdukSSGProps {
+  product: ProductType;
+}
+
+const HalamanProdukSSG = ({ product }: HalamanProdukSSGProps) => {
+  return (
+    <div style={{ padding: "2rem" }}>
+      <div style={{ marginBottom: "1.5rem" }}>
+        <p style={{ fontSize: "0.9rem", color: "#666" }}>
+          <strong>Rendering Mode:</strong> Static-Site Generation (SSG)
+        </p>
+      </div>
+      <DetailProduk products={product} />
+    </div>
+  );
+};
+
+export default HalamanProdukSSG;
+
+// Fungsi getStaticPaths menghasilkan daftar path yang akan di-generate pada saat build
+export async function getStaticPaths() {
+  try {
+    const res = await fetch("http://localhost:3000/api/products");
+    const response = await res.json();
+
+    const paths = response.data.map((product: ProductType) => ({
+      params: { produk: product.id },
+    }));
+
+    return {
+      paths,
+      fallback: "blocking", // Jika path tidak ada, Next.js akan generate di saat request
+    };
+  } catch (error) {
+    console.error("Error fetching products for SSG:", error);
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
+}
+
+// Fungsi getStaticProps akan dipanggil pada saat build dan generate halaman statis
+export async function getStaticProps({
+  params,
+}: {
+  params: { produk: string };
+}) {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/produk/${params.produk}`,
+    );
+    const response = await res.json();
+
+    if (!response.data) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        product: response.data,
+      },
+      revalidate: 60, // Revalidate setiap 60 detik (ISR)
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+}
+```
+
+2. Buat tabel perbandingan:
+
+| Aspek          | CSR (Client Side Rendering)                              | SSR (Server Side Rendering)                           | SSG (Static Site Generation)                                   |
+| -------------- | -------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------- |
+| Loading        | Loading awal lebih lambat karena data diambil di browser | Lebih cepat karena HTML sudah dirender di server      | Sangat cepat karena halaman sudah berupa file statis           |
+| Build Required | Tidak perlu build khusus untuk data                      | Tidak perlu build ulang untuk perubahan data          | Perlu build ulang jika data berubah                            |
+| SEO            | Kurang optimal jika tidak dikonfigurasi dengan baik      | Sangat baik untuk SEO karena konten sudah ada di HTML | Sangat baik karena halaman statis mudah diindeks mesin pencari |
+| Perubahan Data | Data bisa berubah secara real-time di sisi client        | Data diperbarui setiap request ke server              | Data tidak berubah sampai dilakukan build ulang                |
+
+3. Dokumentasikan:
+
+- Screenshot
+  - CSR
+
+  http://localhost:3000/produk/csr/pmfhHbqHj8e5BAmBFQdb
+
+  ![alt text](image-20.png)
+  - SSR
+
+  http://localhost:3000/produk/ssr/pmfhHbqHj8e5BAmBFQdb
+
+  ![alt text](image-21.png)
+  - SSG
+
+  http://localhost:3000/produk/ssg/pmfhHbqHj8e5BAmBFQdb
+
+  ![alt text](image-19.png)
+
+- Network tab
+  - CSR
+
+    ![alt text](image-22.png)
+
+  - SSR
+
+    ![alt text](image-23.png)
+
+  - SSG
+
+    ![alt text](image-24.png)
+
+- Build result
+
+  ```shell
+  Route (pages)                                  Revalidate  Expire
+  ┌ ○ / (595 ms)
+  ├   /_app
+  ├ ○ /404
+  ├ ○ /about
+  ├ ƒ /api/[[...produk]]
+  ├ ƒ /api/hello
+  ├ ƒ /api/stores
+  ├ ○ /auth/login
+  ├ ○ /auth/register (592 ms)
+  ├ ○ /blog/[slug]
+  ├ ○ /category/[...slug] (614 ms)
+  ├ ○ /produk
+  ├ ● /produk/[produk] (6686 ms)
+  │ ├ /produk/pmfhHbqHj8e5BAmBFQdb (1168 ms)
+  │ ├ /produk/uI2Dij8284Xq5ECSahAw (1158 ms)
+  │ ├ /produk/YmLit7NxajgMUcG4aEcW (1127 ms)
+  │ ├ /produk/HjnApBuIHCqGRs4tohUE (1123 ms)
+  │ ├ /produk/SISCyghWQD6r59SKGq13 (1056 ms)
+  │ └ /produk/YzzoRPqOmnShGhuhNa8v (1054 ms)
+  ├ ○ /produk/csr/[produk] (1142 ms)
+  ├ ƒ /produk/server
+  ├ ● /produk/ssg/[produk] (2164 ms)                     1m      1y
+  │ ├ /produk/ssg/YmLit7NxajgMUcG4aEcW (402 ms)
+  │ ├ /produk/ssg/YzzoRPqOmnShGhuhNa8v (396 ms)
+  │ ├ /produk/ssg/uI2Dij8284Xq5ECSahAw (390 ms)
+  │ ├ /produk/ssg/SISCyghWQD6r59SKGq13 (346 ms)
+  │ ├ /produk/ssg/pmfhHbqHj8e5BAmBFQdb (341 ms)
+  │ └ /produk/ssg/HjnApBuIHCqGRs4tohUE
+  ├ ƒ /produk/ssr/[produk]
+  ├ ● /produk/static (1129 ms)
+  ├ ○ /profile
+  ├ ○ /profile/edit (590 ms)
+  ├ ○ /setting/app (584 ms)
+  ├ ○ /shop/[[...slug]] (588 ms)
+  ├ ○ /stores/csr (1135 ms)
+  ├ ● /stores/ssg (957 ms)                               1h      1y
+  ├ ƒ /stores/ssr
+  ├ ○ /user
+  └ ○ /user/password
+
+  ○  (Static)   prerendered as static content
+  ●  (SSG)      prerendered as static HTML (uses getStaticProps)
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
