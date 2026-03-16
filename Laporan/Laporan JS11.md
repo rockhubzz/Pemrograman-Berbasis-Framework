@@ -294,3 +294,57 @@ export async function getServerSideProps({
 ![alt text](image-8.png)
 
 ![alt text](image-9.png)
+
+**Bagian 4 – Implementasi Static Site Generation (Dynamic SSG)**
+
+1. Buka file [produk].tsx dan modifikasi seperti berikut
+
+```tsx
+{
+  /*digunakan static-site generation*/
+}
+export async function getStaticPaths() {
+  const res = await fetch("http://localhost:3000/api/products");
+  const response = await res.json();
+
+  const paths = response.data.map((product: ProductType) => ({
+    params: { produk: product.id },
+  }));
+  // console.log("Paths yang dihasilkan untuk produk:", paths); // Debugging: Tampilkan paths yang dihasilkan
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({
+  params,
+}: {
+  params: { produk: string };
+}) {
+  const res = await fetch(`http://localhost:3000/api/produk/${params?.produk}`);
+  // const response: ProductType[] = await res.json();
+  const response: { data: ProductType[] } = await res.json();
+
+  // console.log("Data produk yang diambil dari API:", response);
+  return {
+    props: {
+      product: response.data,
+    },
+  };
+}
+```
+
+2. Buka file index.tsx pada folder src/views/DetailProduct dan modifikasi pada line 11
+
+```tsx
+<img src={products.image && products.image} alt={products.name} />
+```
+
+3. Jalankan browser http://localhost:3000/produk
+
+![alt text](image-10.png)
+
+Saat diklik salah satu produk
+
+![alt text](image-11.png)
