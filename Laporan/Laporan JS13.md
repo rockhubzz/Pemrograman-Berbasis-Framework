@@ -34,7 +34,7 @@
 
 - Buat file: src/middleware.ts Sejajar dengan folder pages.
 
-  ![alt text](image.png)
+  ![alt text](imgs/JS13/image.png)
 
 ---
 
@@ -54,7 +54,7 @@
 - Jika menggunakan NextResponse.next() → tidak ada redirect.
 - Jadi masih bisa mengakses ke http://localhost:3000/produk:
 
-  ![alt text](image-1.png)
+  ![alt text](imgs/JS13/image-1.png)
 
 ---
 
@@ -66,7 +66,7 @@ return NextResponse.redirect(new URL("/produk", request.url));
 
 - Semua halaman akan redirect ke home dan error dikarenakan terus menerus loading
 
-  ![alt text](image-2.png)
+  ![alt text](imgs/JS13/image-2.png)
 
 ---
 
@@ -87,11 +87,11 @@ return NextResponse.redirect(new URL("/produk", request.url));
 
 - Akses halaman produk:
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS13/image-3.png)
 
 - Akses halaman lain (stores):
 
-  ![alt text](image-4.png)
+  ![alt text](imgs/JS13/image-4.png)
 
 ---
 
@@ -109,4 +109,78 @@ if (!auth.isLogin) {
 
 - Jika user langsung mengakses ke alamat http://localhost:3000/produk tidak akan bisa user akan diarahkan ke halaman login
 
-![alt text](<2026-03-30 19-11-19.gif>)
+![alt text](<imgs/JS13/2026-03-30 19-11-19.gif>)
+
+---
+
+## Pengujian
+
+### Uji 1 – isLogin = false
+
+Akses /produk
+
+![alt text](<imgs/JS13/2026-03-30 19-11-19.gif>)
+
+Hasil: Redirect ke /login
+
+### Uji 2 – isLogin = true
+
+Akses /produk setelah login
+
+![alt text](<imgs/JS13/2026-03-30 19-55-33.gif>)
+
+Hasil: Bisa mengakses /produk
+
+### Uji 3 – Tambahkan Multiple Route
+
+![alt text](imgs/JS13/ezgif-703dda3b71d815ab.gif)
+
+Sekarang:
+
+- /products dan /about butuh login
+- Halaman lain bebas
+
+---
+
+## Tugas Individu
+
+1. Buat halaman:
+
+- /products
+
+  ![alt text](imgs/JS13/image-7.png)
+
+- /about
+
+  ![alt text](imgs/JS13/image-6.png)
+
+- /login
+
+  ![alt text](imgs/JS13/image-5.png)
+
+2. Implementasikan Middleware:
+
+- Redirect ke /login jika belum login.
+- Izinkan akses jika login true.
+
+  ![alt text](imgs/JS13/ezgif-71974fc29e69ed0c.gif)
+
+3. Tambahkan proteksi hanya untuk route tertentu.
+
+   ```ts
+   export const config = {
+     matcher: ["/about", "/produk"],
+   };
+   ```
+
+4. Dokumentasikan:
+
+- Screenshot sebelum dan sesudah redirect.
+
+  ![alt text](<imgs/JS13/2026-03-30 19-11-19.gif>)
+
+- Perbandingan dengan useEffect.
+
+  ![alt text](<imgs/JS13/2026-03-30 19-03-42.gif>)
+
+---

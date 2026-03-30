@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { setLogin } from "../../../lib/auth";
+import Cookies from "js-cookie";
 // import styles from './login.module.css';
 import styles from './login.module.scss';
 
@@ -14,7 +15,8 @@ const HalamanLogin = () => {
     const handlerLogin = () => {
         if (username === "user" && password === "password") {
             setLogin(true);
-            push('/produk');
+            Cookies.set("isLogin", "true");
+            push('/about');
         } else {
             setError('Username or password incorrect');
         }
@@ -26,34 +28,34 @@ const HalamanLogin = () => {
                 <div className={styles.card}>
                     <h1 className={styles.title}>Halaman Login</h1>
                     <p className={styles.subtitle}>Masuk ke akun Anda</p>
-                    
+
                     <form className={styles.form} onSubmit={(e) => { e.preventDefault(); handlerLogin(); }}>
                         <div className={styles.formGroup}>
                             <label htmlFor="username" className={styles.label}>Username</label>
-                            <input 
+                            <input
                                 id="username"
                                 type="text"
                                 className={styles.input}
-                                value={username} 
+                                value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 placeholder="Masukkan username"
                             />
                         </div>
-                        
+
                         <div className={styles.formGroup}>
                             <label htmlFor="password" className={styles.label}>Password</label>
-                            <input 
+                            <input
                                 id="password"
-                                type="password" 
+                                type="password"
                                 className={styles.input}
-                                value={password} 
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Masukkan password"
                             />
                         </div>
 
                         {error && <div className={styles.error}>{error}</div>}
-                        
+
                         <button type="submit" className={styles.button}>Login</button>
                     </form>
 
