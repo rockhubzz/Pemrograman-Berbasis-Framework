@@ -184,3 +184,20 @@ Sekarang:
   ![alt text](<imgs/JS13/2026-03-30 19-03-42.gif>)
 
 ---
+
+## Pertanyaan Analisis
+
+1. **Mengapa middleware lebih aman dibanding useEffect?**  
+   Middleware berjalan di server sebelum halaman dikirim ke client, sehingga proses validasi (seperti autentikasi) dilakukan lebih awal. Sementara useEffect berjalan di client setelah halaman dirender, sehingga konten sempat terlihat sebelum dicek keamanannya.
+
+2. **Mengapa middleware tidak menimbulkan glitch?**  
+   Karena middleware memproses request sebelum halaman ditampilkan. Jika user tidak memiliki akses, mereka langsung diarahkan (redirect) tanpa sempat melihat konten, sehingga tidak terjadi flicker atau glitch pada UI.
+
+3. **Apa risiko jika semua halaman diproteksi tanpa pengecualian?**  
+   Halaman publik seperti login, register, atau landing page bisa ikut terblokir. Ini dapat menyebabkan redirect loop atau membuat pengguna tidak bisa mengakses halaman yang seharusnya terbuka.
+
+4. **Kapan middleware tidak diperlukan?**  
+   Middleware tidak diperlukan jika aplikasi tidak membutuhkan proteksi route atau logika global sebelum request diproses. Untuk kasus sederhana, pengecekan di client atau API route saja sudah cukup.
+
+5. **Apa perbedaan middleware dan API route?**  
+   Middleware digunakan untuk memproses request sebelum mencapai halaman atau endpoint (misalnya untuk autentikasi atau redirect). Sedangkan API route adalah endpoint backend yang digunakan untuk menangani request seperti mengambil atau mengirim data.
