@@ -90,3 +90,92 @@
    ![alt text](image-2.png)
 
 ---
+
+## On-Demand Revalidation
+
+### Bagian 1 – Buat API Revalidate
+
+- Buat file revalidate.ts pada folder pages/api/ dan modifikasi
+
+```ts
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiRequest, NextApiResponse } from "next";
+
+type Data = {
+  revalidated: boolean;
+};
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+) {
+  try {
+    await res.revalidate("/produk/static");
+    return res.status(200).json({ revalidated: true });
+  } catch (error) {
+    console.error("Error in API route:", error);
+    res.status(500).send({ revalidated: false });
+  }
+}
+```
+
+### Bagian 2 – Tambahkan Parameter Data
+
+- Modifikasi file revalidate.ts
+
+  ```ts
+  // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+  import type { NextApiRequest, NextApiResponse } from "next";
+
+  type Data = {
+    revalidated: boolean;
+    message?: string;
+  };
+
+  export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<Data>,
+  ) {
+    if (req.query.data === "produk") {
+      try {
+        await res.revalidate("/produk/static");
+        return res.status(200).json({ revalidated: true });
+      } catch (error) {
+        console.error("Error in API route:", error);
+        res.status(500).send({ revalidated: false });
+      }
+    }
+
+    return res.json({
+      revalidated: false,
+      message: "Invalid query parameter. Expected 'data=produk'.",
+    });
+  }
+  ```
+
+- Uji coba menambahkan parameter dan value pada url http://localhost:3000/api/revalidate?data=produk maka akan muncul true dan sesuai dengan kondisi (req.query.data ===”produk”)
+
+![alt text](image-3.png)
+
+- Uji coba dengan url http://localhost:3000/api/revalidate?data=
+
+![alt text](image-4.png)
+
+### Bagian 3 – Tambahkan Token Security
+
+- Buka file .env dan modifikasi
+
+```env
+REVALIDATE_TOKEN=12345678
+```
+
+- Modifikasi file revalidate.ts tambahkan kondisi pada line 13 - 17
+
+```ts
+if (req.query.token !== process.env.REVALIDATE_TOKEN) {
+  return res.status(401).json({
+    revalidated: false,
+    message: "Insert correct token",
+  });
+}
+```
