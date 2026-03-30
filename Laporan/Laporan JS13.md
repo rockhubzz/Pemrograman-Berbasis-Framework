@@ -35,3 +35,21 @@
 - Buat file: src/middleware.ts Sejajar dengan folder pages.
 
   ![alt text](image.png)
+
+---
+
+## Bagian 2 – Struktur Dasar Middleware
+
+/src/middleware.ts:
+
+    ```ts
+    import { NextResponse } from "next/server";
+    import type { NextRequest } from "next/server";
+
+    export function middleware(request: NextRequest) {
+    return NextResponse.next();
+    }
+    ```
+
+- Jika menggunakan NextResponse.next() → tidak ada redirect.
+- Jadi masih bisa mengakses ke http://localhost:3000/produk
