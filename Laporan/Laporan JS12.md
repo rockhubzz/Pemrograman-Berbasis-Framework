@@ -155,27 +155,40 @@ export default async function handler(
 
 - Uji coba menambahkan parameter dan value pada url http://localhost:3000/api/revalidate?data=produk maka akan muncul true dan sesuai dengan kondisi (req.query.data ===”produk”)
 
-![alt text](image-3.png)
+  ![alt text](image-3.png)
 
 - Uji coba dengan url http://localhost:3000/api/revalidate?data=
 
-![alt text](image-4.png)
+  ![alt text](image-4.png)
 
 ### Bagian 3 – Tambahkan Token Security
 
 - Buka file .env dan modifikasi
 
-```env
-REVALIDATE_TOKEN=12345678
-```
+  ```env
+  REVALIDATE_TOKEN=12345678
+  ```
 
 - Modifikasi file revalidate.ts tambahkan kondisi pada line 13 - 17
 
-```ts
-if (req.query.token !== process.env.REVALIDATE_TOKEN) {
-  return res.status(401).json({
-    revalidated: false,
-    message: "Insert correct token",
-  });
-}
-```
+  ```ts
+  if (req.query.token !== process.env.REVALIDATE_TOKEN) {
+    return res.status(401).json({
+      revalidated: false,
+      message: "Insert correct token",
+    });
+  }
+  ```
+
+### Pengujian Manual Revalidation
+
+- Akses:<br>
+  http://localhost:3000/api/revalidate?data=products&token=12345678
+
+  Jika benar:
+
+  ![alt text](image-5.png)
+
+  Jika salah:
+
+  ![alt text](image-6.png)
