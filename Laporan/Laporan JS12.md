@@ -192,3 +192,74 @@ export default async function handler(
   Jika salah:
 
   ![alt text](image-6.png)
+
+---
+
+## Tugas Individu
+
+1. Tambahkan lagi produk pada firebase
+
+   ![alt text](image-7.png)
+
+2. Implementasikan ISR dengan revalidate: 10.
+
+   Pada /produk/static sudah terdapat implementasi revalidate setiap 10 detik:
+
+   ```tsx
+   export async function getStaticProps() {
+     const res = await fetch("http://127.0.0.1:3000/api/produk");
+     // const response: ProductType[] = await res.json();
+     const response: { data: ProductType[] } = await res.json();
+
+     // console.log("Data produk yang diambil dari API:", response);
+     return {
+       props: {
+         products: response.data,
+       },
+       revalidate: 10,
+     };
+   }
+   ```
+
+3. Tambahkan endpoint On-Demand Revalidation.
+
+   Sudah dibuat endpoint API untuk On-Demand Revalidation pada /api/revalidate:
+
+   ```tsx
+   if (req.query.data === "produk") {
+     try {
+       await res.revalidate("/produk/static");
+       return res.status(200).json({ revalidated: true });
+     } catch (error) {
+       console.error("Error in API route:", error);
+       res.status(500).send({ revalidated: false });
+     }
+   }
+   ```
+
+4. Tambahkan validasi token.
+
+   Sudah dibuat validasi token pada /api/revalidate:
+
+   ```tsx
+   if (req.query.token !== process.env.REVALIDATE_TOKEN) {
+     return res.status(401).json({
+       revalidated: false,
+       message: "Insert correct token",
+     });
+   }
+   ```
+
+5. Uji dengan:
+
+- Token benar
+
+  ![alt text](image-8.png)
+
+- Token salah
+
+  ![alt text](image-9.png)
+
+- Tanpa token
+
+  ![alt text](image-10.png)
