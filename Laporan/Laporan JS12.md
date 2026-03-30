@@ -78,16 +78,16 @@
 
 2. Tambahkan data baru di database pada firebase
 
-   ![alt text](image.png)
+   ![alt text](imgs/JS12/image.png)
 
 3. Refresh halaman sebelum 10 detik → Data lama.
    - Sebelum 10 detik data yang akan ditampilkan masih data lama
 
-   ![alt text](image-1.png)
+   ![alt text](imgs/JS12/image-1.png)
 
 4. Refresh setelah 10 detik → Data baru muncul.
 
-   ![alt text](image-2.png)
+   ![alt text](imgs/JS12/image-2.png)
 
 ---
 
@@ -155,11 +155,11 @@ export default async function handler(
 
 - Uji coba menambahkan parameter dan value pada url http://localhost:3000/api/revalidate?data=produk maka akan muncul true dan sesuai dengan kondisi (req.query.data ===”produk”)
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS12/image-3.png)
 
 - Uji coba dengan url http://localhost:3000/api/revalidate?data=
 
-  ![alt text](image-4.png)
+  ![alt text](imgs/JS12/image-4.png)
 
 ### Bagian 3 – Tambahkan Token Security
 
@@ -187,11 +187,11 @@ export default async function handler(
 
   Jika benar:
 
-  ![alt text](image-5.png)
+  ![alt text](imgs/JS12/image-5.png)
 
   Jika salah:
 
-  ![alt text](image-6.png)
+  ![alt text](imgs/JS12/image-6.png)
 
 ---
 
@@ -199,7 +199,7 @@ export default async function handler(
 
 1. Tambahkan lagi produk pada firebase
 
-   ![alt text](image-7.png)
+   ![alt text](imgs/JS12/image-7.png)
 
 2. Implementasikan ISR dengan revalidate: 10.
 
@@ -254,12 +254,31 @@ export default async function handler(
 
 - Token benar
 
-  ![alt text](image-8.png)
+  ![alt text](imgs/JS12/image-8.png)
 
 - Token salah
 
-  ![alt text](image-9.png)
+  ![alt text](imgs/JS12/image-9.png)
 
 - Tanpa token
 
-  ![alt text](image-10.png)
+  ![alt text](imgs/JS12/image-10.png)
+
+---
+
+## Pertanyaan Analisis
+
+1. **Mengapa ISR lebih fleksibel dibanding SSG?**  
+   ISR (Incremental Static Regeneration) lebih fleksibel karena memungkinkan halaman statis diperbarui tanpa harus melakukan build ulang seluruh aplikasi. Dengan ISR, data dapat diperbarui secara berkala atau berdasarkan trigger tertentu, sehingga tetap cepat namun lebih up-to-date dibanding SSG murni.
+
+2. **Apa perbedaan revalidate waktu dan on-demand?**  
+   Revalidate waktu (time-based) adalah pembaruan halaman secara otomatis setelah interval tertentu (misalnya setiap 60 detik). Sedangkan on-demand revalidation dilakukan secara manual melalui API atau trigger tertentu, sehingga halaman hanya diperbarui ketika benar-benar diperlukan.
+
+3. **Mengapa endpoint revalidation harus diamankan?**  
+   Karena endpoint ini dapat memicu pembaruan halaman. Jika tidak diamankan, siapa pun bisa mengaksesnya dan menyebabkan revalidation terus-menerus, yang dapat membebani server atau menyebabkan data tidak konsisten.
+
+4. **Apa risiko jika token tidak digunakan?**  
+   Tanpa token atau autentikasi, endpoint revalidation bisa disalahgunakan oleh pihak tidak bertanggung jawab. Risiko utamanya adalah spam request, beban server meningkat, hingga potensi serangan seperti denial-of-service (DoS).
+
+5. **Kapan ISR lebih cocok dibanding SSR?**  
+   ISR lebih cocok ketika membutuhkan performa tinggi seperti SSG, tetapi data tetap perlu diperbarui secara berkala. Misalnya pada halaman produk, blog, atau katalog yang tidak harus real-time, namun tetap perlu update tanpa rebuild manual.
