@@ -52,4 +52,18 @@
     ```
 
 - Jika menggunakan NextResponse.next() → tidak ada redirect.
-- Jadi masih bisa mengakses ke http://localhost:3000/produk
+- Jadi masih bisa mengakses ke http://localhost:3000/produk:
+
+  ![alt text](image-1.png)
+
+---
+
+## Bagian 3 – Redirect Sederhana
+
+```tsx
+return NextResponse.redirect(new URL("/produk", request.url));
+```
+
+- Semua halaman akan redirect ke home dan error dikarenakan terus menerus loading
+
+  ![alt text](image-2.png)
