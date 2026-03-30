@@ -28,7 +28,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/middleware"  ],
   "exclude": [
     "node_modules"
   ]

@@ -22,19 +22,51 @@ const HalamanLogin = () => {
 
     return (
         <div className={styles.login}>
-            <h1 className="text-3xl font-bold text-blue-600 ">Halaman Login</h1>
-            <div>
-                <label>Username: </label>
-                <input value={username} onChange={(e) => setUsername(e.target.value)} />
+            <div className={styles.container}>
+                <div className={styles.card}>
+                    <h1 className={styles.title}>Halaman Login</h1>
+                    <p className={styles.subtitle}>Masuk ke akun Anda</p>
+                    
+                    <form className={styles.form} onSubmit={(e) => { e.preventDefault(); handlerLogin(); }}>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="username" className={styles.label}>Username</label>
+                            <input 
+                                id="username"
+                                type="text"
+                                className={styles.input}
+                                value={username} 
+                                onChange={(e) => setUsername(e.target.value)}
+                                placeholder="Masukkan username"
+                            />
+                        </div>
+                        
+                        <div className={styles.formGroup}>
+                            <label htmlFor="password" className={styles.label}>Password</label>
+                            <input 
+                                id="password"
+                                type="password" 
+                                className={styles.input}
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Masukkan password"
+                            />
+                        </div>
+
+                        {error && <div className={styles.error}>{error}</div>}
+                        
+                        <button type="submit" className={styles.button}>Login</button>
+                    </form>
+
+                    <div className={styles.divider}></div>
+
+                    <div className={styles.footer}>
+                        <p className={styles.footerText}>Belum punya akun?</p>
+                        <Link href="/auth/register" className={styles.link}>
+                            Daftar sekarang
+                        </Link>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            <button onClick={handlerLogin}>Login</button> <br />
-             <h1 style={{color:"red",border:"1px solid red",borderRadius:"5px",padding:"5px"}}> belum punya akun</h1>
-            <Link href="/auth/register">Ke Halaman Register</Link>
         </div>
     );
 };

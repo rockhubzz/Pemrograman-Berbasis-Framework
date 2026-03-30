@@ -92,3 +92,21 @@ return NextResponse.redirect(new URL("/produk", request.url));
 - Akses halaman lain (stores):
 
   ![alt text](image-4.png)
+
+---
+
+## Bagian 5 – Simulasi Sistem Login
+
+- Modifikasi file middleware.ts
+
+```ts
+if (!auth.isLogin) {
+  return NextResponse.redirect(new URL("/auth/login", request.url));
+} else {
+  return NextResponse.next();
+}
+```
+
+- Jika user langsung mengakses ke alamat http://localhost:3000/produk tidak akan bisa user akan diarahkan ke halaman login
+
+![alt text](<2026-03-30 19-11-19.gif>)
