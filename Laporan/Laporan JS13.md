@@ -67,3 +67,28 @@ return NextResponse.redirect(new URL("/produk", request.url));
 - Semua halaman akan redirect ke home dan error dikarenakan terus menerus loading
 
   ![alt text](image-2.png)
+
+---
+
+## Bagian 4 – Batasi Route Tertentu
+
+- Untuk mengatasi pada bagian 3 maka perlu pembatasan route
+
+  ```tsx
+  export const config = {
+    matcher: ["/about", "/produk"],
+  };
+  ```
+
+- Artinya:
+  - Middleware hanya berlaku untuk /products dan /about
+  - Halaman lain tetap normal
+  - Ketika user mengakses halaman produk dan about maka akan langsung redirect ke halaman home
+
+- Akses halaman produk:
+
+  ![alt text](image-3.png)
+
+- Akses halaman lain (stores):
+
+  ![alt text](image-4.png)
