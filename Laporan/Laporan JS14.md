@@ -174,3 +174,102 @@
     ![alt text](image-7.png)
 
 ---
+
+## Menambahkan Data Tambahan (Full Name)
+
+- Buka file [...nextauth].js dan tambahkan code pada line 22
+
+  ```ts
+  const user: any = {
+    id: "1",
+    email: credentials?.email,
+    password: credentials?.password,
+    fullname: credentials?.fullname,
+  };
+  ```
+
+- Pada callbacks modifikasi codenya menjadi berikut :
+
+  ```ts
+  token.fullname = user.fullname;
+
+  if (token.fullname) {
+    session.user.name = token.fullname;
+  }
+  ```
+
+- Modifikasi navbar.module.scss
+
+  ```css
+  .navbar {
+    width: 100%;
+    height: 70px;
+    padding: 0 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #ffffff;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+  ```
+
+- Modifikasi index.tsx pada folder components/layouts/navbar
+
+  ```tsx
+  import styles from "./navbar.module.css";
+  import { signIn, signOut, useSession } from "next-auth/react";
+
+  const Navbar = () => {
+    const { data }: any = useSession();
+    // const { data: session } = useSession()
+    // console.log("session", session)
+    return (
+      <div className={styles.navbar}>
+        <div className={styles.navbar__brand}>MyApp</div>
+
+        <div className={styles.navbar__right}>
+          {data ? (
+            <>
+              <div className={styles.navbar__user}>
+                Welcome, {data.user?.fullname}
+              </div>
+              <button
+                className={`${styles.navbar__button} ${styles["navbar__button--danger"]}`}
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <button
+              className={`${styles.navbar__button} ${styles["navbar__button--primary"]}`}
+              onClick={() => signIn()}
+            >
+              Sign In
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  export default Navbar;
+  ```
+
+- Jalankan browser pada localhost
+
+  ![alt text](image-8.png)
+
+- Lakukan sign in
+
+  ![alt text](image-5.png)
+
+  ![alt text](image-9.png)
+
+---
