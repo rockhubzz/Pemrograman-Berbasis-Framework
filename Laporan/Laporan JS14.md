@@ -100,3 +100,17 @@
   ```
 
 ---
+
+## Bagian 4 – Tambahkan SessionProvider
+
+- Buka file \_app.tsx dan modifikasi:
+
+  ```tsx
+    import { SessionProvider } from "next-auth/react"
+
+      <SessionProvider session={pageProps.session}>
+          <!-- kode lain -->
+      </SessionProvider>
+  ```
+
+---
