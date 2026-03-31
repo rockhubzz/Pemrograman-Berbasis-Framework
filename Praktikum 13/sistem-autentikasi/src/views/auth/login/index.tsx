@@ -1,24 +1,28 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { setLogin } from "../../../lib/auth";
-import Cookies from "js-cookie";
-// import styles from './login.module.css';
+import { signIn } from "next-auth/react";
 import styles from './login.module.scss';
 
 const HalamanLogin = () => {
     const { push } = useRouter();
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [fullname, setFullname] = useState("");
     const [error, setError] = useState("");
 
-    const handlerLogin = () => {
-        if (username === "user" && password === "password") {
-            setLogin(true);
-            Cookies.set("isLogin", "true");
-            push('/about');
-        } else {
-            setError('Username or password incorrect');
+    const handlerLogin = async () => {
+        const result = await signIn("credentials", {
+            email,
+            password,
+            fullname,
+            redirect: false,
+        });
+
+        if (result?.error) {
+            setError(result.error);
+        } else if (result?.ok) {
+            push('/profile');
         }
     };
 
@@ -31,14 +35,26 @@ const HalamanLogin = () => {
 
                     <form className={styles.form} onSubmit={(e) => { e.preventDefault(); handlerLogin(); }}>
                         <div className={styles.formGroup}>
-                            <label htmlFor="username" className={styles.label}>Username</label>
+                            <label htmlFor="fullname" className={styles.label}>Full Name</label>
                             <input
-                                id="username"
+                                id="fullname"
                                 type="text"
                                 className={styles.input}
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Masukkan username"
+                                value={fullname}
+                                onChange={(e) => setFullname(e.target.value)}
+                                placeholder="Masukkan nama lengkap"
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label htmlFor="email" className={styles.label}>Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                className={styles.input}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Masukkan email"
                             />
                         </div>
 

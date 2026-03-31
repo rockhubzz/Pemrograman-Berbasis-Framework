@@ -273,3 +273,97 @@
   ![alt text](image-9.png)
 
 ---
+
+## Proteksi Halaman Profile
+
+- Buat Halaman Profile
+  - Modifikasi file pages/profile/index.tsx
+
+    ```tsx
+    <div>
+      <h1>Halaman Profile</h1>
+      <br />
+      <h1>Selamat Datang {data?.user?.fullname}</h1>
+    </div>
+    ```
+
+  - jalankan browser
+
+    ![alt text](image-10.png)
+
+- Buat Middleware Authorization
+  - Buat file withAuth.ts dan folder dengan nama middleware di src
+
+    ![alt text](image-11.png)
+
+  - Modifikasi withAuth.ts
+
+    ```ts
+    import { getToken } from "next-auth/jwt";
+    import {
+      NextFetchEvent,
+      NextMiddleware,
+      NextRequest,
+      NextResponse,
+    } from "next/server";
+
+    export default function withAuth(
+      middleware: NextMiddleware,
+      requireAuth: string[] = [],
+    ) {
+      return async (req: NextRequest, next: NextFetchEvent) => {
+        const pathname = req.nextUrl.pathname;
+
+        if (requireAuth.includes(pathname)) {
+          const token = await getToken({
+            req,
+            secret: process.env.NEXTAUTH_SECRET,
+          });
+
+          if (!token) {
+            const loginUrl = new URL("/login", req.url);
+            return NextResponse.redirect(loginUrl);
+          }
+        }
+        return middleware(req, next);
+      };
+    }
+    ```
+
+  - Modifikasi file middleware.ts
+
+    ```ts
+    import { getToken } from "next-auth/jwt";
+    import {
+      NextFetchEvent,
+      NextMiddleware,
+      NextRequest,
+      NextResponse,
+    } from "next/server";
+
+    export default function withAuth(
+      middleware: NextMiddleware,
+      requireAuth: string[] = [],
+    ) {
+      return async (req: NextRequest, next: NextFetchEvent) => {
+        const pathname = req.nextUrl.pathname;
+
+        if (requireAuth.includes(pathname)) {
+          const token = await getToken({
+            req,
+            secret: process.env.NEXTAUTH_SECRET,
+          });
+
+          if (!token) {
+            const loginUrl = new URL("/", req.url);
+            return NextResponse.redirect(loginUrl);
+          }
+        }
+        return middleware(req, next);
+      };
+    }
+    ```
+
+  - Jika user mengarahkan ke halaman profile tidak akan bisa, user akan diarahkan ke alamat localhost
+
+    ![alt text](<2026-03-31 12-04-05.gif>)

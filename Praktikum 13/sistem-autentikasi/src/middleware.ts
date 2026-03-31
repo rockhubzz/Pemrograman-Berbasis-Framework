@@ -1,15 +1,27 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
-    const isLogin = request.cookies.get("isLogin")?.value === "true";
+export async function middleware(req: NextRequest) {
+  const pathname = req.nextUrl.pathname;
 
-    if (!isLogin) {
-        return NextResponse.redirect(new URL("/auth/login", request.url));
-    } else {
-        return NextResponse.next();
+  // Protected routes that require authentication
+  const protectedRoutes = ["/profile", "/user"];
+
+  if (protectedRoutes.includes(pathname)) {
+    const token = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET,
+    });
+
+    if (!token) {
+      const loginUrl = new URL("/", req.url);
+      return NextResponse.redirect(loginUrl);
     }
+  }
+
+  return NextResponse.next();
 }
+
 export const config = {
-    matcher: ["/about", "/produk"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
