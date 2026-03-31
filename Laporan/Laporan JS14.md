@@ -29,7 +29,7 @@
 
 - Buat file dan folder pada folder pages/api/auth/[...nextauth].ts
 
-  ![alt text](image.png)
+  ![alt text](imgs/JS14/image.png)
 
 - Modifikasi file […nextauth].ts:
 
@@ -132,15 +132,15 @@
 
 - Jalankan http://localhost:3000/
 
-  ![alt text](image-1.png)
+  ![alt text](imgs/JS14/image-1.png)
 
 - Jika di klik sign in maka akan muncul dan isikan textbox masing. Setelah itu klik button sign in dan setelah diklik maka akan kembali ke halaman localhost
 
-  ![alt text](image-2.png)
+  ![alt text](imgs/JS14/image-2.png)
 
 - Setelah berhasil login maka akan muncul session
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS14/image-3.png)
 
 - Untuk dapat menangkap data pada session maka tambahkan code sebagai berikut :
 
@@ -159,19 +159,19 @@
   - Jalankan Kembali npm run dev
   - Jalankan localhost
 
-    ![alt text](image-4.png)
+    ![alt text](imgs/JS14/image-4.png)
 
   - Klik sign in dan isikan textboxnya
 
-    ![alt text](image-5.png)
+    ![alt text](imgs/JS14/image-5.png)
 
   - Maka akan muncul tombol signout
 
-    ![alt text](image-6.png)
+    ![alt text](imgs/JS14/image-6.png)
 
   - Ketika user klik signout maka akan kembali sign in
 
-    ![alt text](image-7.png)
+    ![alt text](imgs/JS14/image-7.png)
 
 ---
 
@@ -264,13 +264,13 @@
 
 - Jalankan browser pada localhost
 
-  ![alt text](image-8.png)
+  ![alt text](imgs/JS14/image-8.png)
 
 - Lakukan sign in
 
-  ![alt text](image-5.png)
+  ![alt text](imgs/JS14/image-5.png)
 
-  ![alt text](image-9.png)
+  ![alt text](imgs/JS14/image-9.png)
 
 ---
 
@@ -289,12 +289,12 @@
 
   - jalankan browser
 
-    ![alt text](image-10.png)
+    ![alt text](imgs/JS14/image-10.png)
 
 - Buat Middleware Authorization
   - Buat file withAuth.ts dan folder dengan nama middleware di src
 
-    ![alt text](image-11.png)
+    ![alt text](imgs/JS14/image-11.png)
 
   - Modifikasi withAuth.ts
 
@@ -366,7 +366,7 @@
 
   - Jika user mengarahkan ke halaman profile tidak akan bisa, user akan diarahkan ke alamat localhost
 
-    ![alt text](<2026-03-31 12-04-05.gif>)
+    ![alt text](<imgs/JS14/2026-03-31 12-04-05.gif>)
 
 ---
 
@@ -376,7 +376,7 @@
 
 Akses /profile
 
-![alt text](<2026-03-31 12-04-05.gif>)
+![alt text](<imgs/JS14/2026-03-31 12-04-05.gif>)
 
 Hasil: Redirect ke home
 
@@ -384,7 +384,7 @@ Hasil: Redirect ke home
 
 Login terlebih dahulu → Akses /profile
 
-![alt text](<2026-03-31 12-08-28.gif>)
+![alt text](<imgs/JS14/2026-03-31 12-08-28.gif>)
 
 Hasil: Bisa masuk
 
@@ -392,7 +392,7 @@ Hasil: Bisa masuk
 
 Klik Sign Out → Akses /profile
 
-![alt text](<2026-03-31 12-10-43.gif>)
+![alt text](<imgs/JS14/2026-03-31 12-10-43.gif>)
 
 Hasil: Tidak bisa masuk
 
@@ -408,15 +408,15 @@ Hasil: Tidak bisa masuk
 6. Dokumentasikan:
    - Screenshot login
 
-     ![alt text](image-12.png)
+     ![alt text](imgs/JS14/image-12.png)
 
    - Screenshot session
 
-     ![alt text](image-13.png)
+     ![alt text](imgs/JS14/image-13.png)
 
    - Screenshot redirect middleware
 
-     ![alt text](<2026-03-31 12-04-05.gif>)
+     ![alt text](<imgs/JS14/2026-03-31 12-04-05.gif>)
 
 ---
 
