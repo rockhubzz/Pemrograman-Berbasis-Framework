@@ -395,3 +395,25 @@ Klik Sign Out → Akses /profile
 ![alt text](<2026-03-31 12-10-43.gif>)
 
 Hasil: Tidak bisa masuk
+
+---
+
+## Tugas Praktikum
+
+1. Implementasikan login menggunakan Credentials Provider.
+2. Tambahkan field full name.
+3. Tampilkan full name setelah login.
+4. Buat halaman profile.
+5. Lindungi halaman profile dengan middleware.
+6. Dokumentasikan:
+   - Screenshot login
+
+     ![alt text](image-12.png)
+
+   - Screenshot session
+
+     ![alt text](image-13.png)
+
+   - Screenshot redirect middleware
+
+     ![alt text](<2026-03-31 12-04-05.gif>)
