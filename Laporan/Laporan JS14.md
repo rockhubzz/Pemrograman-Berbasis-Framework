@@ -86,3 +86,17 @@
 
   export default NextAuth(authOptions);
   ```
+
+---
+
+## Bagian 3 – Tambahkan Secret
+
+- Buka file .env.local dan tambahkan code pada line 12
+  - NEXTAUTH_SECRET=RANDOM_BASE64_STRING
+  - Untuk mendapatkan nilai RANDOM_BASE64_STRING gunakan generator RANDOM_BASE64_STRING seperti https://www.convertsimple.com/random-base64-generator/
+
+  ```env
+  NEXTAUTH_SECRET=RANDOM_BASE64_STRING
+  ```
+
+---
