@@ -367,3 +367,31 @@
   - Jika user mengarahkan ke halaman profile tidak akan bisa, user akan diarahkan ke alamat localhost
 
     ![alt text](<2026-03-31 12-04-05.gif>)
+
+---
+
+## Pengujian
+
+### Uji 1 – Belum Login
+
+Akses /profile
+
+![alt text](<2026-03-31 12-04-05.gif>)
+
+Hasil: Redirect ke home
+
+### Uji 2 – Sudah Login
+
+Login terlebih dahulu → Akses /profile
+
+![alt text](<2026-03-31 12-08-28.gif>)
+
+Hasil: Bisa masuk
+
+### Uji 3 – Logout
+
+Klik Sign Out → Akses /profile
+
+![alt text](<2026-03-31 12-10-43.gif>)
+
+Hasil: Tidak bisa masuk
