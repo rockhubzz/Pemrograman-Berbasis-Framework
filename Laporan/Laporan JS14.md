@@ -417,3 +417,22 @@ Hasil: Tidak bisa masuk
    - Screenshot redirect middleware
 
      ![alt text](<2026-03-31 12-04-05.gif>)
+
+---
+
+## Pertanyaan Analisis
+
+1. **Mengapa session menggunakan JWT?**  
+   JWT (JSON Web Token) digunakan karena bersifat stateless, sehingga server tidak perlu menyimpan session di database. Token dapat menyimpan informasi user dan diverifikasi setiap request, membuatnya lebih efisien dan mudah di-scale.
+
+2. **Apa perbedaan authorize() dan callback jwt()?**  
+   authorize() digunakan saat proses login untuk memvalidasi kredensial user (misalnya email dan password). Sedangkan callback jwt() digunakan setelah login untuk mengatur atau menambahkan data ke dalam token JWT yang akan digunakan pada session.
+
+3. **Mengapa middleware perlu getToken()?**  
+   Middleware menggunakan getToken() untuk membaca dan memverifikasi JWT dari request. Dengan ini, middleware dapat mengetahui apakah user sudah login atau belum sebelum memberikan akses ke halaman tertentu.
+
+4. **Apa risiko jika NEXTAUTH_SECRET tidak digunakan?**  
+   Tanpa NEXTAUTH_SECRET, token JWT tidak memiliki kunci enkripsi yang aman. Hal ini bisa menyebabkan token mudah dipalsukan atau dimanipulasi, sehingga berisiko terhadap keamanan sistem.
+
+5. **Apa perbedaan autentikasi dan otorisasi dalam sistem ini?**  
+   Autentikasi adalah proses memastikan identitas user (misalnya login). Sedangkan otorisasi adalah proses menentukan apakah user tersebut memiliki hak akses ke resource tertentu setelah berhasil login.
