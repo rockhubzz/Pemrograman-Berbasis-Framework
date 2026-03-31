@@ -114,3 +114,63 @@
   ```
 
 ---
+
+## Bagian 5 – Tambahkan Tombol Login & Logout
+
+- Buka index.tsx pada folder component/navbar:
+- Modifikasi file index.tsx pada line 10 dan 2
+
+  ```tsx
+  <button onClick={() => signIn()}>Sign In</button>
+  ```
+
+- Buka file file navbar.module.scss tambahkan code pada line 9
+
+  ```css
+  justify-content: space-between;
+  ```
+
+- Jalankan http://localhost:3000/
+
+  ![alt text](image-1.png)
+
+- Jika di klik sign in maka akan muncul dan isikan textbox masing. Setelah itu klik button sign in dan setelah diklik maka akan kembali ke halaman localhost
+
+  ![alt text](image-2.png)
+
+- Setelah berhasil login maka akan muncul session
+
+  ![alt text](image-3.png)
+
+- Untuk dapat menangkap data pada session maka tambahkan code sebagai berikut :
+
+  ```tsx
+      const { data } = useSession()
+
+        <div className="big">navbar Component </div>
+        {data ? (
+            <button onClick={() => signOut()}>Sign Out</button>
+        ) : (
+            <button onClick={() => signIn()}>Sign In</button>
+        )}
+  ```
+
+- Uji coba sign in dan sign out
+  - Jalankan Kembali npm run dev
+  - Jalankan localhost
+
+    ![alt text](image-4.png)
+
+  - Klik sign in dan isikan textboxnya
+
+    ![alt text](image-5.png)
+
+  - Maka akan muncul tombol signout
+
+    ![alt text](image-6.png)
+
+  - Ketika user klik signout maka akan kembali sign in
+
+    ![alt text](image-7.png)
+
+---
