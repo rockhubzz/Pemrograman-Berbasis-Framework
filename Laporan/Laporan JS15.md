@@ -543,3 +543,46 @@ Hasil:
 ![alt text](image-9.png)
 
 405 Method Not Allowed
+
+---
+
+## Tugas Praktikum
+
+1. Implementasikan register terhubung database.
+2. Tambahkan validasi:
+   - Email wajib
+
+     ![alt text](image-10.png)
+
+   - Password minimal 6 karakter
+
+     ![alt text](image-11.png)
+
+3. Tambahkan role default "member".
+
+   Pada servicefirebase.ts modifikasi:
+
+   ```ts
+   userData.role = "member";
+   ```
+
+   Sehingga saat register user baru akan memiliki role member pada database:
+
+   ![alt text](image-12.png)
+
+4. Tampilkan pesan error di UI.
+
+![alt text](image-13.png)
+
+5. Screenshot hasil:
+   - Register sukses
+
+     ![alt text](image-14.png)
+
+   - Email sudah ada
+
+     ![alt text](image-13.png)
+
+   - Database Firestore
+
+     ![alt text](image-15.png)

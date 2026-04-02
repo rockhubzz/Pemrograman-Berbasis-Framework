@@ -7,9 +7,11 @@ const TampilanRegister = () => {
 const [isLoading, setIsLoading] = useState(false);
 const { push } = useRouter();
 const [error, setError] = useState("");
+const [success, setSuccess] = useState("");
 
 const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     setError("");
+    setSuccess("");
     setIsLoading(true);
     event.preventDefault();
     const form = event.currentTarget;
@@ -17,6 +19,20 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const email = formData.get("email") as string;
     const fullname = formData.get("Fullname") as string;
     const password = formData.get("Password") as string;
+
+    // Validation
+    if (!email || email.trim() === "") {
+      setError("Email must be filled");
+      setIsLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must have at least 6 characters");
+      setIsLoading(false);
+      return;
+    }
+
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
@@ -29,9 +45,11 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     // console.log(result);
     if (response.status === 200) {
       form.reset();
-      // event.currentTarget.reset();
       setIsLoading(false);
-      push("/auth/login");
+      setSuccess("Registration successful! Redirecting to login...");
+      setTimeout(() => {
+        push("/auth/login");
+      }, 2000);
     } else {
       setIsLoading(false);
       setError(
@@ -42,6 +60,7 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   return (
     <div className={style.register}>
         {error && <p className={style.register__error}>{error}</p>}
+        {success && <p className={style.register__success}>{success}</p>}
       <h1 className={style.register__title}>Halaman Register</h1>
       <div className={style.register__form}>
         <form onSubmit={handleSubmit}>
@@ -58,6 +77,7 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
               name="email"
               placeholder="Email"
               className={style.register__form_item__input}
+              required
             />
           </div>
 
@@ -90,6 +110,8 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
               name="Password"
               placeholder="Password"
               className={style.register__form_item__input}
+              minLength={6}
+              required
             />
           </div>
 
