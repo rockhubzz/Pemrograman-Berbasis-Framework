@@ -4,7 +4,7 @@
 
 - Buat folder pada views dengan nama register dan tambahkan 2 file yaitu index.tsx dan register.module.scss
 
-  ![alt text](image.png)
+  ![alt text](imgs/JS15/image.png)
 
 - Modifikasi file index.tsx ( pada folder views/auth/register/index.tsx)
 
@@ -210,7 +210,7 @@
 
 - Jalankan browsernya http://localhost:3000/auth/register sehingga tampilan sebagai berikut
 
-  ![alt text](image-1.png)
+  ![alt text](imgs/JS15/image-1.png)
 
 ---
 
@@ -289,7 +289,7 @@
 
 - Buat file register.ts pada folder api
 
-  ![alt text](image-2.png)
+  ![alt text](imgs/JS15/image-2.png)
 
 - Modifikasi file register.ts
 
@@ -361,9 +361,9 @@
 
 - Buka browser http://localhost:3000/auth/register isikan data dan klik register. Jika berhasil maka akan masuk ke menu login
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS15/image-3.png)
 
-  ![alt text](image-4.png)
+  ![alt text](imgs/JS15/image-4.png)
 
 ---
 
@@ -439,11 +439,11 @@
 
 - Jalankan browser http://localhost:3000/auth/register dan input data setelah itu klik register
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS15/image-3.png)
 
 - Buka pada firebase jika berhasil maka data register akan masuk
 
-  ![alt text](image-5.png)
+  ![alt text](imgs/JS15/image-5.png)
 
 - Jika user memasukkan data yang sama sistem tidak akan memproses tetapi permasalahannya user memasukkan data yang sama tidak ada pemberitahuan pada layar maka dari itu perlu ada perubahan pada code index.tsx pada folder views/auth/register
 
@@ -485,7 +485,7 @@ setError(
 
 - Jika berhasil maka hasilnya seperti berikut
 
-  ![alt text](image-6.png)
+  ![alt text](imgs/JS15/image-6.png)
 
 - Tambakan loading dengan menambahkan kode pada index.tsx
 
@@ -496,7 +496,7 @@ setError(
 
 - Jika berhasil maka hasilnya akan muncul loading saat klik register
 
-  ![alt text](image-7.png)
+  ![alt text](imgs/JS15/image-7.png)
 
 ---
 
@@ -508,11 +508,11 @@ Input:
 
 - Email baru
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS15/image-3.png)
 
 Hasil:
 
-![alt text](image-5.png)
+![alt text](imgs/JS15/image-5.png)
 
 - Data tersimpan di Firestore
 - Password ter-hash
@@ -527,11 +527,11 @@ Input:
 Hasil:
 
 - Error 400
-  ![alt text](image-8.png)
+  ![alt text](imgs/JS15/image-8.png)
 
 - Message: Email already exists
 
-  ![alt text](image-6.png)
+  ![alt text](imgs/JS15/image-6.png)
 
 ### Uji 3 – Method GET
 
@@ -540,7 +540,7 @@ Akses:
 
 Hasil:
 
-![alt text](image-9.png)
+![alt text](imgs/JS15/image-9.png)
 
 405 Method Not Allowed
 
@@ -552,11 +552,11 @@ Hasil:
 2. Tambahkan validasi:
    - Email wajib
 
-     ![alt text](image-10.png)
+     ![alt text](imgs/JS15/image-10.png)
 
    - Password minimal 6 karakter
 
-     ![alt text](image-11.png)
+     ![alt text](imgs/JS15/image-11.png)
 
 3. Tambahkan role default "member".
 
@@ -568,21 +568,40 @@ Hasil:
 
    Sehingga saat register user baru akan memiliki role member pada database:
 
-   ![alt text](image-12.png)
+   ![alt text](imgs/JS15/image-12.png)
 
 4. Tampilkan pesan error di UI.
 
-![alt text](image-13.png)
+![alt text](imgs/JS15/image-13.png)
 
 5. Screenshot hasil:
    - Register sukses
 
-     ![alt text](image-14.png)
+     ![alt text](imgs/JS15/image-14.png)
 
    - Email sudah ada
 
-     ![alt text](image-13.png)
+     ![alt text](imgs/JS15/image-13.png)
 
    - Database Firestore
 
-     ![alt text](image-15.png)
+     ![alt text](imgs/JS15/image-15.png)
+
+---
+
+## Pertanyaan Analisis
+
+1. **Mengapa password harus di-hash?**  
+   Password harus di-hash agar tidak disimpan dalam bentuk plaintext di database. Dengan hashing, jika database bocor, password asli pengguna tidak langsung diketahui. Ini meningkatkan keamanan karena hash sulit untuk dikembalikan ke bentuk semula.
+
+2. **Apa perbedaan addDoc dan setDoc?**  
+   addDoc digunakan untuk menambahkan dokumen baru dengan ID yang dibuat otomatis oleh database. Sedangkan setDoc digunakan untuk membuat atau menimpa dokumen dengan ID yang sudah ditentukan secara manual.
+
+3. **Mengapa perlu validasi method POST?**  
+   Validasi method POST diperlukan untuk memastikan endpoint hanya menerima request yang sesuai. Ini mencegah akses tidak valid dari method lain seperti GET atau PUT yang bisa menyebabkan error atau potensi celah keamanan.
+
+4. **Apa risiko jika email tidak dicek unik?**  
+   Jika email tidak unik, bisa terjadi duplikasi akun dengan email yang sama. Hal ini dapat menyebabkan konflik data, kebingungan saat login, dan potensi penyalahgunaan akun.
+
+5. **Apa fungsi role pada user?**  
+   Role digunakan untuk mengatur hak akses pengguna dalam sistem. Dengan adanya role (seperti admin atau user), sistem dapat menentukan fitur atau halaman mana yang boleh diakses oleh masing-masing pengguna.
