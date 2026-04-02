@@ -366,3 +366,136 @@
   ![alt text](image-4.png)
 
 ---
+
+## Bagian 3 – Install bcrypt
+
+- npm install bcrypt --force
+
+  ```shell
+  PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 14\auth-register> npm install bcrypt
+
+  added 3 packages, and audited 508 packages in 11s
+
+  162 packages are looking for funding
+  run `npm fund` for details
+
+  7 vulnerabilities (3 moderate, 4 high)
+
+  To address issues that do not require attention, run:
+  npm audit fix
+
+  To address all issues, run:
+  npm audit fix --force
+
+  Run `npm audit` for details.
+  ```
+
+- npm install --save-dev @types/bcrypt –force
+
+  ```shell
+  PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 14\auth-register> npm install --save-dev @types/bcrypt
+
+  added 1 package, and audited 509 packages in 7s
+
+  162 packages are looking for funding
+  run `npm fund` for details
+
+  7 vulnerabilities (3 moderate, 4 high)
+
+  To address issues that do not require attention, run:
+  npm audit fix
+
+  To address all issues, run:
+  npm audit fix --force
+
+  Run `npm audit` for details.
+  ```
+
+- Buka file servicefirebase.ts pada folder src/utils/db dan modifikasi
+
+  ```ts
+  } else {
+      userData.password = await bcrypt.hash(userData.password, 10);
+      userData.role = "user";
+      await addDoc(collection(db, "users"), userData)
+      .then(() => {
+      callback({
+          status: "success",
+          message: "User registered successfully",
+      });
+      })
+      .catch((error) => {
+      callback({
+          status: "error",
+          message: "Failed to register user: " + error.message,
+      });
+      });
+      // callback({
+      //   status: "error",
+      //   message: "User already exists",
+      // });
+  }
+  ```
+
+- Jalankan browser http://localhost:3000/auth/register dan input data setelah itu klik register
+
+  ![alt text](image-3.png)
+
+- Buka pada firebase jika berhasil maka data register akan masuk
+
+  ![alt text](image-5.png)
+
+- Jika user memasukkan data yang sama sistem tidak akan memproses tetapi permasalahannya user memasukkan data yang sama tidak ada pemberitahuan pada layar maka dari itu perlu ada perubahan pada code index.tsx pada folder views/auth/register
+
+```tsx
+// ...
+
+setError(
+  response.status === 400 ? "Email already exists" : "An error occurred",
+);
+
+// ...
+
+{
+  error && <p className={style.register__error}>{error}</p>;
+}
+
+// ...
+
+<button
+  type="submit"
+  className={style.register_form_item__button}
+  disabled={isLoading}
+>
+  {isLoading ? "Loading..." : "Register"}
+</button>;
+
+// ...
+```
+
+- Modifikasi juga pada register.module.scss
+
+  ```scss
+  &__error {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  ```
+
+- Jika berhasil maka hasilnya seperti berikut
+
+  ![alt text](image-6.png)
+
+- Tambakan loading dengan menambahkan kode pada index.tsx
+
+  ```tsx
+  setError("");
+  setIsLoading(true);
+  ```
+
+- Jika berhasil maka hasilnya akan muncul loading saat klik register
+
+  ![alt text](image-7.png)
+
+---
