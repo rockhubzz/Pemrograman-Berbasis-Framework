@@ -499,3 +499,47 @@ setError(
   ![alt text](image-7.png)
 
 ---
+
+## Pengujian
+
+### Uji 1 – Register Baru
+
+Input:
+
+- Email baru
+
+  ![alt text](image-3.png)
+
+Hasil:
+
+![alt text](image-5.png)
+
+- Data tersimpan di Firestore
+- Password ter-hash
+- Redirect ke login
+
+### Uji 2 – Email Sudah Ada
+
+Input:
+
+- Email yang sama
+
+Hasil:
+
+- Error 400
+  ![alt text](image-8.png)
+
+- Message: Email already exists
+
+  ![alt text](image-6.png)
+
+### Uji 3 – Method GET
+
+Akses:
+/api/register
+
+Hasil:
+
+![alt text](image-9.png)
+
+405 Method Not Allowed
