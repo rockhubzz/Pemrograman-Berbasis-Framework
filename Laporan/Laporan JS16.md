@@ -323,3 +323,59 @@
   ![alt text](image-8.png)
 
 ---
+
+## Pengujian
+
+### Uji 1 – Login Valid
+
+Input:
+
+- Email benar
+- Password benar
+
+  ![alt text](image-9.png)
+
+Hasil:
+
+- Login berhasil
+- Redirect sesuai callbackUrl
+
+  ![alt text](image-4.png)
+
+### Uji 2 – Password Salah
+
+Input:
+
+- Email benar
+- Password salah
+
+Hasil:
+
+![alt text](image-10.png)
+
+- Error message tampil
+- Tidak login
+
+### Uji 3 – Akses Admin sebagai User
+
+- Login sebagai role user
+- Akses /admin
+
+Hasil:
+
+- Redirect ke home
+
+![alt text](<2026-04-04 14-08-31.gif>)
+
+### Uji 4 – Akses Admin sebagai Admin
+
+- Login sebagai role admin
+- Akses /admin
+
+Hasil:
+
+![alt text](<2026-04-04 14-12-21.gif>)
+
+- Bisa masuk halaman admin
+
+---

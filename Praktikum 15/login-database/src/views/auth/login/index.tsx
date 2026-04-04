@@ -29,7 +29,14 @@ const handleSubmit = async (event: any) => {
         push(callbackUrl);
       } else {
         setIsLoading(false);
-        setError(res?.error || "Login failed");
+        // Map error codes to user-friendly messages
+        const errorMessages: { [key: string]: string } = {
+          CredentialsSignin: "Email or password is incorrect",
+          AccessDenied: "Access denied",
+          SessionCallback: "Session error",
+          Default: "Unable to sign in",
+        };
+        setError(errorMessages[res.error] || errorMessages.Default);
       }
     } catch (error) {
       setIsLoading(false);
