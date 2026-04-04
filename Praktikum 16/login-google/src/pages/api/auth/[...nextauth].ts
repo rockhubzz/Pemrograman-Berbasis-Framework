@@ -2,6 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { signIn } from "@/utils/db/servicefirebase"
 import bcrypt from "bcrypt"
+import GoogleProvider from "next-auth/providers/google"
 
 
 export const authOptions: NextAuthOptions = {
@@ -42,6 +43,10 @@ providers: [
         return null;
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
   ],
 callbacks: {
   async jwt({ token, account, profile, user }: any) {
@@ -49,6 +54,19 @@ callbacks: {
       token.email = user.email;
       token.fullname = user.fullname;
       token.role = user.role;
+    }
+
+    if (account?.provider === "google" && profile) {
+      const data = {
+        fullname: user.name,
+        email: user.email,
+        image: user.image,
+        type: account.provider,
+      };
+      token.fullname = data.fullname;
+      token.email = data.email;
+      token.image = data.image;
+      token.type = data.type;
     }
     // console.log("jwt callback", { token, account, profile, user })
     return token;
@@ -63,6 +81,12 @@ callbacks: {
     }
     if (token.role) {
       session.user.role = token.role;
+    }
+    if (token.image) {
+      session.user.image = token.image;
+    }
+    if (token.type) {
+      session.user.type = token.type;
     }
     // console.log("session callback", { session, token })
     return session;

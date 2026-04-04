@@ -62,3 +62,45 @@
    ![alt text](image-12.png)
 
 ---
+
+## Konfigurasi Google Provider di NextAuth dan Handle Callback JWT & Session
+
+1. Buka file [...nextauth].ts pada folder api/auth dan modifikasi menjadi berikut
+
+   ```ts
+    import GoogleProvider from "next-auth/providers/google"
+
+    // ...
+
+       GoogleProvider({
+       clientId: process.env.GOOGLE_CLIENT_ID || "",
+       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+       }),
+
+       // ...
+
+    if (account?.provider === "google" && profile) {
+      const data = {
+        fullname: user.name,
+        email: user.email,
+        image: user.image,
+        type: account.provider,
+      };
+      token.fullname = data.fullname;
+      token.email = data.email;
+      token.image = data.image;
+      token.type = data.type;
+    }
+
+    // ...
+
+    if (token.image) {
+      session.user.image = token.image;
+    }
+    if (token.type) {
+      session.user.type = token.type;
+    }
+
+   ```
+
+---
