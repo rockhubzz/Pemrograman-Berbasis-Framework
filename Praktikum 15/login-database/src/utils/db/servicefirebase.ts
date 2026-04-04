@@ -23,7 +23,7 @@ export async function retrieveProducts(collectionName: string) {
   return data;
 }
 
-export async function retrieveDataByID(collectionName: string, id: string) {
+export async function retrieveProductById(collectionName: string, id: string) {
   const snapshot = await getDoc(doc(db, collectionName, id));
   const data = snapshot.data();
   return data;

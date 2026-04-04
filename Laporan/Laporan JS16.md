@@ -274,3 +274,52 @@
   Tujuannya: Setelah login, user kembali ke halaman sebelumnya.
 
 ---
+
+## BAGIAN 6 – Membuat halaman Admin dan authorize
+
+- Buat halaman admin
+
+  ![alt text](image-6.png)
+
+- Pada index.tsx tambahkan code berikut
+
+  ```tsx
+  const HalamanAdmin = () => {
+    return (
+      <div>
+        <div className="admin">
+          <h1>Halaman Admin</h1>
+          <p>
+            Selamat datang di halaman admin! Anda memiliki akses penuh ke semua
+            fitur dan data di aplikasi ini. Di sini, Anda dapat mengelola
+            pengguna, melihat laporan, dan melakukan tugas administratif
+            lainnya. Pastikan untuk menggunakan hak akses Anda dengan bijak dan
+            menjaga keamanan data pengguna.
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  export default HalamanAdmin;
+  ```
+
+- Modifikasi withAuth.ts
+
+  ```ts
+  if (token.role !== "admin" && hanyaAdmin.includes(pathname)) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+  ```
+
+- Jalankan browser localhost:3000/produk dan pada status sudah login. Rubah urlnya menjadi http://localhost:3000/admin maka user akan diarahkan ke localhost. Pada intinya role selain admin tidak bisa mengakses
+
+  ![alt text](<2026-04-04 13-55-04.gif>)
+
+- Untuk mencoba halaman admin rubah role pada firebase pada salah satu akun dan jalankan http://localhost:3000/admin
+
+  ![alt text](image-7.png)
+
+  ![alt text](image-8.png)
+
+---
