@@ -1,9 +1,9 @@
-import HalamanLogin from "@/views/auth/login";
+import TampilanLogin from "@/views/auth/login";
 
 const Login = () => {
     return (
         <>
-            <HalamanLogin />
+            <TampilanLogin />
         </>
      );
 }

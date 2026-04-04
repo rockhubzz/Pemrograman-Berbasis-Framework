@@ -1,92 +1,92 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import style from "../../auth/login/login.module.scss";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
-import styles from './login.module.scss';
 
-const HalamanLogin = () => {
-    const { push } = useRouter();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [fullname, setFullname] = useState("");
-    const [error, setError] = useState("");
+const TampilanLogin = () => {
+const [isLoading, setIsLoading] = useState(false);
+const { push, query } = useRouter();
 
-    const handlerLogin = async () => {
-        const result = await signIn("credentials", {
-            email,
-            password,
-            fullname,
-            redirect: false,
-        });
+const callbackUrl: any = query.callbackUrl || "/";
+const [error, setError] = useState("");
 
-        if (result?.error) {
-            setError(result.error);
-        } else if (result?.ok) {
-            push('/profile');
-        }
-    };
+const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    setError("");
+    setIsLoading(true);
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: event.target.email.value,
+        password: event.target.password.value,
+        callbackUrl,
+      });
 
-    return (
-        <div className={styles.login}>
-            <div className={styles.container}>
-                <div className={styles.card}>
-                    <h1 className={styles.title}>Halaman Login</h1>
-                    <p className={styles.subtitle}>Masuk ke akun Anda</p>
+      // console.log("signIn response:", res);
+      if (!res?.error) {
+        setIsLoading(false);
+        push(callbackUrl);
+      } else {
+        setIsLoading(false);
+        setError(res?.error || "Login failed");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError("wrong email or password");
+    }
+  };
+  return (
+    <div className={style.login}>
+        {error && <p className={style.login__error}>{error}</p>}
+      <h1 className={style.login__title}>Halaman login</h1>
+      <div className={style.login__form}>
+        <form onSubmit={handleSubmit}>
+          <div className={style.login__form_item}>
+            <label
+              htmlFor="email"
+              className={style.login__form_item__label}
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              className={style.login__form_item__input}
+              required
+            />
+          </div>
 
-                    <form className={styles.form} onSubmit={(e) => { e.preventDefault(); handlerLogin(); }}>
-                        <div className={styles.formGroup}>
-                            <label htmlFor="fullname" className={styles.label}>Full Name</label>
-                            <input
-                                id="fullname"
-                                type="text"
-                                className={styles.input}
-                                value={fullname}
-                                onChange={(e) => setFullname(e.target.value)}
-                                placeholder="Masukkan nama lengkap"
-                            />
-                        </div>
+          <div className={style.login__form_item}>
+            <label
+              htmlFor="password"
+              className={style.login__form_item__label}
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              className={style.login__form_item__input}
+              required
+            />
+          </div>
 
-                        <div className={styles.formGroup}>
-                            <label htmlFor="email" className={styles.label}>Email</label>
-                            <input
-                                id="email"
-                                type="email"
-                                className={styles.input}
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Masukkan email"
-                            />
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="password" className={styles.label}>Password</label>
-                            <input
-                                id="password"
-                                type="password"
-                                className={styles.input}
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Masukkan password"
-                            />
-                        </div>
-
-                        {error && <div className={styles.error}>{error}</div>}
-
-                        <button type="submit" className={styles.button}>Login</button>
-                    </form>
-
-                    <div className={styles.divider}></div>
-
-                    <div className={styles.footer}>
-                        <p className={styles.footerText}>Belum punya akun?</p>
-                        <Link href="/auth/register" className={styles.link}>
-                            Daftar sekarang
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+          <button type="submit" className={style.login_form_item__button} disabled={isLoading}>
+            {isLoading ? "Loading..." : "login"}
+          </button>
+        </form>
+        <br />
+        <p className={style.login__form_item_text}>
+          tidak punya akun ? <Link href="/auth/register">Ke Halaman Register</Link>
+        </p>
+      </div>
+    </div>
+  );
 };
 
-export default HalamanLogin;
+export default TampilanLogin;
