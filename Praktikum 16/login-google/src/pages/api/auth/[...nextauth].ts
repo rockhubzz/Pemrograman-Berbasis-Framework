@@ -3,6 +3,8 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { signIn } from "@/utils/db/servicefirebase"
 import bcrypt from "bcrypt"
 import GoogleProvider from "next-auth/providers/google"
+import { sign } from "node:crypto"
+import { signInWithGoogle } from "@/utils/db/servicefirebase"
 
 
 export const authOptions: NextAuthOptions = {
@@ -56,18 +58,23 @@ callbacks: {
       token.role = user.role;
     }
 
-    if (account?.provider === "google" && profile) {
+    if (account?.provider === "google") {
       const data = {
         fullname: user.name,
         email: user.email,
         image: user.image,
         type: account.provider,
       };
-      token.fullname = data.fullname;
-      token.email = data.email;
-      token.image = data.image;
-      token.type = data.type;
-    }
+
+      await signInWithGoogle(data, (result: any) => {
+        if (result.status) {
+          token.fullname = result.data.fullname;
+          token.email = result.data.email;
+          token.image = result.data.image;
+          token.type = result.data.type;
+        }
+    });
+  }
     // console.log("jwt callback", { token, account, profile, user })
     return token;
   },

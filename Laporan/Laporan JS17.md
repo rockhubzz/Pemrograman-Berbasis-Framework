@@ -162,3 +162,86 @@
   ![alt text](image-14.png)
 
 ---
+
+## Simpan Data Google ke Database
+
+- Buka file servicefirebase.ts pada folder src/utils/db/ dan tambahkan beberapa kode berikut
+
+  ```ts
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    Firestore,
+    getDoc,
+    doc,
+    query,
+    addDoc,
+    where,
+    updateDoc, // <= tambahan kode
+  } from "firebase/firestore";
+  ```
+
+- Tambahkan juga code berikut
+
+  ```ts
+  export async function signInWithGoogle(userData: any, callback: any) {
+    try {
+      const q = query(
+        collection(db, "users"),
+        where("email", "==", userData.email),
+      );
+
+      const querySnapshot = await getDocs(q);
+      const data: any = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      if (data.length > 0) {
+        // User sudah ada, update data
+        userData.role = data[0].role;
+        await updateDoc(doc(db, "users", data[0].id), userData);
+        callback({
+          status: true,
+          message: "User registered and logged in with Google",
+          data: userData,
+        });
+      } else {
+        // User baru, tambah data
+        userData.role = "member";
+        await addDoc(collection(db, "users"), userData);
+        callback({
+          status: true,
+          message: "User registered and logged in with Google",
+          data: userData,
+        });
+      }
+    } catch (error: any) {
+      // Tangani error di sini
+      callback({
+        status: false,
+        message: "Failed to register user with Google",
+      });
+    }
+  }
+  ```
+
+- Panggil Service di JWT Callback buka file […nextAuth].ts
+
+  ```ts
+  await signInWithGoogle(data, (result: any) => {
+    if (result.status) {
+      token.fullname = result.data.fullname;
+      token.email = result.data.email;
+      token.image = result.data.image;
+      token.type = result.data.type;
+    }
+  });
+  ```
+
+- Jalankan browser dan login menggunakan akun google setelah cek di firebase, jika data akun googlenya masuk ke database maka anda telah berhasil
+
+  ![alt text](image-15.png)
+
+---

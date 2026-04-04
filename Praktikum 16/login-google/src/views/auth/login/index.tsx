@@ -29,7 +29,14 @@ const TampilanLogin = () => {
                 push(callbackUrl);
             } else {
                 setIsLoading(false);
-                setError(res?.error || "Login failed");
+                const errorMessages: { [key: string]: string } = {
+                  CredentialsSignin: "Email or password is incorrect",
+                  AccessDenied: "Access denied",
+                  SessionCallback: "Session error",
+                  Default: "Unable to sign in",
+                };
+
+                setError(errorMessages[res?.error] || "Login failed");
             }
         } catch (error) {
             setIsLoading(false);
