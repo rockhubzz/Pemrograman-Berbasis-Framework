@@ -104,3 +104,61 @@
    ```
 
 ---
+
+## Tambahkan Button Login Google
+
+1. Modifikasi file index.tsx pada folder views/auth/login
+
+   ```tsx
+   <button
+     onClick={() => signIn("google", { callbackUrl, redirect: false })}
+     className={style.login_form_item__button}
+     disabled={isLoading}
+   >
+     {isLoading ? "Loading..." : "Sign in with Google"}
+   </button>
+   ```
+
+2. Jalankan browser localhost:3000/auth/login masuk melalui sign in with google.Jika berhasil maka akan terhubung dengan akun google.
+
+   ![alt text](image-13.png)
+
+3. Menampilkan image dari google
+   - Buka file index.tsx dan tambahkan code berikut
+
+     ```tsx
+     {
+       data.user?.image && (
+         <img
+           src={data.user.image}
+           alt="User Image"
+           className={styles.navbar__user__image}
+         />
+       );
+     }
+     ```
+
+- Buka file navbar.module.css dan tambahkan code berikut
+
+  ```css
+  .navbar__user__image {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .navbar__user__image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+  ```
+
+- Jika berhasil maka tampillannya akan seperti berikut
+
+  ![alt text](image-14.png)
+
+---
