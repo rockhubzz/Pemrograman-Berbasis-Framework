@@ -50,3 +50,15 @@
    ![alt text](image-9.png)
 
    ![alt text](image-10.png)
+
+---
+
+## Tambahkan Environment Variables
+
+1. Copy dan paste client ID dan Client secret ke .env
+
+   ![alt text](image-11.png)
+
+   ![alt text](image-12.png)
+
+---
