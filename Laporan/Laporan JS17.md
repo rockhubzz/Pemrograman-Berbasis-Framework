@@ -245,3 +245,20 @@
   ![alt text](image-15.png)
 
 ---
+
+## Analisis & Diskusi
+
+1. **Apa perbedaan login credential dan login Google?**  
+   Login credential menggunakan email dan password yang dibuat dan dikelola sendiri oleh sistem. Sedangkan login Google menggunakan akun pihak ketiga (OAuth) sehingga proses autentikasi dilakukan oleh Google tanpa perlu menyimpan password di aplikasi.
+
+2. **Mengapa data Google tetap perlu disimpan ke database?**  
+   Data dari Google tetap perlu disimpan agar aplikasi memiliki kontrol terhadap user, seperti menyimpan role, preferensi, atau data tambahan lainnya. Ini juga memudahkan integrasi dengan fitur internal aplikasi.
+
+3. **Apa fungsi JWT callback?**  
+   JWT callback digunakan untuk memodifikasi atau menambahkan data ke dalam token saat proses autentikasi. Data seperti user id, email, atau role biasanya disimpan di dalam token agar bisa digunakan pada request berikutnya.
+
+4. **Mengapa perlu multi-role?**  
+   Multi-role memungkinkan sistem mengatur hak akses yang berbeda untuk setiap jenis user, seperti admin, user biasa, atau moderator. Ini penting untuk membatasi akses dan menjaga keamanan serta struktur aplikasi.
+
+5. **Apa risiko jika tidak menyimpan user ke database?**  
+   Aplikasi tidak memiliki kontrol penuh terhadap data user, seperti pengaturan role atau penyimpanan data tambahan. Selain itu, sulit untuk melakukan manajemen user, tracking aktivitas, atau integrasi dengan fitur lain di dalam sistem.
