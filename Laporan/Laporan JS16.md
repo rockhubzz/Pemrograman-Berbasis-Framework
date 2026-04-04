@@ -12,7 +12,7 @@
 
    - Jalankan browser http://localhost:3000/ dan klik sign in maka akan diarahkan ke login
 
-     ![alt text](image.png)
+     ![alt text](imgs/JS16/image.png)
 
 ---
 
@@ -21,7 +21,7 @@
 - Copy paste isi dari register/index.tsx ke file login/index.tsx
 - Copy paste isi dari register/register.module.scss ke file login/login.module.scss
 
-  ![alt text](image-1.png)
+  ![alt text](imgs/JS16/image-1.png)
 
 - Semua text register pada file index.tsx pada folder login diubah menjadi login
 
@@ -72,7 +72,7 @@
 
 - Jalankan browser localhost:3000/auth/login. Tampilannya akan sama dengan register
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS16/image-3.png)
 
 - Pada tampilan login kita tidak perlu hapus fullname jadi pada folder views/auth/login/index.tsx hapus fullname
 
@@ -98,7 +98,7 @@
 
   Sehingga hasilnya seperti berikut :
 
-  ![alt text](image-2.png)
+  ![alt text](imgs/JS16/image-2.png)
 
 - Buka file index.tsx pada folder views/auth/login dan modifikasi codenya seperti berikut ( Untuk line 64 sampai kebawah tidak ada perubahan )
 
@@ -227,9 +227,9 @@
 
 - Jalankan browser http://localhost:3000/auth/login
 
-  ![alt text](image-5.png)
+  ![alt text](imgs/JS16/image-5.png)
 
-  ![alt text](image-4.png)
+  ![alt text](imgs/JS16/image-4.png)
 
 ---
 
@@ -279,7 +279,7 @@
 
 - Buat halaman admin
 
-  ![alt text](image-6.png)
+  ![alt text](imgs/JS16/image-6.png)
 
 - Pada index.tsx tambahkan code berikut
 
@@ -314,13 +314,13 @@
 
 - Jalankan browser localhost:3000/produk dan pada status sudah login. Rubah urlnya menjadi http://localhost:3000/admin maka user akan diarahkan ke localhost. Pada intinya role selain admin tidak bisa mengakses
 
-  ![alt text](<2026-04-04 13-55-04.gif>)
+  ![alt text](<imgs/JS16/2026-04-04 13-55-04.gif>)
 
 - Untuk mencoba halaman admin rubah role pada firebase pada salah satu akun dan jalankan http://localhost:3000/admin
 
-  ![alt text](image-7.png)
+  ![alt text](imgs/JS16/image-7.png)
 
-  ![alt text](image-8.png)
+  ![alt text](imgs/JS16/image-8.png)
 
 ---
 
@@ -333,14 +333,14 @@ Input:
 - Email benar
 - Password benar
 
-  ![alt text](image-9.png)
+  ![alt text](imgs/JS16/image-9.png)
 
 Hasil:
 
 - Login berhasil
 - Redirect sesuai callbackUrl
 
-  ![alt text](image-4.png)
+  ![alt text](imgs/JS16/image-4.png)
 
 ### Uji 2 – Password Salah
 
@@ -351,7 +351,7 @@ Input:
 
 Hasil:
 
-![alt text](image-10.png)
+![alt text](imgs/JS16/image-10.png)
 
 - Error message tampil
 - Tidak login
@@ -365,7 +365,7 @@ Hasil:
 
 - Redirect ke home
 
-![alt text](<2026-04-04 14-08-31.gif>)
+![alt text](<imgs/JS16/2026-04-04 14-08-31.gif>)
 
 ### Uji 4 – Akses Admin sebagai Admin
 
@@ -374,7 +374,7 @@ Hasil:
 
 Hasil:
 
-![alt text](<2026-04-04 14-12-21.gif>)
+![alt text](<imgs/JS16/2026-04-04 14-12-21.gif>)
 
 - Bisa masuk halaman admin
 
@@ -386,23 +386,23 @@ Hasil:
 
 Pada praktikum bagian 3, telah diimplementasikan database login sehingga hanya akun yang terdaftar pada firebase yang dapat login. Proses login ini didukung dengan servicefirebase.ts pada method signIn() yang memanggil API Firebase untuk mendapatkan user dengan email yang sesuai. Jika ada maka firebase akan mengembalikan akun tersebut, jika tidak maka akan mengembalikan null.
 
-![alt text](<2026-04-04 14-35-25.gif>)
+![alt text](<imgs/JS16/2026-04-04 14-35-25.gif>)
 
 **2. Tambahkan role pada user.**
 
 Pada firebase terdapat field role yang berfungsi untuk membedakan halaman apa saja yang dapat diakses oleh setiap role
 
-![alt text](image-11.png)
+![alt text](imgs/JS16/image-11.png)
 
 **3. Buat halaman:**
 
 - /profile
 
-  ![alt text](image-12.png)
+  ![alt text](imgs/JS16/image-12.png)
 
 - /admin
 
-  ![alt text](image-13.png)
+  ![alt text](imgs/JS16/image-13.png)
 
 **4. Proteksi /admin hanya untuk admin.**
 
@@ -432,8 +432,25 @@ Kode tersebut berfungsi untuk redirect user ke halaman yang ingin diakses sebelu
 
 Contoh ketika user ingin akses /produk saat belum login:
 
-![alt text](<2026-04-04 14-32-18.gif>)
+![alt text](<imgs/JS16/2026-04-04 14-32-18.gif>)
 
 Setelah user berhasil login, tidak redirect ke home namun ke /produk
 
 ---
+
+## Pertanyaan Analisis
+
+1. **Mengapa password harus diverifikasi dengan bcrypt.compare?**  
+   Karena password disimpan dalam bentuk hash, tidak bisa dibandingkan langsung dengan plaintext. bcrypt.compare digunakan untuk mencocokkan password input dengan hash yang tersimpan secara aman.
+
+2. **Mengapa role disimpan di token?**  
+   Role disimpan di token agar informasi hak akses bisa langsung digunakan tanpa perlu query database setiap request. Ini membuat proses autentikasi dan otorisasi lebih cepat dan efisien.
+
+3. **Apa fungsi callbackUrl?**  
+   callbackUrl digunakan untuk menentukan halaman tujuan setelah proses login berhasil. Biasanya digunakan untuk mengarahkan user kembali ke halaman yang sebelumnya ingin diakses.
+
+4. **Mengapa middleware penting untuk security?**  
+   Middleware memastikan setiap request diperiksa sebelum mengakses halaman atau resource. Dengan begitu, hanya user yang memiliki izin yang dapat melanjutkan, sehingga meningkatkan keamanan aplikasi.
+
+5. **Apa risiko jika role tidak dicek di middleware?**  
+   User bisa mengakses halaman atau fitur yang seharusnya tidak diizinkan. Hal ini dapat menyebabkan kebocoran data atau penyalahgunaan sistem oleh user yang tidak memiliki hak akses.
