@@ -379,3 +379,61 @@ Hasil:
 - Bisa masuk halaman admin
 
 ---
+
+## Tugas Praktikum
+
+**1. Implementasikan login database.**
+
+Pada praktikum bagian 3, telah diimplementasikan database login sehingga hanya akun yang terdaftar pada firebase yang dapat login. Proses login ini didukung dengan servicefirebase.ts pada method signIn() yang memanggil API Firebase untuk mendapatkan user dengan email yang sesuai. Jika ada maka firebase akan mengembalikan akun tersebut, jika tidak maka akan mengembalikan null.
+
+![alt text](<2026-04-04 14-35-25.gif>)
+
+**2. Tambahkan role pada user.**
+
+Pada firebase terdapat field role yang berfungsi untuk membedakan halaman apa saja yang dapat diakses oleh setiap role
+
+![alt text](image-11.png)
+
+**3. Buat halaman:**
+
+- /profile
+
+  ![alt text](image-12.png)
+
+- /admin
+
+  ![alt text](image-13.png)
+
+**4. Proteksi /admin hanya untuk admin.**
+
+Halaman /admin hanya dapat diakses oleh user dengan role admin dengan mengimplementasikan kode berikut pada withAuth.ts
+
+```ts
+if (token.role !== "admin" && hanyaAdmin.includes(pathname)) {
+  return NextResponse.redirect(new URL("/", req.url));
+}
+```
+
+Kode tersebut memastikan user dengan role selain admin akan redirect ke home jika mencoba mengakses /admin
+
+**5. Implementasikan callback URL.**
+
+Pada withAuth.ts terdapat kode berikut:
+
+```ts
+if (!token) {
+  const url = new URL("/auth/login", req.url);
+  url.searchParams.set("callbackUrl", encodeURI(req.url));
+  return NextResponse.redirect(url);
+}
+```
+
+Kode tersebut berfungsi untuk redirect user ke halaman yang ingin diakses sebelumnya saat selesai login, namun perlu login untuk dapat mengakses halaman tersebut. Sehingga user tidak redirect ke home ketika login berhasil.
+
+Contoh ketika user ingin akses /produk saat belum login:
+
+![alt text](<2026-04-04 14-32-18.gif>)
+
+Setelah user berhasil login, tidak redirect ke home namun ke /produk
+
+---
