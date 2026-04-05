@@ -260,3 +260,20 @@ Hasil:
      ![alt text](image-5.png)
 
 ---
+
+## Refleksi & Diskusi
+
+1. **Mengapa `<img>` biasa tidak optimal?**  
+   Tag `<img>` tidak memiliki optimasi bawaan seperti lazy loading, resizing otomatis, atau format gambar modern. Hal ini bisa menyebabkan loading lebih lambat dan penggunaan bandwidth lebih besar dibanding solusi seperti next/image.
+
+2. **Apa perbedaan font CDN dan next/font?**  
+   Font CDN di-load dari server eksternal sehingga bergantung pada jaringan dan bisa menambah request. Sedangkan next/font mengoptimalkan font secara lokal (self-hosted), mengurangi request eksternal dan meningkatkan performa serta konsistensi tampilan.
+
+3. **Mengapa script bisa membuat website lambat?**  
+   Script, terutama yang besar atau blocking, dapat menghambat proses rendering halaman. Browser harus menunggu script selesai di-load dan dieksekusi sebelum menampilkan konten, sehingga memperlambat waktu loading.
+
+4. **Kapan harus menggunakan dynamic import?**  
+   Dynamic import digunakan ketika ingin memuat komponen atau library hanya saat dibutuhkan. Ini cocok untuk fitur berat atau yang jarang digunakan, sehingga dapat mengurangi ukuran bundle awal dan mempercepat loading.
+
+5. **Apa dampak bundle size terhadap UX?**  
+   Semakin besar bundle size, semakin lama waktu download dan eksekusi JavaScript. Hal ini dapat menyebabkan loading lambat, interaksi tertunda, dan pengalaman pengguna menjadi kurang nyaman.
