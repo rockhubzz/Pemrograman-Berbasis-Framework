@@ -136,3 +136,31 @@ Hasil:
 - Script tidak blocking
 - Cocok untuk Google Analytics
 - Performa lebih ringan
+
+## PRAKTIKUM 4 – Optimasi Avatar dengan next/image
+
+- Buka file index.tsx pada folder layouts/navbar dan modifikasi :
+
+  ```tsx
+  import Script from "next/dist/client/script";
+
+  <Image
+    width={50}
+    height={50}
+    src={data.user.image}
+    alt="User Image"
+    priority={false}
+    className={styles.navbar__user__image}
+  />;
+  ```
+
+- Tambahkan hostname Google:
+
+  ```js
+      {
+          protocol: 'https',
+          hostname: 'lh3.googleusercontent.com',
+          port: '',
+          pathname: '/**',
+      },
+  ```
