@@ -5,23 +5,23 @@
 - Langkah 1 – Masuk ke Google Cloud Console
   - Buka: https://console.cloud.google.com/apis/credentials
 
-    ![alt text](image.png)
+    ![alt text](imgs/JS17/image.png)
 
 ---
 
 - Langkah 2 – Buat Project Baru
   - Klik New Project
 
-    ![alt text](image-1.png)
+    ![alt text](imgs/JS17/image-1.png)
 
   - Nama project: MyAppNext
 
-    ![alt text](image-2.png)
+    ![alt text](imgs/JS17/image-2.png)
 
   - Klik Create
   - Setelah berhasil klik https://console.cloud.google.com/apis/credentials pastikan projectnya MyAppNext
 
-    ![alt text](image-3.png)
+    ![alt text](imgs/JS17/image-3.png)
 
 ---
 
@@ -29,27 +29,27 @@
 
 1. Pilih OAuth consent screen
 
-   ![alt text](image-4.png)
+   ![alt text](imgs/JS17/image-4.png)
 
 2. Pilih Get Started
 3. Maka akan muncul seperti berikut dan isikan
 
-   ![alt text](image-5.png)
+   ![alt text](imgs/JS17/image-5.png)
 
-   ![alt text](image-6.png)
+   ![alt text](imgs/JS17/image-6.png)
 
-   ![alt text](image-7.png)
+   ![alt text](imgs/JS17/image-7.png)
 
-   ![alt text](image-8.png)
+   ![alt text](imgs/JS17/image-8.png)
    - Klik create
 
 - Langkah 4 – Buat OAuth Credentials
 
 1. Klik create client pada Clients
 
-   ![alt text](image-9.png)
+   ![alt text](imgs/JS17/image-9.png)
 
-   ![alt text](image-10.png)
+   ![alt text](imgs/JS17/image-10.png)
 
 ---
 
@@ -57,9 +57,9 @@
 
 1. Copy dan paste client ID dan Client secret ke .env
 
-   ![alt text](image-11.png)
+   ![alt text](imgs/JS17/image-11.png)
 
-   ![alt text](image-12.png)
+   ![alt text](imgs/JS17/image-12.png)
 
 ---
 
@@ -121,7 +121,7 @@
 
 2. Jalankan browser localhost:3000/auth/login masuk melalui sign in with google.Jika berhasil maka akan terhubung dengan akun google.
 
-   ![alt text](image-13.png)
+   ![alt text](imgs/JS17/image-13.png)
 
 3. Menampilkan image dari google
    - Buka file index.tsx dan tambahkan code berikut
@@ -159,7 +159,7 @@
 
 - Jika berhasil maka tampillannya akan seperti berikut
 
-  ![alt text](image-14.png)
+  ![alt text](imgs/JS17/image-14.png)
 
 ---
 
@@ -242,7 +242,7 @@
 
 - Jalankan browser dan login menggunakan akun google setelah cek di firebase, jika data akun googlenya masuk ke database maka anda telah berhasil
 
-  ![alt text](image-15.png)
+  ![alt text](imgs/JS17/image-15.png)
 
 ---
 
@@ -279,20 +279,20 @@
 
    Dan pada firebase ditambahkan user dengan role editor
 
-   ![alt text](image-16.png)
+   ![alt text](imgs/JS17/image-16.png)
 
 2. Buat halaman khusus editor
 
-   ![alt text](image-17.png)
+   ![alt text](imgs/JS17/image-17.png)
 
 3. Tambahkan provider GitHub
    - Buat Github OAuth App
 
-     ![alt text](image-18.png)
+     ![alt text](imgs/JS17/image-18.png)
 
    - Tambahkan Client ID dan Client Secret ke environment variables
 
-     ![alt text](image-19.png)
+     ![alt text](imgs/JS17/image-19.png)
 
      ```env
      <!-- env.local -->
@@ -393,19 +393,19 @@
 
    - Tampilan login baru
 
-     ![alt text](image-20.png)
+     ![alt text](imgs/JS17/image-20.png)
 
    - Login dengan Github
 
-     ![alt text](image-21.png)
+     ![alt text](imgs/JS17/image-21.png)
 
    - Setelah berhasil login akan redirect ke home dengan profil Github
 
-     ![alt text](image-22.png)
+     ![alt text](imgs/JS17/image-22.png)
 
    - Data user tersimpan di database
 
-     ![alt text](image-24.png)
+     ![alt text](imgs/JS17/image-24.png)
 
 4. Refactor service agar reusable
 
@@ -446,5 +446,5 @@
 
    - Tampilan profile masih sama
 
-     ![alt text](image-23.png)
+     ![alt text](imgs/JS17/image-23.png)
      - Gambar profile menjadi lebih ringan karena telah dikompresi dan resize otomatis sehingga loading image lebih cepat
