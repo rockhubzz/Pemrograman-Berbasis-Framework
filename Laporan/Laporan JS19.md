@@ -126,3 +126,45 @@ Struktur contoh:
 
 - Jika berhasil:<br>
   `PASS about.spec.tsx`
+
+---
+
+## PRAKTIKUM 4 – Coverage Report
+
+- Jalankan:
+  - npm run test:coverage
+
+    ```ps
+    PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 18\unit-testing> npm run test:coverage
+
+    > link-navigation@0.1.0 test:coverage
+    > npm run test -- --coverage
+
+
+    > link-navigation@0.1.0 test
+    > jest --passWithNoTests -u --coverage
+
+    PASS  src/__test__/pages/about.spec.tsx
+    AboutPage
+        √ renders the about page correctly (40 ms)
+
+    -----------|---------|----------|---------|---------|-------------------
+    File       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+    -----------|---------|----------|---------|---------|-------------------
+    All files  |     100 |      100 |     100 |     100 |
+    index.tsx |     100 |      100 |     100 |     100 |
+    -----------|---------|----------|---------|---------|-------------------
+    Test Suites: 1 passed, 1 total
+    Tests:       1 passed, 1 total
+    Snapshots:   1 passed, 1 total
+    Time:        3.499 s
+    Ran all test suites.
+    ```
+
+- Akan muncul folder: coverage/
+  - Buka:
+    - `coverage/lcov-report/index.html` ( buka di melalui explorer)
+
+      ![alt text](image-3.png)
+
+---
