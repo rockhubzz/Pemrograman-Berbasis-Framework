@@ -104,3 +104,35 @@ Hasil:
 - Tidak blocking render
 - Performance meningkat
 - Tidak terjadi FOUT (Flash of Unstyled Text)
+
+## PRAKTIKUM 3 – Script Optimization
+
+### A. Menggunakan next/script
+
+- Buka file index.tsx pada folder layouts/Navbar dan modifikasi
+
+  ```tsx
+  import Script from "next/script";
+
+  // ...
+
+      <div className={styles.navbar}>
+      {/* <div className={styles.navbar__brand}>
+          MyApp
+      </div> */}
+
+      <div className={styles.navbar__brand} id='title'></div>
+      <Script id='title-script' strategy='lazyOnload'>
+          {`document.getElementById('title').innerHTML = 'MyApp';`}
+      </Script>
+
+
+  ```
+
+Hasil:
+
+![alt text](image-3.png)
+
+- Script tidak blocking
+- Cocok untuk Google Analytics
+- Performa lebih ringan
