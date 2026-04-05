@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Footer Component renders footer component correctly 1`] = `
+<div>
+  <div
+    class="footer"
+    data-testid="footer-container"
+  >
+    <div>
+      Footer Component 
+    </div>
+  </div>
+</div>
+`;
