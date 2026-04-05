@@ -1,7 +1,16 @@
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import Footer from "../footer";
-import Navbar from "../navbar";
 import { Roboto } from "next/font/google";
+
+const Navbar = dynamic(() => import("../navbar"), {
+  ssr: false,
+  loading: () => <div style={{ height: "70px", background: "#f0f0f0" }} />,
+});
+
+const Footer = dynamic(() => import("../footer"), {
+  ssr: false,
+  loading: () => <div style={{ height: "200px", background: "#f0f0f0" }} />,
+});
 
 const roboto = Roboto({
     subsets: ['latin'],

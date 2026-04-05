@@ -1,5 +1,14 @@
+import { Poppins } from "next/font/google";
+import Script from "next/script";
+import Image from "next/image";
 import styles from "@/pages/produk/produk.module.scss";
 import { StoreType } from "@/types/Store.type";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 const TampilanStores = ({
   stores,
@@ -11,7 +20,28 @@ const TampilanStores = ({
   const skeletonItems = Array(4).fill(null);
 
   return (
-    <div className={styles.produk}>
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-8RYP9TYTNN"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8RYP9TYTNN', {
+              'debug_mode': true,
+              'allow_google_signals': false,
+              'anonymize_ip': true
+            });
+          `,
+        }}
+      />
+      <div className={`${styles.produk} ${poppins.className}`}>
       <h1 className={styles.produk__title}>Daftar Toko</h1>
       <div className={styles.produk__content}>
         {isLoading ? (
@@ -33,11 +63,13 @@ const TampilanStores = ({
                 className={styles.produk__content__item}
               >
                 <div className={styles.produk__content__item__image}>
-                  <img 
+                  <Image 
                     src={store.image} 
                     alt={store.name} 
-                    width={"250"}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: "cover" }}
+                    priority={false}
                   />
                 </div>
                 <h4 className={styles.produk__content__item__name}>{store.name}</h4>
@@ -52,6 +84,7 @@ const TampilanStores = ({
         )}
       </div>
     </div>
+    </>
   );
 };
 

@@ -164,3 +164,99 @@ Hasil:
           pathname: '/**',
       },
   ```
+
+## Tugas Praktikum
+
+1. Optimasi semua image di project menggunakan next/image
+   Pada page /stores kini menggunakan next/image untuk foto stores
+
+   ```tsx
+   // src/views/stores/index.tsx
+
+   <Image
+     src={store.image}
+     alt={store.name}
+     fill
+     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+     style={{ objectFit: "cover" }}
+     priority={false}
+   />
+   ```
+
+2. Gunakan minimal 1 font dari next/font
+
+   Halaman /stores kini menggunakan font Poppins dari next/font/google
+
+   ```tsx
+   import { Poppins } from "next/font/google";
+
+   const poppins = Poppins({
+   subsets: ["latin"],
+   weight: ["400", "500", "600", "700"],
+   variable: "--font-poppins",
+   });
+
+       <div className={`${styles.produk} ${poppins.className}`}>
+
+   ```
+
+   ![alt text](image-4.png)
+
+3. Tambahkan script Google Analytics menggunakan next/script
+
+   Tambahan script pada `src/views/stores/index.tsx`:
+
+   ```tsx
+       <Script
+           src="https://www.googletagmanager.com/gtag/js?id=G-8RYP9TYTNN"
+           strategy="afterInteractive"
+       />
+       <Script
+           id="google-analytics"
+           strategy="afterInteractive"
+           dangerouslySetInnerHTML={{
+           __html: `
+               window.dataLayer = window.dataLayer || [];
+               function gtag(){dataLayer.push(arguments);}
+               gtag('js', new Date());
+               gtag('config', 'G-8RYP9TYTNN', {
+               'debug_mode': true,
+               'allow_google_signals': false,
+               'anonymize_ip': true
+               });
+           `,
+           }}
+       />
+   ```
+
+4. Terapkan dynamic import pada minimal 1 komponen
+   - Modifikasi kode pada `src/components/layouts/AppShell/index.tsx`
+
+     ```tsx
+     import dynamic from "next/dynamic";
+
+     const Navbar = dynamic(() => import("../navbar"), {
+       ssr: true,
+       loading: () => <div style={{ height: "70px", background: "#f0f0f0" }} />,
+     });
+
+     const Footer = dynamic(() => import("../footer"), {
+       ssr: false,
+       loading: () => (
+         <div style={{ height: "200px", background: "#f0f0f0" }} />
+       ),
+     });
+     ```
+
+     - Perubahan ini meningkatkan performa aplikasi melalui penggunaan dynamic import untuk code splitting serta penambahan loading state berupa skeleton agar tampilan tetap responsif saat komponen dimuat. Selain itu, optimasi SSR pada Navbar dan client-side rendering pada Footer membantu menyeimbangkan kebutuhan SEO dan efisiensi rendering.
+
+5. Dokumentasikan perubahan performa (screenshot Lighthouse)
+   - Hasil Lighthouse Praktikum 16
+
+     ![alt text](image-6.png)
+
+   - Hasil Lighthouse Praktikum 17
+
+     ![alt text](image-5.png)
+
+---
