@@ -610,3 +610,262 @@ Struktur contoh:
 Analisis Coverage
 
 ![alt text](image-6.png)
+
+---
+
+## Tugas Praktikum
+
+1. Buat unit test untuk:
+   - Halaman Product
+     - produk.spec.tsx
+
+       ```tsx
+       import { render, screen } from "@testing-library/react";
+       import KategoriPage from "@/pages/produk";
+
+       // Mock next/router
+       jest.mock("next/router", () => ({
+         useRouter() {
+           return {
+             route: "/produk",
+             pathname: "/produk",
+             query: {},
+             asPath: "/produk",
+             push: jest.fn(),
+             event: {
+               on: jest.fn(),
+               off: jest.fn(),
+             },
+             isReady: true,
+           };
+         },
+       }));
+
+       // Mock useSWR
+       jest.mock("swr", () => ({
+         __esModule: true,
+         default: jest.fn(() => ({
+           data: {
+             data: [
+               {
+                 id: "1",
+                 name: "Product 1",
+                 price: 50000,
+                 image: "/product1.jpg",
+                 category: "Electronics",
+               },
+               {
+                 id: "2",
+                 name: "Product 2",
+                 price: 75000,
+                 image: "/product2.jpg",
+                 category: "Electronics",
+               },
+             ],
+           },
+           error: undefined,
+           isLoading: false,
+         })),
+       }));
+
+       describe("Product Page", () => {
+         it("renders product page with products correctly", () => {
+           const page = render(<KategoriPage />);
+           expect(page).toMatchSnapshot();
+         });
+
+         it("displays product list title", () => {
+           render(<KategoriPage />);
+           const titleElement = screen.getByText("Daftar Produk");
+           expect(titleElement).toBeTruthy();
+         });
+
+         it("should have correct title text using toBe", () => {
+           const { container } = render(<KategoriPage />);
+           const title = container.querySelector("h1");
+           expect(title?.textContent).toBe("Daftar Produk");
+         });
+
+         it("should render product title with getByTestId", () => {
+           render(<KategoriPage />);
+           const productTitle = screen.getByTestId("product-title");
+           expect(productTitle.textContent).toBe("Daftar Produk");
+         });
+       });
+       ```
+
+   - 1 Komponen
+     - footer.spec.tsx
+
+       ```tsx
+       import { render, screen } from "@testing-library/react";
+       import Footer from "@/components/layouts/footer";
+
+       describe("Footer Component", () => {
+         it("renders footer component correctly", () => {
+           const { container } = render(<Footer />);
+           expect(container).toMatchSnapshot();
+         });
+
+         it("displays footer component text", () => {
+           render(<Footer />);
+           const footerText = screen.getByText("Footer Component");
+           expect(footerText.textContent?.trim()).toBe("Footer Component");
+         });
+
+         it("footer div should have correct test id", () => {
+           render(<Footer />);
+           const footerDiv = screen.getByTestId("footer-container");
+           expect(footerDiv.className).toBe("footer");
+         });
+       });
+       ```
+
+2. Gunakan minimal:
+   - 1 Snapshot test
+     - footer.spec.tsx
+       ```tsx
+       it("renders footer component correctly", () => {
+         const { container } = render(<Footer />);
+         expect(container).toMatchSnapshot();
+       });
+       ```
+   - 1 toBe()
+     - produk.spec.tsx
+
+       ```tsx
+       it("should have correct title text using toBe", () => {
+         const { container } = render(<KategoriPage />);
+         const title = container.querySelector("h1");
+         expect(title?.textContent).toBe("Daftar Produk");
+       });
+       ```
+
+   - 1 getByTestId()
+     - footer.spec.tsx
+       ```tsx
+       it("footer div should have correct test id", () => {
+         render(<Footer />);
+         const footerDiv = screen.getByTestId("footer-container");
+         expect(footerDiv.className).toBe("footer");
+       });
+       ```
+
+3. Buat coverage minimal 50%
+
+   ```ps
+   ----------------------------------------------|---------|----------|---------|---------|-------------------
+   File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+   ----------------------------------------------|---------|----------|---------|---------|-------------------
+   All files                                     |    6.49 |     7.27 |    4.34 |    5.99 |
+   unit-testing/src/components/layouts/footer   |     100 |      100 |     100 |     100 |
+   index.tsx                                   |     100 |      100 |     100 |     100 |
+   unit-testing/src/pages/produk                |   25.58 |      100 |   11.11 |   26.31 |
+   [produk].tsx                                |       0 |      100 |       0 |       0 | 4-65
+   index.tsx                                   |     100 |      100 |     100 |     100 |
+   server.tsx                                  |       0 |      100 |       0 |       0 | 1-22
+   static.tsx                                  |       0 |      100 |       0 |       0 | 1-22
+   ```
+
+4. Lakukan mocking untuk router
+   - produk.spec.tsx
+     ```tsx
+     // Mock next/router
+     jest.mock("next/router", () => ({
+       useRouter() {
+         return {
+           route: "/produk",
+           pathname: "/produk",
+           query: {},
+           asPath: "/produk",
+           push: jest.fn(),
+           event: {
+             on: jest.fn(),
+             off: jest.fn(),
+           },
+           isReady: true,
+         };
+       },
+     }));
+     ```
+5. Dokumentasikan hasil coverage
+
+   ```ps
+   ----------------------------------------------|---------|----------|---------|---------|-------------------
+   File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+   ----------------------------------------------|---------|----------|---------|---------|-------------------
+   All files                                     |    6.49 |     7.27 |    4.34 |    5.99 |
+   unit-testing                                 |       0 |      100 |     100 |       0 |
+   next-env.d.ts                               |       0 |      100 |     100 |       0 | 3
+   unit-testing/src                             |       0 |        0 |       0 |       0 |
+   middleware.ts                               |       0 |        0 |       0 |       0 | 1-29
+   unit-testing/src/Middleware                  |       0 |        0 |       0 |       0 |
+   withAuth.ts                                 |       0 |        0 |       0 |       0 | 1-40
+   unit-testing/src/components/layouts/AppShell |       0 |        0 |       0 |       0 |
+   index.tsx                                   |       0 |        0 |       0 |       0 | 1-38
+   unit-testing/src/components/layouts/footer   |     100 |      100 |     100 |     100 |
+   index.tsx                                   |     100 |      100 |     100 |     100 |
+   unit-testing/src/components/layouts/navbar   |       0 |        0 |       0 |       0 |
+   index.tsx                                   |       0 |        0 |       0 |       0 | 1-58
+   unit-testing/src/lib                         |       0 |      100 |       0 |       0 |
+   auth.ts                                     |       0 |      100 |       0 |       0 | 1-7
+   unit-testing/src/pages                       |       0 |      100 |       0 |       0 |
+   404.tsx                                     |       0 |      100 |       0 |       0 | 1-36
+   _app.tsx                                    |       0 |      100 |       0 |       0 | 1-7
+   _document.tsx                               |       0 |      100 |       0 |       0 | 1-3
+   index.tsx                                   |       0 |      100 |       0 |       0 | 3-9
+   unit-testing/src/pages/about                 |     100 |      100 |     100 |     100 |
+   index.tsx                                   |     100 |      100 |     100 |     100 |
+   unit-testing/src/pages/admin                 |       0 |      100 |       0 |       0 |
+   index.tsx                                   |       0 |      100 |       0 |       0 | 1-18
+   unit-testing/src/pages/auth                  |       0 |      100 |       0 |       0 |
+   login.tsx                                   |       0 |      100 |       0 |       0 | 1-11
+   register.tsx                                |       0 |      100 |       0 |       0 | 2-12
+   unit-testing/src/pages/blog                  |       0 |      100 |       0 |       0 |
+   [slug].tsx                                  |       0 |      100 |       0 |       0 | 1-14
+   unit-testing/src/pages/category              |       0 |        0 |       0 |       0 |
+   [...slug].tsx                               |       0 |        0 |       0 |       0 | 1-22
+   unit-testing/src/pages/editor                |       0 |      100 |       0 |       0 |
+   index.tsx                                   |       0 |      100 |       0 |       0 | 1-19
+   unit-testing/src/pages/produk                |   25.58 |      100 |   11.11 |   26.31 |
+   [produk].tsx                                |       0 |      100 |       0 |       0 | 4-65
+   index.tsx                                   |     100 |      100 |     100 |     100 |
+   server.tsx                                  |       0 |      100 |       0 |       0 | 1-22
+   static.tsx                                  |       0 |      100 |       0 |       0 | 1-22
+   unit-testing/src/pages/produk/csr            |       0 |        0 |       0 |       0 |
+   [produk].tsx                                |       0 |        0 |       0 |       0 | 1-53
+   unit-testing/src/pages/produk/ssg            |       0 |        0 |       0 |       0 |
+   [produk].tsx                                |       0 |        0 |       0 |       0 | 1-69
+   unit-testing/src/pages/produk/ssr            |       0 |        0 |       0 |       0 |
+   [produk].tsx                                |       0 |        0 |       0 |       0 | 1-46
+   unit-testing/src/pages/profile               |       0 |      100 |       0 |       0 |
+   edit.tsx                                    |       0 |      100 |       0 |       0 | 3-9
+   index.tsx                                   |       0 |      100 |       0 |       0 | 3-11
+   unit-testing/src/pages/setting               |       0 |      100 |       0 |       0 |
+   app.tsx                                     |       0 |      100 |       0 |       0 | 1-9
+   unit-testing/src/pages/shop                  |       0 |        0 |       0 |       0 |
+   [[...slug]].tsx                             |       0 |        0 |       0 |       0 | 1-23
+   unit-testing/src/pages/stores                |       0 |        0 |       0 |       0 |
+   csr.tsx                                     |       0 |        0 |       0 |       0 | 1-18
+   ssg.tsx                                     |       0 |      100 |       0 |       0 | 1-23
+   ssr.tsx                                     |       0 |      100 |       0 |       0 | 1-24
+   unit-testing/src/pages/user                  |       0 |      100 |       0 |       0 |
+   index.tsx                                   |       0 |      100 |       0 |       0 | 1-9
+   unit-testing/src/pages/user/password         |       0 |      100 |       0 |       0 |
+   index.tsx                                   |       0 |      100 |       0 |       0 | 1
+   unit-testing/src/utils/db                    |       0 |        0 |       0 |       0 |
+   firebase.ts                                 |       0 |      100 |     100 |       0 | 2-19
+   servicefirebase.ts                          |       0 |        0 |       0 |       0 | 12-145
+   unit-testing/src/utils/swr                   |      60 |      100 |       0 |     100 |
+   fetcher.ts                                  |      60 |      100 |       0 |     100 |
+   ----------------------------------------------|---------|----------|---------|---------|-------------------
+   Snapshot Summary
+   › 1 snapshot updated from 1 test suite.
+
+   Test Suites: 1 failed, 2 passed, 3 total
+   Tests:       1 failed, 14 passed, 15 total
+   Snapshots:   1 updated, 2 passed, 3 total
+   Time:        9.509 s
+   ```
+
+---

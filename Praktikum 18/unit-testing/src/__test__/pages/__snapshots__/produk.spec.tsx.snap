@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Product Page renders product page correctly 1`] = `
+exports[`Product Page renders product page with products correctly 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -11,6 +11,7 @@ exports[`Product Page renders product page correctly 1`] = `
         >
           <h1
             class="produk__title"
+            data-testid="product-title"
           >
             Daftar Produk
           </h1>
@@ -18,21 +19,57 @@ exports[`Product Page renders product page correctly 1`] = `
             class="produk__content"
           >
             <div
-              class="produk__content__skeleton"
+              class="produk__content__item__image"
             >
-              <div
-                class="produk__content__skeleton__image"
-              />
-              <div
-                class="produk__content__skeleton__name"
-              />
-              <div
-                class="produk__content__skeleton__category"
-              />
-              <div
-                class="produk__content__skeleton__price"
+              <img
+                alt="Product 1"
+                height="200"
+                src="/product1.jpg"
+                width="200"
               />
             </div>
+            <h4
+              class="produk__content__item__name"
+            >
+              Product 1
+            </h4>
+            <p
+              class="produk__content__item__category"
+            >
+              Electronics
+            </p>
+            <p
+              class="produk__content__item__price"
+            >
+              Rp 
+              50.000
+            </p>
+            <div
+              class="produk__content__item__image"
+            >
+              <img
+                alt="Product 2"
+                height="200"
+                src="/product2.jpg"
+                width="200"
+              />
+            </div>
+            <h4
+              class="produk__content__item__name"
+            >
+              Product 2
+            </h4>
+            <p
+              class="produk__content__item__category"
+            >
+              Electronics
+            </p>
+            <p
+              class="produk__content__item__price"
+            >
+              Rp 
+              75.000
+            </p>
           </div>
         </div>
       </div>
@@ -45,6 +82,7 @@ exports[`Product Page renders product page correctly 1`] = `
       >
         <h1
           class="produk__title"
+          data-testid="product-title"
         >
           Daftar Produk
         </h1>
@@ -52,21 +90,57 @@ exports[`Product Page renders product page correctly 1`] = `
           class="produk__content"
         >
           <div
-            class="produk__content__skeleton"
+            class="produk__content__item__image"
           >
-            <div
-              class="produk__content__skeleton__image"
-            />
-            <div
-              class="produk__content__skeleton__name"
-            />
-            <div
-              class="produk__content__skeleton__category"
-            />
-            <div
-              class="produk__content__skeleton__price"
+            <img
+              alt="Product 1"
+              height="200"
+              src="/product1.jpg"
+              width="200"
             />
           </div>
+          <h4
+            class="produk__content__item__name"
+          >
+            Product 1
+          </h4>
+          <p
+            class="produk__content__item__category"
+          >
+            Electronics
+          </p>
+          <p
+            class="produk__content__item__price"
+          >
+            Rp 
+            50.000
+          </p>
+          <div
+            class="produk__content__item__image"
+          >
+            <img
+              alt="Product 2"
+              height="200"
+              src="/product2.jpg"
+              width="200"
+            />
+          </div>
+          <h4
+            class="produk__content__item__name"
+          >
+            Product 2
+          </h4>
+          <p
+            class="produk__content__item__category"
+          >
+            Electronics
+          </p>
+          <p
+            class="produk__content__item__price"
+          >
+            Rp 
+            75.000
+          </p>
         </div>
       </div>
     </div>
