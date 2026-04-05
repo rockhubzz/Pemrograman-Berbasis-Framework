@@ -459,3 +459,83 @@ Struktur contoh:
     ```
 
 ---
+
+## PRAKTIKUM 7 – Testing Page dengan Router (Mocking)
+
+**Kita coba untuk melakukan testing pada halaman produk**
+
+1. Buat file product.spec.tsx
+
+   ![alt text](image-5.png)
+
+2. Tambahkan kode berikut
+
+   ```tsx
+   import { render, screen } from "@testing-library/react";
+   import TampilanProduk from "@/pages/produk";
+
+   describe("Product Page", () => {
+     it("renders product page correctly", () => {
+       const page = render(<TampilanProduk />);
+       expect(screen.getByTestId("title").textContent).toBe("Product Page");
+       expect(page).toMatchSnapshot();
+     });
+   });
+   ```
+
+3. Ketika testing halaman Product, sering muncul error:
+   - NextRouter was not mounted
+
+     ```ps
+     FAIL  src/__test__/pages/produk.spec.tsx
+     ● Product Page › renders product page correctly
+
+         NextRouter was not mounted. https://nextjs.org/docs/messages/next-router-not-mounted
+
+         9 | const kategori = () => {
+         10 |   // const [isLogin, setIsLogin] = useState(true);
+         > 11 |   const { push } = useRouter();
+             |                             ^
+         12 |   const [products, setProducts] = useState([]);
+         13 |   // console.log("products:", products);
+         14 |
+     ```
+
+     Solusi: Mock Next Router <br>
+     Tambahkan di file product.spec.tsx
+
+     ```tsx
+     jest.mock("next/router", () => ({
+       useRouter() {
+         return {
+           route: "/product",
+           pathname: "",
+           query: {},
+           asPath: "",
+           push: jest.fn(),
+           event: {
+             on: jest.fn(),
+             off: jest.fn(),
+           },
+           isReady: true,
+         };
+       },
+     }));
+     ```
+
+     Hasilnya:
+
+     ```ps
+     FAIL  src/__test__/pages/produk.spec.tsx
+     ● Product Page › renders product page correctly
+
+         TypeError: Cannot read properties of undefined (reading 'data')
+
+         18 |   return (
+         19 |     <div>
+         > 20 |       <TampilanProduk products={isLoading ? [] : data.data} />
+             |                                                       ^
+         21 |     </div>
+         22 |   );
+         23 | };
+     ```
