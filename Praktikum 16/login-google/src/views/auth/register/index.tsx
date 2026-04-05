@@ -98,7 +98,7 @@ const TampilanRegister = () => {
                         className={style.register__form__item__button}
                         disabled={isLoading}
                     >
-                        {isLoading ? "Memproses..." : "Register"}
+                        {isLoading ? "Loading..." : "Register"}
                     </button>
                 </form>
                 <br />

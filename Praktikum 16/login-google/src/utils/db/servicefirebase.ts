@@ -92,7 +92,11 @@ export async function signIn(
   }
 }
 
-export async function signInWithGoogle(userData: any, callback: any) {
+export async function signInWithOAuth(
+  provider: string,
+  userData: any,
+  callback: any
+) {
   try {
     const q = query(
       collection(db, "users"),
@@ -111,7 +115,7 @@ export async function signInWithGoogle(userData: any, callback: any) {
       await updateDoc(doc(db, "users", data[0].id), userData);
       callback({
         status: true,
-        message: "User registered and logged in with Google",
+        message: `User registered and logged in with ${provider}`,
         data: userData,
       });
     } else {
@@ -120,7 +124,7 @@ export async function signInWithGoogle(userData: any, callback: any) {
       await addDoc(collection(db, "users"), userData);
       callback({
         status: true,
-        message: "User registered and logged in with Google",
+        message: `User registered and logged in with ${provider}`,
         data: userData,
       });
     }
@@ -128,7 +132,15 @@ export async function signInWithGoogle(userData: any, callback: any) {
     // Tangani error di sini
     callback({
       status: false,
-      message: "Failed to register user with Google",
+      message: `Failed to register user with ${provider}`,
     });
   }
+}
+
+export async function signInWithGoogle(userData: any, callback: any) {
+  await signInWithOAuth("Google", userData, callback);
+}
+
+export async function signInWithGithub(userData: any, callback: any) {
+  await signInWithOAuth("GitHub", userData, callback);
 }

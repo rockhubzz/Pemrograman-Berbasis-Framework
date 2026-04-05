@@ -23,7 +23,7 @@ const pathname = request.nextUrl.pathname;
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)", "/produk", "/about", "/profile", "/admin"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)", "/produk", "/about", "/profile", "/admin", "/editor"],
 };
 
 export default withAuth(mainMiddleware, config.matcher);

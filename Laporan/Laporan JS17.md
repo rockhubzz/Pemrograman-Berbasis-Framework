@@ -262,3 +262,189 @@
 
 5. **Apa risiko jika tidak menyimpan user ke database?**  
    Aplikasi tidak memiliki kontrol penuh terhadap data user, seperti pengaturan role atau penyimpanan data tambahan. Selain itu, sulit untuk melakukan manajemen user, tracking aktivitas, atau integrasi dengan fitur lain di dalam sistem.
+
+---
+
+## Tugas Mandiri
+
+1. Tambahkan role editor
+
+   Pada withAuth.ts ditambahkan rule yang hanya mengizinkan /editor dapat diakses oleh user dengan role editor
+
+   ```ts
+   if (token.role !== "editor" && hanyaEditor.includes(pathname)) {
+     return NextResponse.redirect(new URL("/", req.url));
+   }
+   ```
+
+   Dan pada firebase ditambahkan user dengan role editor
+
+   ![alt text](image-16.png)
+
+2. Buat halaman khusus editor
+
+   ![alt text](image-17.png)
+
+3. Tambahkan provider GitHub
+   - Buat Github OAuth App
+
+     ![alt text](image-18.png)
+
+   - Tambahkan Client ID dan Client Secret ke environment variables
+
+     ![alt text](image-19.png)
+
+     ```env
+     <!-- env.local -->
+     GITHUB_ID = ****************
+     GITHUB_SECRET= *************
+     ```
+
+   - Tambahkan Github provider ke [...nextauth].ts
+
+     ```ts
+     import GitHubProvider from "next-auth/providers/github";
+
+     GitHubProvider({
+         clientId: process.env.GITHUB_ID || "",
+         clientSecret: process.env.GITHUB_SECRET || "",
+         }),
+     ```
+
+   - Tambahkan kode pada [...nextauth].ts dan method signInWithGithub pada servicefirebase.ts untuk menyimpan user ke database
+     - servicefirebase.ts
+
+       ```ts
+       export async function signInWithGithub(userData: any, callback: any) {
+         try {
+           const q = query(
+             collection(db, "users"),
+             where("email", "==", userData.email),
+           );
+
+           const querySnapshot = await getDocs(q);
+           const data: any = querySnapshot.docs.map((doc) => ({
+             id: doc.id,
+             ...doc.data(),
+           }));
+
+           if (data.length > 0) {
+             // User sudah ada, update data
+             userData.role = data[0].role;
+             await updateDoc(doc(db, "users", data[0].id), userData);
+             callback({
+               status: true,
+               message: "User registered and logged in with GitHub",
+               data: userData,
+             });
+           } else {
+             // User baru, tambah data
+             userData.role = "member";
+             await addDoc(collection(db, "users"), userData);
+             callback({
+               status: true,
+               message: "User registered and logged in with GitHub",
+               data: userData,
+             });
+           }
+         } catch (error: any) {
+           // Tangani error di sini
+           callback({
+             status: false,
+             message: "Failed to register user with GitHub",
+           });
+         }
+       }
+       ```
+
+     - [...nextauth].ts
+
+       ```ts
+       if (account?.provider === "github") {
+         const data = {
+           fullname: user.name,
+           email: user.email,
+           image: user.image,
+           type: account.provider,
+         };
+
+         await signInWithGithub(data, (result: any) => {
+           if (result.status) {
+             token.fullname = result.data.fullname;
+             token.email = result.data.email;
+             token.image = result.data.image;
+             token.type = result.data.type;
+           }
+         });
+       }
+       ```
+
+   - Tambahkan button login dengan github pada `/src/views/auth/login/index.tsx`
+
+     ```tsx
+     <button
+       onClick={() => signIn("github", { callbackUrl, redirect: false })}
+       className={style.login_form_item__button}
+       disabled={isLoading}
+     >
+       {isLoading ? "Loading..." : "Sign in with GitHub"}
+     </button>
+     ```
+
+   - Tampilan login baru
+
+     ![alt text](image-20.png)
+
+   - Login dengan Github
+
+     ![alt text](image-21.png)
+
+   - Setelah berhasil login akan redirect ke home dengan profil Github
+
+     ![alt text](image-22.png)
+
+   - Data user tersimpan di database
+
+     ![alt text](image-24.png)
+
+4. Refactor service agar reusable
+
+   Pada servicefirebase.ts dibuat satu method baru bernama signInWithOAuth yang mendukung sign in dengan provider pihak ketiga manapun, sehingga tidak perlu mengulang kode yang sama untuk provider berbeda.
+
+   Contoh ketika ingin sign in dengan akun Github, method signInWithGithub hanya memanggil signInWithOAuth dengan parameter provider "Github"
+
+   ```ts
+   export async function signInWithGithub(userData: any, callback: any) {
+     await signInWithOAuth("GitHub", userData, callback);
+   }
+   ```
+
+5. Gunakan next/image untuk optimasi avatar
+   - Modifikasi kode pada `/src/components/navbar/index.tsx`
+
+     ```tsx
+     import Image from "next/image";
+
+     <div className={styles.navbar__user__image_wrapper}>
+       <Image
+         src={data.user.image}
+         alt="User Image"
+         width={42}
+         height={42}
+         priority={false}
+       />
+     </div>;
+     ```
+
+   - Tambahkan domain image Github pada next.config.js
+
+   ```js
+    images: {
+        domains: ['avatars.githubusercontent.com', 'lh3.googleusercontent.com'],
+    },
+   ```
+
+   - Tampilan profile masih sama
+
+     ![alt text](image-23.png)
+     - Gambar profile menjadi lebih ringan karena telah dikompresi dan resize otomatis sehingga loading image lebih cepat
