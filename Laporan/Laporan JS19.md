@@ -869,3 +869,20 @@ Analisis Coverage
    ```
 
 ---
+
+## Diskusi & Refleksi
+
+1. **Mengapa unit testing penting sebelum production?**  
+   Unit testing membantu memastikan setiap fungsi atau komponen berjalan sesuai yang diharapkan sebelum aplikasi dirilis. Dengan testing, bug dapat ditemukan lebih awal sehingga mengurangi risiko error di production.
+
+2. **Mengapa branch coverage sulit mencapai 100%?**  
+   Karena setiap kemungkinan percabangan (if, else, switch) harus diuji, termasuk edge case yang jarang terjadi. Beberapa kondisi sulit direproduksi atau tidak relevan untuk diuji, sehingga mencapai 100% coverage menjadi sulit.
+
+3. **Apa itu mocking?**  
+   Mocking adalah teknik dalam testing untuk menggantikan dependensi asli (seperti API, database, atau service) dengan versi tiruan. Tujuannya agar testing lebih terkontrol, cepat, dan tidak bergantung pada sistem eksternal.
+
+4. **Kapan snapshot test digunakan?**  
+   Snapshot test digunakan untuk memastikan tampilan UI tidak berubah secara tidak sengaja. Biasanya digunakan pada komponen frontend untuk membandingkan hasil render saat ini dengan snapshot sebelumnya.
+
+5. **Apakah semua file harus dites?**  
+   Tidak semua file harus dites. Fokus utama adalah pada logic penting, fungsi utama, dan bagian yang berisiko tinggi. File sederhana atau yang tidak memiliki logika kompleks tidak selalu memerlukan testing.
