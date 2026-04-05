@@ -69,3 +69,38 @@ Hasil:
 - Gambar di-proxy melalui /\_next/image
 - Performa lebih optimal
 - Kompresi otomatis
+
+---
+
+## PRAKTIKUM 2 – Font Optimization
+
+### A. Menggunakan next/font
+
+- Buka file index.tsx pada folder Appshell/index.tsx dan modifkasi
+
+  ```tsx
+  import { Roboto } from "next/font/google";
+
+  const roboto = Roboto({
+    subsets: ["latin"],
+    weight: ["400", "500", "700"],
+  });
+
+  // ...
+
+  <main className={roboto.className}>
+    {!disableNavbar.includes(pathname) && <Navbar />}
+    {children}
+  </main>;
+  ```
+
+- Jalankan browser localhost:3000/produk maka font akan berubah menjadi roboto untuk mengecek fontnya bisa menggunakan extension FontFinder
+
+  ![alt text](image-2.png)
+
+Hasil:
+
+- Tidak perlu load dari CDN manual
+- Tidak blocking render
+- Performance meningkat
+- Tidak terjadi FOUT (Flash of Unstyled Text)
