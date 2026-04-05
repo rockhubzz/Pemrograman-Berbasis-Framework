@@ -297,3 +297,165 @@ Struktur contoh:
   ![alt text](image-4.png)
 
 ---
+
+## PRAKTIKUM 6 – Testing dengan getByTestId
+
+1. Tambahkan pada About Page
+   - `<h1 data-testid="title">About Page</h1>`
+
+     ```tsx
+     const AboutPage = () => {
+       return (
+         <div>
+           <h1 data-testid="title">About Page</h1>
+         </div>
+       );
+     };
+
+     export default AboutPage;
+     ```
+
+2. Update Testing pada about.spec.tsx
+
+   ```tsx
+   expect(page.getByTestId("title").textContent).toBe("About Page");
+   ```
+
+   - Dicoba untuk run
+
+     ```ps
+     PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 18\unit-testing> npm run test:coverage
+
+     > link-navigation@0.1.0 test:coverage
+     > npm run test -- --coverage
+
+
+     > link-navigation@0.1.0 test
+     > jest --passWithNoTests -u --coverage
+
+     PASS  src/__test__/pages/about.spec.tsx
+     AboutPage
+         √ renders the about page correctly (52 ms)
+
+     › 1 snapshot updated.
+     ----------------------------------------------|---------|----------|---------|---------|-------------------
+     File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+     ----------------------------------------------|---------|----------|---------|---------|-------------------
+     All files                                     |    0.97 |        0 |    1.44 |    0.74 |
+     unit-testing                                 |       0 |      100 |     100 |       0 |
+     next-env.d.ts                               |       0 |      100 |     100 |       0 | 3
+     unit-testing/src                             |       0 |        0 |       0 |       0 |
+     middleware.ts                               |       0 |        0 |       0 |       0 | 1-29
+     unit-testing/src/Middleware                  |       0 |        0 |       0 |       0 |
+     withAuth.ts                                 |       0 |        0 |       0 |       0 | 1-40
+     unit-testing/src/components/layouts/AppShell |       0 |        0 |       0 |       0 |
+     index.tsx                                   |       0 |        0 |       0 |       0 | 1-38
+     unit-testing/src/components/layouts/footer   |       0 |      100 |       0 |       0 |
+     index.tsx                                   |       0 |      100 |       0 |       0 | 1-9
+     unit-testing/src/components/layouts/navbar   |       0 |        0 |       0 |       0 |
+     index.tsx                                   |       0 |        0 |       0 |       0 | 1-58
+     unit-testing/src/lib                         |       0 |      100 |       0 |       0 |
+     auth.ts                                     |       0 |      100 |       0 |       0 | 1-7
+     unit-testing/src/pages                       |       0 |      100 |       0 |       0 |
+     404.tsx                                     |       0 |      100 |       0 |       0 | 1-36
+     _app.tsx                                    |       0 |      100 |       0 |       0 | 1-7
+     _document.tsx                               |       0 |      100 |       0 |       0 | 1-3
+     index.tsx                                   |       0 |      100 |       0 |       0 | 3-9
+     unit-testing/src/pages/about                 |     100 |      100 |     100 |     100 |
+     index.tsx                                   |     100 |      100 |     100 |     100 |
+     unit-testing/src/pages/admin                 |       0 |      100 |       0 |       0 |
+     index.tsx                                   |       0 |      100 |       0 |       0 | 1-18
+     unit-testing/src/pages/auth                  |       0 |      100 |       0 |       0 |
+     login.tsx                                   |       0 |      100 |       0 |       0 | 1-11
+     register.tsx                                |       0 |      100 |       0 |       0 | 2-12
+     unit-testing/src/pages/blog                  |       0 |      100 |       0 |       0 |
+     [slug].tsx                                  |       0 |      100 |       0 |       0 | 1-14
+     unit-testing/src/pages/category              |       0 |        0 |       0 |       0 |
+     [...slug].tsx                               |       0 |        0 |       0 |       0 | 1-22
+     unit-testing/src/pages/editor                |       0 |      100 |       0 |       0 |
+     index.tsx                                   |       0 |      100 |       0 |       0 | 1-19
+     unit-testing/src/pages/produk                |       0 |        0 |       0 |       0 |
+     [produk].tsx                                |       0 |      100 |       0 |       0 | 4-65
+     index.tsx                                   |       0 |        0 |       0 |       0 | 1-25
+     server.tsx                                  |       0 |      100 |       0 |       0 | 1-22
+     static.tsx                                  |       0 |      100 |       0 |       0 | 1-22
+     unit-testing/src/pages/produk/csr            |       0 |        0 |       0 |       0 |
+     [produk].tsx                                |       0 |        0 |       0 |       0 | 1-53
+     unit-testing/src/pages/produk/ssg            |       0 |        0 |       0 |       0 |
+     [produk].tsx                                |       0 |        0 |       0 |       0 | 1-69
+     unit-testing/src/pages/produk/ssr            |       0 |        0 |       0 |       0 |
+     [produk].tsx                                |       0 |        0 |       0 |       0 | 1-46
+     unit-testing/src/pages/profile               |       0 |      100 |       0 |       0 |
+     edit.tsx                                    |       0 |      100 |       0 |       0 | 3-9
+     index.tsx                                   |       0 |      100 |       0 |       0 | 3-11
+     unit-testing/src/pages/setting               |       0 |      100 |       0 |       0 |
+     app.tsx                                     |       0 |      100 |       0 |       0 | 1-9
+     unit-testing/src/pages/shop                  |       0 |        0 |       0 |       0 |
+     [[...slug]].tsx                             |       0 |        0 |       0 |       0 | 1-23
+     unit-testing/src/pages/stores                |       0 |        0 |       0 |       0 |
+     csr.tsx                                     |       0 |        0 |       0 |       0 | 1-18
+     ssg.tsx                                     |       0 |      100 |       0 |       0 | 1-23
+     ssr.tsx                                     |       0 |      100 |       0 |       0 | 1-24
+     unit-testing/src/pages/user                  |       0 |      100 |       0 |       0 |
+     index.tsx                                   |       0 |      100 |       0 |       0 | 1-9
+     unit-testing/src/pages/user/password         |       0 |      100 |       0 |       0 |
+     index.tsx                                   |       0 |      100 |       0 |       0 | 1
+     unit-testing/src/utils/db                    |       0 |        0 |       0 |       0 |
+     firebase.ts                                 |       0 |      100 |     100 |       0 | 2-19
+     servicefirebase.ts                          |       0 |        0 |       0 |       0 | 12-145
+     unit-testing/src/utils/swr                   |       0 |      100 |       0 |       0 |
+     fetcher.ts                                  |       0 |      100 |       0 |       0 | 1-3
+     ----------------------------------------------|---------|----------|---------|---------|-------------------
+     Snapshot Summary
+     › 1 snapshot updated from 1 test suite.
+
+     Test Suites: 1 passed, 1 total
+     Tests:       1 passed, 1 total
+     Snapshots:   1 updated, 1 total
+     Time:        7.236 s
+     Ran all test suites.
+     ```
+
+- Coba Jika dibuat Salah:
+  - Ubah menjadi toBe("About")
+
+    ```tsx
+    expect(page.getByTestId("title").textContent).toBe("About");
+    ```
+
+- Jalankan dan Hasil:
+  - FAIL
+
+    ```ps
+    PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 18\unit-testing> npm run test:coverage
+
+    > link-navigation@0.1.0 test:coverage
+    > npm run test -- --coverage
+
+
+    > link-navigation@0.1.0 test
+    > jest --passWithNoTests -u --coverage
+
+    FAIL  src/__test__/pages/about.spec.tsx
+    AboutPage
+        × renders the about page correctly (44 ms)
+
+    ● AboutPage › renders the about page correctly
+
+        expect(received).toBe(expected) // Object.is equality
+
+        Expected: "About"
+        Received: "About Page"
+
+        5 |   it("renders the about page correctly", () => {
+        6 |     const page = render(<AboutPage />);
+        >  7 |     expect(page.getByTestId("title").textContent).toBe("About");
+            |                                                   ^
+        8 |     expect(page).toMatchSnapshot();
+        9 |   });
+        10 | });
+
+        at Object.toBe (src/__test__/pages/about.spec.tsx:7:51)
+    ```
+
+---

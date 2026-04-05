@@ -5,15 +5,23 @@ exports[`AboutPage renders the about page correctly 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <h1>
-        ini halaman about
-      </h1>
+      <div>
+        <h1
+          data-testid="title"
+        >
+          About Page
+        </h1>
+      </div>
     </div>
   </body>,
   "container": <div>
-    <h1>
-      ini halaman about
-    </h1>
+    <div>
+      <h1
+        data-testid="title"
+      >
+        About Page
+      </h1>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

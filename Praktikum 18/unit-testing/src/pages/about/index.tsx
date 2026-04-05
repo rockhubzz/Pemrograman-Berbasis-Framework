@@ -1,3 +1,9 @@
-export default function Home() {
-  return <h1>ini halaman about</h1>;
+const AboutPage = () => {
+  return (
+    <div>
+      <h1 data-testid="title">About Page</h1>
+    </div>
+  );
 }
+
+export default AboutPage;
