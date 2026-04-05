@@ -33,7 +33,7 @@
 2. Buat File Konfigurasi
    - Buat file: `jest.config.mjs`
 
-     ![alt text](image.png)
+     ![alt text](imgs/JS19/image.png)
 
    - Isi dengan:
 
@@ -75,7 +75,7 @@ Buat folder:<br>
 
 Struktur contoh:
 
-![alt text](image-1.png)
+![alt text](imgs/JS19/image-1.png)
 
 ---
 
@@ -83,7 +83,7 @@ Struktur contoh:
 
 1. Buat File Testing
 
-   ![alt text](image-2.png)
+   ![alt text](imgs/JS19/image-2.png)
 
 2. Contoh Testing Snapshot. Pada about.spec.tsx tambahkan code berikut :
 
@@ -165,7 +165,7 @@ Struktur contoh:
   - Buka:
     - `coverage/lcov-report/index.html` ( buka di melalui explorer)
 
-      ![alt text](image-3.png)
+      ![alt text](imgs/JS19/image-3.png)
 
 ---
 
@@ -294,7 +294,7 @@ Struktur contoh:
 
 - Jika dilihat di index.htmlnya
 
-  ![alt text](image-4.png)
+  ![alt text](imgs/JS19/image-4.png)
 
 ---
 
@@ -466,7 +466,7 @@ Struktur contoh:
 
 1. Buat file product.spec.tsx
 
-   ![alt text](image-5.png)
+   ![alt text](imgs/JS19/image-5.png)
 
 2. Tambahkan kode berikut
 
@@ -609,7 +609,7 @@ Struktur contoh:
 
 Analisis Coverage
 
-![alt text](image-6.png)
+![alt text](imgs/JS19/image-6.png)
 
 ---
 
