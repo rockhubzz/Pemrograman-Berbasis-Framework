@@ -78,3 +78,51 @@ Struktur contoh:
 ![alt text](image-1.png)
 
 ---
+
+## PRAKTIKUM 3 – Testing Halaman About
+
+1. Buat File Testing
+
+   ![alt text](image-2.png)
+
+2. Contoh Testing Snapshot. Pada about.spec.tsx tambahkan code berikut :
+
+   ```tsx
+   import { render } from "@testing-library/react";
+   import AboutPage from "../../pages/about";
+
+   describe("AboutPage", () => {
+     it("renders the about page correctly", () => {
+       const page = render(<AboutPage />);
+       expect(page).toMatchSnapshot();
+     });
+   });
+   ```
+
+3. Jalankan Testing
+
+- npm run test
+
+  ```shell
+  PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Praktikum\Praktikum 18\unit-testing> npm run test
+
+  > link-navigation@0.1.0 test
+  > jest --passWithNoTests -u
+
+  PASS  src/__test__/pages/about.spec.tsx
+  AboutPage
+      √ renders the about page correctly (35 ms)
+
+  › 1 snapshot written.
+  Snapshot Summary
+  › 1 snapshot written from 1 test suite.
+
+  Test Suites: 1 passed, 1 total
+  Tests:       1 passed, 1 total
+  Snapshots:   1 written, 1 total
+  Time:        2.937 s
+  Ran all test suites.
+  ```
+
+- Jika berhasil:<br>
+  `PASS about.spec.tsx`
