@@ -32,7 +32,7 @@
 
   Hasil:
 
-  ![alt text](image.png)
+  ![alt text](imgs/JS18/image.png)
   - Warning hilang
   - Image dioptimasi otomatis
   - Mengurangi bandwidth
@@ -64,7 +64,7 @@
 
 Hasil:
 
-![alt text](image-1.png)
+![alt text](imgs/JS18/image-1.png)
 
 - Gambar di-proxy melalui /\_next/image
 - Performa lebih optimal
@@ -96,7 +96,7 @@ Hasil:
 
 - Jalankan browser localhost:3000/produk maka font akan berubah menjadi roboto untuk mengecek fontnya bisa menggunakan extension FontFinder
 
-  ![alt text](image-2.png)
+  ![alt text](imgs/JS18/image-2.png)
 
 Hasil:
 
@@ -131,7 +131,7 @@ Hasil:
 
 Hasil:
 
-![alt text](image-3.png)
+![alt text](imgs/JS18/image-3.png)
 
 - Script tidak blocking
 - Cocok untuk Google Analytics
@@ -200,7 +200,7 @@ Hasil:
 
    ```
 
-   ![alt text](image-4.png)
+   ![alt text](imgs/JS18/image-4.png)
 
 3. Tambahkan script Google Analytics menggunakan next/script
 
@@ -253,11 +253,11 @@ Hasil:
 5. Dokumentasikan perubahan performa (screenshot Lighthouse)
    - Hasil Lighthouse Praktikum 16
 
-     ![alt text](image-6.png)
+     ![alt text](imgs/JS18/image-6.png)
 
    - Hasil Lighthouse Praktikum 17
 
-     ![alt text](image-5.png)
+     ![alt text](imgs/JS18/image-5.png)
 
 ---
 
