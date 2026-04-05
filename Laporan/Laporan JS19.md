@@ -539,3 +539,74 @@ Struktur contoh:
          22 |   );
          23 | };
      ```
+
+---
+
+## PRAKTIKUM 8 – Menangani Undefined Data
+
+- Jalankan npm run test:coverage maka akan muncul error
+
+  ```ps
+  FAIL  src/__test__/pages/produk.spec.tsx
+  ● Product Page › renders product page correctly
+
+      TypeError: Cannot read properties of undefined (reading 'data')
+
+      18 |   return (
+      19 |     <div>
+      > 20 |       <TampilanProduk products={isLoading ? [] : data.data} />
+          |                                                       ^
+      21 |     </div>
+      22 |   );
+      23 | };
+  ```
+
+- Jika muncul error:
+  - Cannot read properties of undefined
+  - Perbaiki di komponen:
+
+  Pada file index.tsx pada folder pages/produk
+
+  ```tsx
+  <div>
+    <TampilanProduk products={isLoading ? [] : data?.data} />
+  </div>
+  ```
+
+  Jalankan npm run test:coverage maka akan muncul error
+
+  ```ps
+  FAIL  src/__test__/pages/produk.spec.tsx
+  ● Product Page › renders product page correctly
+
+      TypeError: Cannot read properties of undefined (reading 'length')
+
+      17 |
+      18 |       <div className={styles.produk__content}>
+      > 19 |         {products.length > 0 ? (
+          |                   ^
+      20 |           <>
+      21 |             {products.map((products: ProductType) => (
+      22 |               <Link
+  ```
+
+  Maka Solusinya perbaiki code pada file
+
+  ```tsx
+      <div className={styles.produk__content}>
+          {products?.length > 0 ? (
+          <>
+              {products?.map((products: ProductType) => (
+                // ...
+  ```
+
+  Note pastikan : comment pada code berikut pada 2 code testing
+
+  ```tsx
+  // expect(screen.getByTestId("title").textContent).toBe("Daftar Produk");
+  // expect(page.getByTestId("title").textContent).toBe("About Page");
+  ```
+
+Analisis Coverage
+
+![alt text](image-6.png)

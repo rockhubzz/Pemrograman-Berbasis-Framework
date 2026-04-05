@@ -16,9 +16,9 @@ const TampilanProduk = ({ products }: { products: ProductType[] }) => {
       <h1 className={styles.produk__title}>Daftar Produk</h1>
 
       <div className={styles.produk__content}>
-        {products.length > 0 ? (
+        {products?.length > 0 ? (
           <>
-            {products.map((products: ProductType) => (
+            {products?.map((products: ProductType) => (
               <Link
                 href={`/produk/${products.id}`}
                 key={products.id}
