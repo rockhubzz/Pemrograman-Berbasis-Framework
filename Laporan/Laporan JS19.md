@@ -67,3 +67,14 @@
    ```
 
 ---
+
+## PRAKTIKUM 2 – Struktur Folder Testing
+
+Buat folder:<br>
+`src/__test__/`
+
+Struktur contoh:
+
+![alt text](image-1.png)
+
+---
