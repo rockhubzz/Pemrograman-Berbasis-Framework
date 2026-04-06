@@ -308,3 +308,25 @@
      - GitHub
 
        ![alt text](image-14.png)
+
+---
+
+## PRAKTIKUM 3 – Menambahkan Environment Variable di Vercel
+
+1. Buka Project di Vercel
+   - Settings → Environment Variables
+
+     ![alt text](image-15.png)
+
+2. Import dari .env.local
+   - Klik Import .env dan setting next_public_api_url sesuai dengan url vercel project atau isi manual:
+     `NEXT_PUBLIC_API_URL=https://namaproject.vercel.app`
+
+     ![alt text](image-16.png)
+
+3. Redeploy
+   - Deployment → Redeploy
+
+     ![alt text](image-17.png)
+
+---
