@@ -403,3 +403,50 @@ Coba akses:
   ![alt text](image-26.png)
 
   ![alt text](image-27.png)
+
+---
+
+## Tugas Praktikum
+
+1.  Deploy project Next.js ke Vercel
+
+    Deployment berhasil dilakukan pada praktikum 2
+
+    ![alt text](image-8.png)
+
+2.  Pastikan API tidak menggunakan localhost
+
+    Pada environment variables project vercel sudah ditambahkan variable berikut:
+
+    ```env
+    NEXT_PUBLIC_API_URL= https://my-next-app-git-main-wingit88s-projects.vercel.app
+    ```
+
+    Sehingga setiap fetching API yang dilakukan ditujukan pada URL tersebut
+
+3.  Konfigurasikan Google OAuth production
+
+    Pada tambahan praktikum 2 sudah dilakukan konfigurasi OAuth Google agar dapat bekerja dengan URL yang sudah dideploy
+
+    ![alt text](image-13.png)
+
+4.  Lakukan minimal 1 redeploy
+
+    Telah dilakukan redeploy pada praktikum 3 setelah menambahkan environment variables pada project vercel
+
+    ![alt text](image-17.png)
+
+5.  Dokumentasikan:
+    - Screenshot dashboard Vercel
+
+      ![alt text](image-28.png)
+
+    - URL hasil deployment
+
+      https://my-next-app-git-main-wingit88s-projects.vercel.app
+
+    - Screenshot login Google berhasil
+
+      ![alt text](ezgif-3f14bfc869e84988.gif)
+
+---
