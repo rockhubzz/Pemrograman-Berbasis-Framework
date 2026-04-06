@@ -153,3 +153,158 @@
   ![alt text](image-2.png)
 
 ---
+
+## PRAKTIKUM 2 – Deployment ke Vercel
+
+1. Login ke Vercel
+
+- Buka: https://vercel.com
+- Login menggunakan GitHub (kalau blm punya akun buat terlebih dahulu)
+
+  ![alt text](image-3.png)
+
+2. Import Project
+   - Klik Add New Project
+
+     ![alt text](image-4.png)
+
+   - Install terlebih dahulu githubnya
+
+     ![alt text](image-5.png)
+
+   - Klik Import
+
+     ![alt text](image-6.png)
+
+     ![alt text](image-7.png)
+
+   - Fix error saat deploy
+     - Hilangkan kode static-site generation
+
+       ```tsx
+       {
+         /*digunakan static-site generation*/
+       }
+       // export async function getStaticPaths() {
+       //     const res = await fetch('http://localhost:3000/api/products')
+       //     const response = await res.json()
+
+       //     const paths = response.data.map((product: ProductType) => ({
+       //         params: { produk: product.id }
+       //     }))
+       //     // console.log("Paths yang dihasilkan untuk produk:", paths); // Debugging: Tampilkan paths yang dihasilkan
+       //     return {
+       //         paths,
+       //         fallback: false
+       //     }
+       // }
+       ```
+
+     - Ganti dengan server-side rendering
+
+       ```tsx
+       {
+         /*digunakan server-side rendering*/
+       }
+       export async function getServerSideProps({
+         params,
+       }: {
+         params: { produk: string };
+       }) {
+         const res = await fetch(
+           `http://localhost:3000/api/produk/${params?.produk}`,
+         );
+         const respone = await res.json();
+         // console.log("Data produk yang diambil dari API:", respone);
+         return {
+           props: {
+             product: respone.data, // Pastikan untuk memberikan nilai default jika data tidak tersedia
+           },
+         };
+       }
+       ```
+
+   - Berhasil deploy
+
+     ![alt text](image-8.png)
+
+3. Gunakan Environment Variable
+   - Buat di .env.local:
+
+     `NEXT_PUBLIC_API_URL=http://localhost:3000`
+
+   - Ganti semua hardcoded URL menjadi:
+     `process.env.NEXT_PUBLIC_API_URL`
+     - Pada [produk].tsx
+
+       ```tsx
+       const res = await fetch(
+         `http://localhost:3000/api/produk/${params?.produk}`,
+       );
+       ```
+
+       menjadi:
+
+       ```tsx
+       const res = await fetch(
+         `${process.env.NEXT_PUBLIC_API_URL}/api/produk/${params?.produk}`,
+       );
+       ```
+
+     - Pada server.tsx
+
+       ```tsx
+       const res = await fetch("http://localhost:3000/api/produk");
+       ```
+
+       menjadi:
+
+       ```tsx
+       const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/api/produk");
+       ```
+
+   - Commit dan push kembali
+
+     ```ps
+     PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Deploy> git add .
+     PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Deploy> git commit -m "replace localhost api with vercel api url"
+     [main 3375196] replace localhost api with vercel api url
+     2 files changed, 2 insertions(+), 2 deletions(-)
+     PS C:\Users\raki\Documents\raki6\Pemrograman Berbasis Framework\Code\Deploy> git push origin main
+     Enumerating objects: 13, done.
+     Counting objects: 100% (13/13), done.
+     Delta compression using up to 8 threads
+     Compressing objects: 100% (7/7), done.
+     Writing objects: 100% (7/7), 638 bytes | 159.00 KiB/s, done.
+     Total 7 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+     remote: Resolving deltas: 100% (6/6), completed with 6 local objects.
+     To https://github.com/wingit88/my-next-app.git
+     18528d7..3375196  main -> main
+     ```
+
+   - Selanjutnya import lakukan pengaturannya sbb
+
+     Project sudah berhasil di-import dan otomatis memperbarui dengan commit terakhir
+
+     ![alt text](image-9.png)
+
+     Ubah setting Install command
+
+     ![alt text](image-10.png)
+
+     Lakukan Redeploy
+
+     ![alt text](image-11.png)
+
+   - Visit web yang sudah dideploy
+
+     ![alt text](image-12.png)
+
+   - Tambahan: Tambahkan URL vercel ke Authorized origins pada OAuth Google dan Github untuk memastikan login bekerja
+     - Google
+
+       ![alt text](image-13.png)
+
+     - GitHub
+
+       ![alt text](image-14.png)
