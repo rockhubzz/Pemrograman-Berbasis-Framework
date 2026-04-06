@@ -330,3 +330,38 @@
      ![alt text](image-17.png)
 
 ---
+
+## PRAKTIKUM 4 – Konfigurasi Google OAuth Production
+
+Origin dan Redirect URL vercel.app telah ditambahkan pada OAuth Google dan GitHub pada tambahan Praktikum 2
+
+- Google
+  ![alt text](image-13.png)
+- GitHub
+  ![alt text](image-14.png)
+
+**Note : ada kesalahan pada code index.tsx pada folder views/auth/login**
+
+Code sebelumnya
+
+```tsx
+<button
+  onClick={() => signIn("google", { callbackUrl, redirect: false })}
+  className={style.login_form_item__button}
+  disabled={isLoading}
+>
+  {isLoading ? "Loading..." : "Sign in with Google"}
+</button>
+```
+
+Code dimodifikasi
+
+```tsx
+<button
+  type="button"
+  onClick={() => signIn("google", { callbackUrl, redirect: false })}
+  className={style.login_form_item__button}
+>
+  Sign in with Google
+</button>
+```
