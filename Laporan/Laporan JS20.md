@@ -450,3 +450,20 @@ Coba akses:
       ![alt text](ezgif-3f14bfc869e84988.gif)
 
 ---
+
+## Refleksi & Diskusi
+
+1. **Mengapa localhost tidak boleh digunakan di production?**  
+   Localhost hanya merujuk ke mesin lokal (komputer sendiri), sehingga tidak bisa diakses oleh pengguna lain di internet. Jika digunakan di production, aplikasi tidak akan dapat diakses secara publik.
+
+2. **Mengapa SSG bisa gagal saat build?**  
+   SSG dapat gagal saat build jika terjadi error saat pengambilan data (fetch), seperti API tidak tersedia, data tidak valid, atau terjadi kesalahan pada fungsi getStaticProps/getStaticPaths. Karena proses ini berjalan saat build, error akan menghentikan proses deployment.
+
+3. **Apa perbedaan SSR dan SSG saat deployment?**  
+   Pada SSR, halaman dirender setiap kali ada request sehingga membutuhkan server aktif saat runtime. Sedangkan SSG menghasilkan file statis saat build, sehingga saat deployment hanya perlu menyajikan file tersebut tanpa proses rendering ulang.
+
+4. **Mengapa perlu redeploy setelah menambahkan environment?**  
+   Environment variable dibaca saat proses build atau startup server. Jika ada perubahan atau penambahan, aplikasi perlu di-redeploy agar nilai terbaru bisa digunakan oleh sistem.
+
+5. **Apa fungsi redirect URI pada OAuth?**  
+   Redirect URI digunakan untuk menentukan ke mana user akan diarahkan setelah proses autentikasi berhasil. URI ini juga berfungsi sebagai pengaman agar hanya URL yang terdaftar yang bisa menerima response dari provider OAuth.
