@@ -365,3 +365,41 @@ Code dimodifikasi
   Sign in with Google
 </button>
 ```
+
+## PRAKTIKUM 5 – Pengujian Setelah Deployment
+
+Coba akses:
+
+- /
+
+  ![alt text](image-18.png)
+
+- /about
+
+  ![alt text](image-19.png)
+
+- /product
+
+  ![alt text](image-20.png)
+
+- /profile
+
+  ![alt text](image-21.png)
+
+- Login Google
+
+  ![alt text](image-22.png)
+
+  ![alt text](image-23.png)
+
+- Login credential biasa
+
+  ![alt text](image-24.png)
+
+  ![alt text](image-25.png)
+
+- Login GitHub
+
+  ![alt text](image-26.png)
+
+  ![alt text](image-27.png)
