@@ -10,9 +10,9 @@
 1. Pilih Private/Public
 1. Klik Create Repository
 
-![alt text](image.png)
+![alt text](imgs/JS20/image.png)
 
-![alt text](image-1.png)
+![alt text](imgs/JS20/image-1.png)
 
 2. Hubungkan Project Lokal ke GitHub
 
@@ -150,7 +150,7 @@
 
 - Pastikan repository di GitHub sudah terisi file project.
 
-  ![alt text](image-2.png)
+  ![alt text](imgs/JS20/image-2.png)
 
 ---
 
@@ -161,22 +161,22 @@
 - Buka: https://vercel.com
 - Login menggunakan GitHub (kalau blm punya akun buat terlebih dahulu)
 
-  ![alt text](image-3.png)
+  ![alt text](imgs/JS20/image-3.png)
 
 2. Import Project
    - Klik Add New Project
 
-     ![alt text](image-4.png)
+     ![alt text](imgs/JS20/image-4.png)
 
    - Install terlebih dahulu githubnya
 
-     ![alt text](image-5.png)
+     ![alt text](imgs/JS20/image-5.png)
 
    - Klik Import
 
-     ![alt text](image-6.png)
+     ![alt text](imgs/JS20/image-6.png)
 
-     ![alt text](image-7.png)
+     ![alt text](imgs/JS20/image-7.png)
 
    - Fix error saat deploy
      - Hilangkan kode static-site generation
@@ -226,7 +226,7 @@
 
    - Berhasil deploy
 
-     ![alt text](image-8.png)
+     ![alt text](imgs/JS20/image-8.png)
 
 3. Gunakan Environment Variable
    - Buat di .env.local:
@@ -286,28 +286,28 @@
 
      Project sudah berhasil di-import dan otomatis memperbarui dengan commit terakhir
 
-     ![alt text](image-9.png)
+     ![alt text](imgs/JS20/image-9.png)
 
      Ubah setting Install command
 
-     ![alt text](image-10.png)
+     ![alt text](imgs/JS20/image-10.png)
 
      Lakukan Redeploy
 
-     ![alt text](image-11.png)
+     ![alt text](imgs/JS20/image-11.png)
 
    - Visit web yang sudah dideploy
 
-     ![alt text](image-12.png)
+     ![alt text](imgs/JS20/image-12.png)
 
    - Tambahan: Tambahkan URL vercel ke Authorized origins pada OAuth Google dan Github untuk memastikan login bekerja
      - Google
 
-       ![alt text](image-13.png)
+       ![alt text](imgs/JS20/image-13.png)
 
      - GitHub
 
-       ![alt text](image-14.png)
+       ![alt text](imgs/JS20/image-14.png)
 
 ---
 
@@ -316,18 +316,18 @@
 1. Buka Project di Vercel
    - Settings → Environment Variables
 
-     ![alt text](image-15.png)
+     ![alt text](imgs/JS20/image-15.png)
 
 2. Import dari .env.local
    - Klik Import .env dan setting next_public_api_url sesuai dengan url vercel project atau isi manual:
      `NEXT_PUBLIC_API_URL=https://namaproject.vercel.app`
 
-     ![alt text](image-16.png)
+     ![alt text](imgs/JS20/image-16.png)
 
 3. Redeploy
    - Deployment → Redeploy
 
-     ![alt text](image-17.png)
+     ![alt text](imgs/JS20/image-17.png)
 
 ---
 
@@ -336,9 +336,9 @@
 Origin dan Redirect URL vercel.app telah ditambahkan pada OAuth Google dan GitHub pada tambahan Praktikum 2
 
 - Google
-  ![alt text](image-13.png)
+  ![alt text](imgs/JS20/image-13.png)
 - GitHub
-  ![alt text](image-14.png)
+  ![alt text](imgs/JS20/image-14.png)
 
 **Note : ada kesalahan pada code index.tsx pada folder views/auth/login**
 
@@ -372,37 +372,37 @@ Coba akses:
 
 - /
 
-  ![alt text](image-18.png)
+  ![alt text](imgs/JS20/image-18.png)
 
 - /about
 
-  ![alt text](image-19.png)
+  ![alt text](imgs/JS20/image-19.png)
 
 - /product
 
-  ![alt text](image-20.png)
+  ![alt text](imgs/JS20/image-20.png)
 
 - /profile
 
-  ![alt text](image-21.png)
+  ![alt text](imgs/JS20/image-21.png)
 
 - Login Google
 
-  ![alt text](image-22.png)
+  ![alt text](imgs/JS20/image-22.png)
 
-  ![alt text](image-23.png)
+  ![alt text](imgs/JS20/image-23.png)
 
 - Login credential biasa
 
-  ![alt text](image-24.png)
+  ![alt text](imgs/JS20/image-24.png)
 
-  ![alt text](image-25.png)
+  ![alt text](imgs/JS20/image-25.png)
 
 - Login GitHub
 
-  ![alt text](image-26.png)
+  ![alt text](imgs/JS20/image-26.png)
 
-  ![alt text](image-27.png)
+  ![alt text](imgs/JS20/image-27.png)
 
 ---
 
@@ -412,7 +412,7 @@ Coba akses:
 
     Deployment berhasil dilakukan pada praktikum 2
 
-    ![alt text](image-8.png)
+    ![alt text](imgs/JS20/image-8.png)
 
 2.  Pastikan API tidak menggunakan localhost
 
@@ -428,18 +428,18 @@ Coba akses:
 
     Pada tambahan praktikum 2 sudah dilakukan konfigurasi OAuth Google agar dapat bekerja dengan URL yang sudah dideploy
 
-    ![alt text](image-13.png)
+    ![alt text](imgs/JS20/image-13.png)
 
 4.  Lakukan minimal 1 redeploy
 
     Telah dilakukan redeploy pada praktikum 3 setelah menambahkan environment variables pada project vercel
 
-    ![alt text](image-17.png)
+    ![alt text](imgs/JS20/image-17.png)
 
 5.  Dokumentasikan:
     - Screenshot dashboard Vercel
 
-      ![alt text](image-28.png)
+      ![alt text](imgs/JS20/image-28.png)
 
     - URL hasil deployment
 
@@ -447,7 +447,7 @@ Coba akses:
 
     - Screenshot login Google berhasil
 
-      ![alt text](ezgif-3f14bfc869e84988.gif)
+      ![alt text](imgs/JS20/ezgif-3f14bfc869e84988.gif)
 
 ---
 
