@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Stores CSR Page matches snapshot 1`] = `
+<div>
+  <div>
+    <h1
+      style="padding: 20px; background-color: rgb(227, 242, 253); text-align: center;"
+    >
+      Rendering: Client-Side Rendering (CSR)
+    </h1>
+    <div
+      class="produk className"
+    >
+      <h1
+        class="produk__title"
+      >
+        Daftar Toko
+      </h1>
+      <div
+        class="produk__content"
+      >
+        <p>
+          Tidak ada data toko
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

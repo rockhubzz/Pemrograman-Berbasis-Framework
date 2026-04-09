@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Stores SSR Page matches snapshot 1`] = `
+<div>
+  <div>
+    <h1
+      style="padding: 20px; background-color: rgb(255, 243, 224); text-align: center;"
+    >
+      Rendering: Server-Side Rendering (SSR)
+    </h1>
+    <div
+      data-testid="stores-view"
+    >
+      Stores View Component
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Navbar Component matches snapshot 1`] = `
+<div>
+  <div
+    class="navbar"
+  >
+    <div
+      class="navbar__brand"
+      id="title"
+    />
+    document.getElementById('title').innerHTML = 'MyApp';
+    <div
+      class="navbar__right"
+    >
+      <button
+        class="navbar__button navbar__button--primary"
+      >
+        Sign In
+      </button>
+    </div>
+  </div>
+</div>
+`;

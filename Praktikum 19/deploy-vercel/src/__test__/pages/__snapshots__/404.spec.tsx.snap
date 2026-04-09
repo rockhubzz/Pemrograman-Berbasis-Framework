@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`404 Not Found Page matches snapshot 1`] = `
+<div>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="card"
+    >
+      <img
+        alt="404"
+        class="error_image"
+        data-nimg="1"
+        decoding="async"
+        height="200"
+        loading="lazy"
+        src="/_next/image?url=%2Fpage-eaten.png&w=828&q=75"
+        srcset="/_next/image?url=%2Fpage-eaten.png&w=640&q=75 1x, /_next/image?url=%2Fpage-eaten.png&w=828&q=75 2x"
+        style="color: transparent;"
+        width="400"
+      />
+      <h1
+        class="title"
+      >
+        404
+      </h1>
+      <h2
+        class="subtitle"
+      >
+        Halaman Tidak Ditemukan
+      </h2>
+      <p
+        class="text"
+      >
+        Maaf, halaman yang Anda cari tidak tersedia atau sudah dimakan.
+      </p>
+      <a
+        class="button"
+        href="/"
+      >
+        Kembali ke Beranda
+      </a>
+    </div>
+  </div>
+</div>
+`;

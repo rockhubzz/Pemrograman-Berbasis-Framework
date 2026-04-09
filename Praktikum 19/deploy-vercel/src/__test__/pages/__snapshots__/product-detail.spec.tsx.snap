@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Product Detail Page ([produk].tsx) matches snapshot 1`] = `
+<div>
+  <div>
+    <div
+      data-testid="detail-product-view"
+    >
+      <div>
+        <h2>
+          Sample Product
+        </h2>
+        <p>
+          Price: 
+          99999
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

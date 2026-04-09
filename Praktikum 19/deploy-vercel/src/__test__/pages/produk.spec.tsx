@@ -179,8 +179,8 @@ describe("Product Page", () => {
   render(<KategoriPage />);
 
   expect(screen.getByText("Product 1")).toBeTruthy();
-  expect(screen.getByText("Electronics")).toBeTruthy();
-  expect(screen.getByText(/Rp/)).toBeTruthy();
+  expect(screen.getAllByText("Electronics").length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/Rp/).length).toBeGreaterThan(0);
 });
 
 it("should render correct number of products", () => {

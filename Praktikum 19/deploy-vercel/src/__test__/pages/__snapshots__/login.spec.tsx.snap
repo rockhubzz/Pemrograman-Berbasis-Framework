@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Login Page matches snapshot 1`] = `
+<div>
+  <div
+    class="login"
+  >
+    <h1
+      class="login__title"
+    >
+      Halaman Login
+    </h1>
+    <div
+      class="login__form"
+    >
+      <form>
+        <div
+          class="login__form__item"
+        >
+          <label
+            class="login__form__item__label"
+            for="email"
+          >
+            Email
+          </label>
+          <input
+            class="login__form__item__input"
+            id="email"
+            name="email"
+            placeholder="Email"
+            type="email"
+          />
+        </div>
+        <div
+          class="login__form__item"
+        >
+          <label
+            class="login__form__item__label"
+            for="Password"
+          >
+            Password
+          </label>
+          <input
+            class="login__form__item__input"
+            id="password"
+            name="password"
+            placeholder="password"
+            type="password"
+          />
+        </div>
+        <button
+          class="login__form__item__button"
+          type="submit"
+        >
+          Login
+        </button>
+        <br />
+        <br />
+        <button
+          class="login_form_item__button"
+          type="button"
+        >
+          Sign in with Google
+        </button>
+        <br />
+        <br />
+        <button
+          class="login_form_item__button"
+          type="button"
+        >
+          Sign in with GitHub
+        </button>
+      </form>
+      <br />
+      <p
+        class="login__form__item__text"
+      >
+        Belum punya akun? 
+        <a
+          href="/auth/register"
+        >
+          Ke Halaman Register
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;

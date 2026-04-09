@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Product Server Page (server.tsx) matches snapshot 1`] = `
+<div>
+  <div>
+    <h1>
+      Halaman Produk Server
+    </h1>
+    <div
+      data-testid="tampilan-produk"
+    >
+      Product View
+    </div>
+  </div>
+</div>
+`;

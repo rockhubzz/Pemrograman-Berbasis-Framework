@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Blog Page (Dynamic Route) matches snapshot 1`] = `
+<div>
+  <div>
+    <h1>
+      Halaman Blog
+    </h1>
+    <b>
+      Slug: 
+      test-blog
+    </b>
+  </div>
+</div>
+`;

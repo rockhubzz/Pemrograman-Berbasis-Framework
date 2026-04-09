@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Shop Page matches snapshot 1`] = `
+<div>
+  <div>
+    <h1>
+      Halaman Toko
+    </h1>
+    <p>
+      Kategori: 
+    </p>
+    <p>
+      Toko: 
+    </p>
+  </div>
+</div>
+`;

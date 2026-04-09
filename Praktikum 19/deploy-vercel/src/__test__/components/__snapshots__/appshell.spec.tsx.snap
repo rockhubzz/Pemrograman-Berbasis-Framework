@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AppShell Component matches snapshot 1`] = `
+<div>
+  <main
+    class="className"
+  >
+    <div
+      class="navbar"
+    >
+      <div
+        class="navbar__brand"
+        id="title"
+      />
+      <div
+        class="navbar__right"
+      >
+        <button
+          class="navbar__button navbar__button--primary"
+        >
+          Sign In
+        </button>
+      </div>
+    </div>
+    <div
+      data-testid="test-children"
+    >
+      Test Content
+    </div>
+  </main>
+</div>
+`;
