@@ -467,3 +467,11 @@ Coba akses:
 
 5. **Apa fungsi redirect URI pada OAuth?**  
    Redirect URI digunakan untuk menentukan ke mana user akan diarahkan setelah proses autentikasi berhasil. URI ini juga berfungsi sebagai pengaman agar hanya URL yang terdaftar yang bisa menerima response dari provider OAuth.
+
+---
+
+## Tambahan: Optimize Test Coverage
+
+Setelah dilakukan optimasi pada page dan unit test, kini hasil test coverage pada setiap page dan components mencapai minimal 50%
+
+![alt text](imgs/JS20/image-29.png)
